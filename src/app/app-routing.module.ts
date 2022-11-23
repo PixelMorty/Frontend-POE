@@ -1,10 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [];
+import { DetailComponent } from './pages/stagiaires/detail/detail.component';
+import { ListComponent } from './pages/stagiaires/list/list.component';
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(AppRoutingModule.routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+  public static routes: Routes = [
+    {
+      path: '',// chemin vide, tjr première route 
+      redirectTo: 'stagiaires',
+      pathMatch: 'full'
+    },
+    {path: 'stagiaires',
+      component: ListComponent
+    },
+    {
+      path: 'detail',
+      component: DetailComponent
+    },
+    {
+      path: '**', //route fallback
+      redirectTo: 'stagiaires',
+      pathMatch: 'full'      
+    }
+
+  
+  ] 
+}
