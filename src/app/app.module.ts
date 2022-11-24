@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { InitialsPipe } from './shared/pipes/initials.pipe';
 import { ListComponent } from './pages/stagiaires/list/list.component';
 import { DetailComponent } from './pages/stagiaires/detail/detail.component';
+import { GenrePipe } from './shared/pipes/genre.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     InitialsPipe,
     ListComponent,
-    DetailComponent
+    DetailComponent,
+    GenrePipe
   ],
   imports: [
     BrowserModule,

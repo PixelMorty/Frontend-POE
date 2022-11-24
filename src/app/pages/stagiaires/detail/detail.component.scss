@@ -1,3 +1,48 @@
-p{
-    font-size: 200px;
+$couleurTitre: rgb(244, 150, 57);
+$button-font-color: rgb(255, 255, 255);
+$button-background-color: rgb(177, 79, 79);
+$button-inactive-color: rgba(20, 20, 200);
+
+div{
+    button {
+        cursor: pointer;
+
+        background-color: $button-background-color;
+        // color: $button-inactive-color;
+        width: 5em;
+        height: 3em;
+        font-size: 20px;
+        border: 0.1em solid  rgb(14, 4, 4);;
+    }
+    &.card{
+
+        border-width: 100px ;
+        border: 0.1em solid  rgb(14, 4, 4);;
+        border-color: rgb(14, 4, 4);
+        width: 300px;
+        height: auto;
+        background-color: $couleurTitre;
+        text-align: center;
+        font-size: large;
+        li{
+            font-size: 30px;
+            border: 0.1em solid  rgb(14, 4, 4);;
+        }
+        p{
+            border-width: 100px ;
+            border-color: rgb(222, 10, 10);
+            font-size: 30px;
+            background-color: $couleurTitre;
+            border: 0.1em solid  rgb(14, 4, 4);;
+        }
+        div{
+
+            background-color: rgb(220, 184, 184);
+            border: 0em solid  rgb(14, 4, 4);;
+            &.card-text{
+                font-size: 30px;
+            }
+        }
+    }
+
 }

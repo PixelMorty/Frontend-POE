@@ -40,29 +40,42 @@ const stagiaires : any =[
 
 ]
 
-    export class StagiaireService {
-        private stagiaires: StagiaireModel[] = [];
-    
-        public  deserialize(): StagiaireModel[] {
-            stagiaires.forEach((anyStagiaire: any) => {
-                const stagiaire: StagiaireModel = new StagiaireModel();
-                stagiaire.id = anyStagiaire.id;
-                stagiaire.lastName = anyStagiaire.lastName;
-                stagiaire.firstName = anyStagiaire.firstName;
-                stagiaire.birthDate = anyStagiaire.birthDate;
-                stagiaire.gender = anyStagiaire.gender;
-                stagiaire.email = anyStagiaire.email;
-                stagiaire.phoneNumber = anyStagiaire.phoneNumber;
-    
-                // Add new stagiaire to the array
-                this.stagiaires.push(stagiaire);
-            })
-            return  this.stagiaires;
-        } 
+export class StagiaireService {
+    private stagiaires: StagiaireModel[] = [];
 
-        public getStagiaires(): StagiaireModel[] {
-            return this.stagiaires;
-        }
-        
+    public getStagiaires(): StagiaireModel[] {
+        return this.stagiaires;
     }
-    
+
+    public findOne(id: number): StagiaireModel {
+        //this.stagiaires.filter(s=> s.id==id)[0]
+
+        //return this.stagiaires.find(s=>s.id===id)
+        
+        const stagaire: StagiaireModel | undefined = this.stagiaires.find(
+            (inStagiaire: StagiaireModel) => inStagiaire.id === id
+        );
+        if (stagaire !== undefined) {
+            return stagaire!;
+        }
+        throw new Error(`Stagiaire with ${id} was not found`);
+
+
+    }
+
+    public deserialize(): void {
+        stagiaires.forEach((anyStagiaire: any) => {
+            const stagiaire: StagiaireModel = new StagiaireModel();
+            stagiaire.id = anyStagiaire.id;
+            stagiaire.lastName = anyStagiaire.lastName;
+            stagiaire.firstName = anyStagiaire.firstName;
+            stagiaire.birthDate = anyStagiaire.birthDate;
+            stagiaire.gender = anyStagiaire.gender;
+            stagiaire.email = anyStagiaire.email;
+            stagiaire.phoneNumber = anyStagiaire.phoneNumber;
+
+            // Add new stagiaire to the array
+            this.stagiaires.push(stagiaire);
+        })
+    }
+}

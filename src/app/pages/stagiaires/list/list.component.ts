@@ -13,7 +13,7 @@ export class ListComponent implements OnInit {
   public full: boolean =false;
   public lastNameFirst: boolean =false;
 
-  public stagiaires: StagiaireModel[]=new StagiaireService().deserialize(); 
+  public stagiaires: StagiaireModel[] = [];
   // public constructor(){
   //   const stagiaireService : StagiaireService =  new StagiaireService();
   //   stagiaireService.deserialize() // JSON => Java Script Object Notation (Objet JS en plain text)
@@ -21,7 +21,9 @@ export class ListComponent implements OnInit {
   // }
   public showLi: string = 'M';
   constructor(private router:Router){ // DI Dependency injection (services, ici un routeur)
-    
+    const service: StagiaireService  = new StagiaireService();
+    service.deserialize();
+    this.stagiaires = service.getStagiaires();
   }
   ngOnInit(): void {
   }
@@ -55,7 +57,7 @@ export class ListComponent implements OnInit {
 
   }
   public goToDetail(id : number): void {
-    this.router.navigate(['/detail']);
+    this.router.navigate(['/detail',id]);
   }
 
 

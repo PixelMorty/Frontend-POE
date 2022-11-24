@@ -1,1 +1,23 @@
-<p>I  LOVE   ANGLUAR </p>
+
+<div class="card"  >
+ <div >
+  {{this.stagiaire.firstName}} {{this.stagiaire.lastName}}
+</div >
+
+    <div > De genre {{stagiaire.gender | genre }} , </div>
+    <div > Je suis né le {{stagiaire.birthDate | date :  'dd/LL/yyyy'}}  </div>
+    <div class="card-text">contactez moi !!!!  </div>
+    <div > mél: {{stagiaire.email}} </div>
+    <div > tel: {{stagiaire.phoneNumber}} </div>
+    <div > ^^^^^ </div>
+    <div > ^^^^^^^^^ </div>
+    <div > ^^^^^^^^^^^^^^^^^^ </div>
+    <div > ^^^^^^^^^^^^^^^^^^^^^^^^ </div>
+    <div > ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ </div>     
+    <div>
+      <button type="button"  (click)="goToMenu()" >
+       Quitter
+      </button>
+    </div>
+</div>
+ 
