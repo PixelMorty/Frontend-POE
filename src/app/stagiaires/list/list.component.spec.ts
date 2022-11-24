@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { InitialsPipe } from 'src/app/shared/pipes/initials.pipe';
+import { InitialsPipe } from 'src/app/stagiaires/pipes/initials.pipe';
 
 import { ListComponent } from './list.component';
 

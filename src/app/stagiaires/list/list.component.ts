@@ -9,24 +9,23 @@ import { StagiaireService } from 'src/app/core/services/stagiaire-service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  public nbShown=0;
-  public full: boolean =false;
-  public lastNameFirst: boolean =false;
-
   public stagiaires: StagiaireModel[] = [];
-  // public constructor(){
-  //   const stagiaireService : StagiaireService =  new StagiaireService();
-  //   stagiaireService.deserialize() // JSON => Java Script Object Notation (Objet JS en plain text)
-  //   this.stagiaires=stagiaireService.getStagiaires()
-  // }
-  public showLi: string = 'M';
-  constructor(private router:Router){ // DI Dependency injection (services, ici un routeur)
-    const service: StagiaireService  = new StagiaireService();
-    service.deserialize();
-    this.stagiaires = service.getStagiaires();
+  public lastNameFirst =false
+  public full =false
+  public showLi: string = 'A';
+  
+  constructor(
+    private router: Router, // DI => Dependency Injection
+    private stagiaireServices : StagiaireService
+  ) {
   }
+
   ngOnInit(): void {
+    this.stagiaireServices.findAll().subscribe((stagiaires:StagiaireModel[])=>{
+        this.stagiaires=stagiaires // initialise this.stagiaires quand la requette observée a stagiaireService est finie 
+    });
   }
+
   public changeGender(): void {
     if (this.showLi === 'M') {
       this.showLi = 'F';
@@ -46,19 +45,26 @@ export class ListComponent implements OnInit {
 
     return stagaire.gender === 'M';
   }
-  getNumberofStagiaires(): number{
+
+  public getDisplayRowsNumber(): number {
     if (this.showLi === 'A') {
       return this.stagiaires.length;
     }
+    
+    //return this.stagiaires.filter((stagiaire: any) => stagiaire.gender === this.showLi).length;
 
-
-    return this.stagiaires.filter(s=>s.gender==this.showLi).length;
-
-
+    // Avec un for of
+    let displayedItem: number = 0;
+    for (const stagiaire of this.stagiaires) {
+      if (stagiaire.gender === this.showLi) {
+        displayedItem += 1;
+      }
+    }
+    return displayedItem;
   }
-  public goToDetail(id : number): void {
-    this.router.navigate(['/detail',id]);
+
+  public goToDetail(id: number): void {
+    console.log(`Got ${id} from list`);
+    this.router.navigate(['/detail', id]);
   }
-
-
 }

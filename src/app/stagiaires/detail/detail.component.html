@@ -1,4 +1,4 @@
-
+<ng-container *ngIf="stagiaire">
 <div class="card"  >
  <div >
   {{this.stagiaire.firstName}} {{this.stagiaire.lastName}}
@@ -15,9 +15,10 @@
     <div > ^^^^^^^^^^^^^^^^^^^^^^^^ </div>
     <div > ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ </div>     
     <div>
-      <button type="button"  (click)="goToMenu()" >
+      <button type="button"  (click)="goToMenu()">
        Quitter
       </button>
     </div>
 </div>
  
+</ng-container>
