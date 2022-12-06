@@ -26,6 +26,15 @@
         "email": "sarah.connor@illbeback.com",
         "phoneNumber": "05 555 555 555",
         "birthDate": "1982-11-24T00:00:00.000Z"
+      },
+      {
+        "id": 4,
+        "lastName": "Bop",
+        "firstName": "Billy",
+        "gender": "F",
+        "email": "sarah.connor@illbeback.com",
+        "phoneNumber": "05 555 555 555",
+        "birthDate": "1982-11-24T00:00:00.000Z"
       }
     ]
   }

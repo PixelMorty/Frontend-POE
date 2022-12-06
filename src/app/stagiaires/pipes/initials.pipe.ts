@@ -17,9 +17,9 @@ export class InitialsPipe implements PipeTransform {
     let initialsLastName= this.initialsGetter(stagiaire.lastName,full);
 
     if(lastNameFirst){
-      return  initialsLastName +  initialsFirstName 
+      return  initialsLastName.toUpperCase() +  initialsFirstName.toUpperCase() 
     }else {
-      return initialsFirstName +  initialsLastName 
+      return initialsFirstName.toUpperCase() +  initialsLastName.toUpperCase()
     }
   }else{
     throw new Error('value is not a valid StagiaireModem Object');

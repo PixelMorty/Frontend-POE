@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddComponent } from './stagiaires/add/add.component';
 import { DetailComponent } from './stagiaires/detail/detail.component';
 import { ListComponent } from './stagiaires/list/list.component';
 
@@ -20,6 +21,10 @@ export class AppRoutingModule {
     {
       path: 'detail/:id',
       component: DetailComponent
+    },
+    {
+      path: 'stagiaires/add',
+      component: AddComponent
     },
     {
       path: '**', //route fallback

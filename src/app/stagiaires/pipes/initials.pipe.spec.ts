@@ -2,6 +2,14 @@ import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
 import { InitialsPipe } from './initials.pipe';
 
 describe('InitialsPipe', () => {
+  const stagiaire: StagiaireModel = new StagiaireModel();
+  stagiaire.id = 6;
+  stagiaire.lastName = 'Aubert';
+  stagiaire.firstName = 'Jean-Luc';
+  stagiaire.email = 'jean-luc.aubert@aelion.fr';
+  stagiaire.phoneNumber = '06';
+  stagiaire.gender = 'M';
+
   it('create an instance', () => {
     const pipe = new InitialsPipe();
     expect(pipe).toBeTruthy();
@@ -14,56 +22,40 @@ describe('InitialsPipe', () => {
 
   it(`Should return JA`, () => {
     const pipe = new InitialsPipe();
-    
-    const stagaire: StagiaireModel = new StagiaireModel();
-    stagaire.id = 6;
-    stagaire.lastName = 'Aubert';
-    stagaire.firstName = 'Jean-Luc';
-    stagaire.email = 'jean-luc.aubert@aelion.fr';
-    stagaire.phoneNumber = '06';
-    stagaire.gender = 'M';
+    expect(pipe.transform(stagiaire)).toBe('JA');
+  });
 
-    expect(pipe.transform(stagaire)).toBe('JA');
+  it(`Should return JA with second args`, () => {
+    const pipe = new InitialsPipe();
+    
+    const stagiaire: StagiaireModel = new StagiaireModel();
+    stagiaire.id = 6;
+    stagiaire.lastName = 'aubert';
+    stagiaire.firstName = 'jean';
+    stagiaire.email = 'jean-luc.aubert@aelion.fr';
+    stagiaire.phoneNumber = '06';
+    stagiaire.gender = 'M';
+
+    expect(pipe.transform(stagiaire)).toBe('JA');
   });
 
   it(`Should return JLA if param contains full with a true value`, () => {
     const pipe = new InitialsPipe();
-    const stagaire: StagiaireModel = new StagiaireModel();
-    stagaire.id = 6;
-    stagaire.lastName = 'Aubert';
-    stagaire.firstName = 'Jean-Luc';
-    stagaire.email = 'jean-luc.aubert@aelion.fr';
-    stagaire.phoneNumber = '06';
-    stagaire.gender = 'M';
-    expect(pipe.transform(stagaire,true)).toBe('JLA');
+    expect(pipe.transform(stagiaire, true)).toBe('JLA');
   });
 
   it(`Should return AJ if param contains lastNameFirst with a true value`, () => {
     const pipe = new InitialsPipe();
-    const stagaire: StagiaireModel = new StagiaireModel();
-    stagaire.id = 6;
-    stagaire.lastName = 'Aubert';
-    stagaire.firstName = 'Jean-Luc';
-    stagaire.email = 'jean-luc.aubert@aelion.fr';
-    stagaire.phoneNumber = '06';
-    stagaire.gender = 'M';
-    expect(pipe.transform(stagaire,false,true)).toBe('AJ');
-
-
+    expect(pipe.transform(stagiaire, false,true)).toBe('AJ');
   });
-
-
-
 
   it(`Should return AJL if param contains full and lastNameFirst with a true value`, () => {
     const pipe = new InitialsPipe();
-    const stagaire: StagiaireModel = new StagiaireModel();
-    stagaire.id = 6;
-    stagaire.lastName = 'Aubert';
-    stagaire.firstName = 'Jean-Luc';
-    stagaire.email = 'jean-luc.aubert@aelion.fr';
-    stagaire.phoneNumber = '06';
-    stagaire.gender = 'M';
-    expect(pipe.transform(stagaire,true,true)==='AJL').toBeTruthy();
+    expect(pipe.transform(stagiaire, true,true)).toBe('AJL');
   });
+
+  // it(`Should throw an error if second param is dummy`, () => {
+  //   const pipe = new InitialsPipe();
+  //   expect(() => pipe.transform(stagiaire, 'truc')).toThrowError();
+  // });
 });

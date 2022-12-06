@@ -1,4 +1,6 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
 import { StagiaireService } from 'src/app/core/services/stagiaire-service';
@@ -16,7 +18,8 @@ export class ListComponent implements OnInit {
   
   constructor(
     private router: Router, // DI => Dependency Injection
-    private stagiaireServices : StagiaireService
+    private stagiaireServices : StagiaireService,
+    private snackBar: MatSnackBar
   ) {
   }
 
@@ -67,4 +70,29 @@ export class ListComponent implements OnInit {
     console.log(`Got ${id} from list`);
     this.router.navigate(['/detail', id]);
   }
+  public onDelete(stagiaire: StagiaireModel): void {
+    this.stagiaireServices.delete(stagiaire)
+    .subscribe((response: HttpResponse<any>) => {
+      this.stagiaires.splice(
+      
+        this.stagiaires.findIndex((obj: StagiaireModel) => obj.id === stagiaire.id),
+        1
+      )
+    })
+    this.snackBar.open(
+      `Le stagiaire ${stagiaire.id} a été supprimé`,
+      'Compris',
+      {
+        duration: 2500
+      }
+    );
+  }
+
+
+  public goToAdd(): void {
+
+    this.router.navigate(['/stagiaires/add']);
+  }
+
+
 }

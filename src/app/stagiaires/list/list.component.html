@@ -72,6 +72,7 @@
       <th>Firstname</th>
       <th>Gender</th>
       <th>Birthdate</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   
@@ -97,6 +98,12 @@
       <td>
         {{ stagiaire.birthDate | date : 'L/dd/yyyy'}} 
       </td>
+      <td>
+      <button mat-mini-fab color="primary" (click)="onDelete(stagiaire)">
+        <mat-icon>delete</mat-icon>
+      </button>
+
+      </td>
   </tr>
   </ng-container>
   </ng-container>
@@ -108,8 +115,17 @@
       <td colspan = "5"  >
       {{getDisplayRowsNumber()}}/{{stagiaires.length}}
       </td>
+
+      
+
+  <button type="button" (click)="goToAdd()">
+    Add
+  </button>
     </tr>
   
   </tfoot>
   </table>
-  
+
+  <a [routerLink]="['/', 'stagiaire', 'add']" class="btn btn-primary">
+    Ajouter
+  </a>

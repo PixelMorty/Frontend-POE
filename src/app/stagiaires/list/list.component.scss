@@ -107,3 +107,21 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 }
+
+a {
+  &.btn {
+      display: block;
+      text-decoration: none;
+      padding: .5em;
+      border-radius: .25em;
+      width: 5em;
+      margin: 0 auto;
+      text-align: center;
+      text-transform: uppercase;
+      &.btn-primary {
+          background-color: rgba(20, 20, 200);
+          color: rgb(255, 255, 255);
+      }
+  }
+}
+
