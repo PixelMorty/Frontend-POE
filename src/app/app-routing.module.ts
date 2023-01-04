@@ -6,32 +6,33 @@ import { ListComponent } from './stagiaires/list/list.component';
 
 @NgModule({
   imports: [RouterModule.forRoot(AppRoutingModule.routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {
   public static routes: Routes = [
     {
-      path: '',// chemin vide, tjr première route 
+      path: '', // chemin vide, tjr première route
       redirectTo: 'stagiaires',
-      pathMatch: 'full'
+      pathMatch: 'full',
     },
-    {path: 'stagiaires',
-      component: ListComponent
-    },
+    { path: 'stagiaires', component: ListComponent },
     {
       path: 'detail/:id',
-      component: DetailComponent
+      component: DetailComponent,
     },
     {
       path: 'stagiaires/add',
-      component: AddComponent
+      component: AddComponent,
+    },
+    {
+      path: 'poes',
+      loadChildren: () =>
+        import('./poes/poes.module').then((m) => m.PoesModule),
     },
     {
       path: '**', //route fallback
       redirectTo: 'stagiaires',
-      pathMatch: 'full'      
-    }
-
-  
-  ] 
+      pathMatch: 'full',
+    },
+  ];
 }
