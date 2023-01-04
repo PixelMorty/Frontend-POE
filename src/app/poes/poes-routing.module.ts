@@ -6,7 +6,7 @@ import { ManageComponent } from './component/manage/manage.component';
 const routes: Routes = [];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(PoesRoutingModule.routes)],
   exports: [RouterModule],
 })
 export class PoesRoutingModule {
