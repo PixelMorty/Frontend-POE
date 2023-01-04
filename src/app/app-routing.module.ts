@@ -26,6 +26,12 @@ export class AppRoutingModule {
       path: 'stagiaires/add',
       component: AddComponent
     },
+    //lazy module
+    {
+      path: 'poes',
+      loadChildren: ()=>import('./poes/poes.module')
+      .then((m)=>m.PoesModule)
+    },
     {
       path: '**', //route fallback
       redirectTo: 'stagiaires',
