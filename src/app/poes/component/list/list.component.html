@@ -1,5 +1,88 @@
-<p>list works!</p>
+<div [ngSwitch]="showLi">
+  <div *ngSwitchCase="'All'">Toutes les poes</div>
+  <div *ngSwitchCase="'POEI'">POEI</div>
+  <div *ngSwitchCase="'POEC'">POEC</div>
+</div>
 
+<table>
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>Titre</th>
+      <th>Date du début</th>
+      <th>Date de fin</th>
+      <th>Type de Poe</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
 
+  <tbody>
+    <ng-container *ngFor="let poe of poes">
+      <tr *ngIf="showLi === 'All' ? true : poe.poeType === showLi">
+        <td>
+          <span
+            [ngClass]="{
+              bubble: true,
+              male: poe.poeType === 'POEI',
+              female: poe.poeType === 'POEC'
+            }"
+            (click)="goToDetail(stagiaire.id)"
+          >
+            {{ stagiaire | initials }}
+          </span>
+        </td>
+        <td>
+          {{ stagiaire.lastName | uppercase }}
+        </td>
+        <td>
+          {{ stagiaire.firstName }}
+        </td>
+        <td>
+          {{ stagiaire.gender }}
+        </td>
+        <td>
+          {{ stagiaire.birthDate | date : "dd/MM/YYYY" }}
+        </td>
+        <td>
+          <button mat-mini-fab color="primary" (click)="onDelete(poe)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
 
-<p>list works!</p>
+  <tfoot>
+    <tr>
+      <td colspan="5">{{ getDisplayRowsNumber() }}/{{ stagiaires.length }}</td>
+    </tr>
+  </tfoot>
+</table>
+
+<a [routerLink]="['/', 'stagiaire', 'add']" class="btn btn-primary">
+  Ajouter
+</a>
+
+<button
+  type="button"
+  (click)="showLi = 'A'"
+  [ngClass]="{ 'is-selected': showLi === 'A' }"
+>
+  Tous
+</button>
+
+<button
+  type="button"
+  (click)="showLi = 'F'"
+  [ngClass]="{ 'is-selected': showLi === 'F' }"
+>
+  F
+</button>
+
+<button
+  type="button"
+  (click)="showLi = 'M'"
+  [ngClass]="{ 'is-selected': showLi === 'M' }"
+>
+  M
+</button>
