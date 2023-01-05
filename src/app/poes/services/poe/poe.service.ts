@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { take, map } from 'rxjs/operators';
@@ -38,7 +38,12 @@ export class PoeService implements ICrud<Poe> {
   update(datas: Poe): void {
     throw new Error('Method not implemented.');
   }
-  delete(datas: Poe): void {
-    throw new Error('Method not implemented.');
+  delete(datas: Poe): Observable<HttpResponse<any>> {
+    return this._httpClient.delete<any>(
+      `${PoeService._CONTROLLER_PATH}/${datas.id}`,
+      {
+        observe: 'response',
+      }
+    );
   }
 }
