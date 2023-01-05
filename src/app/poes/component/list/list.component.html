@@ -1,5 +1,92 @@
-<p>list works!</p>
+<div [ngSwitch]="showLi">
+  <div *ngSwitchCase="'All'">Toutes les poes</div>
+  <div *ngSwitchCase="'POEI'">POEI</div>
+  <div *ngSwitchCase="'POEC'">POEC</div>
+</div>
 
+<table>
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>Titre</th>
+      <th>Date du début</th>
+      <th>Date de fin</th>
+      <th>Type de Poe</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
 
+  <tbody>
+    <ng-container *ngFor="let poe of poes">
+    <tr *ngIf="(showLi === 'All' ) || (poe.poeType === showLi)">
 
-<p>list works!</p>
+        <td>
+          <span
+            [ngClass]="{
+              bubble: true,
+              male: poe.poeType === 'POEI',
+              female: poe.poeType === 'POEC'
+            }">
+            {{poe.poeType}}
+           <!--(click)="goToDetail(stagiaire.id)" 
+           {{ poe | initials:full:lastNameFirst }}    -->   
+          </span>
+        </td>
+        <td>
+            {{ poe.title | uppercase }}
+        </td>
+        <td>
+          {{ poe.beginDate | date : "dd/MM/YYYY"}}
+        </td>
+        <td>
+          {{ poe.endDate | date : "dd/MM/YYYY" }}
+        </td>
+        <td>
+          {{ poe.poeType | uppercase }}
+        </td>
+
+        <td>
+
+          <button mat-mini-fab color="primary" (click)="onDelete(stagiaire)">
+            <mat-icon>delete</mat-icon>
+          </button>
+      </button>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td colspan="5">{{ getDisplayRowsNumber() }}/{{ poes.length }}</td> <!-- TODO-->
+    </tr>
+  </tfoot>
+</table>
+
+<a [routerLink]="['/', 'poes', '/','add']" class="btn btn-primary">
+  Ajouter
+</a>
+
+<button>
+  type="button"
+  (click)="showLi = 'All'"
+  [ngClass]="{ 'is-selected': showLi === 'All' }"
+  >
+  Tous
+</button>
+
+<button
+  type="button"
+  (click)="showLi = 'POEC'"
+  [ngClass]="{ 'is-selected': showLi === 'POEC' }"
+>
+POEC
+</button>
+
+<button
+  type="button"
+  (click)="showLi = 'POEI'"
+  [ngClass]="{ 'is-selected': showLi === 'POEI' }"
+>
+POEI
+</button>
