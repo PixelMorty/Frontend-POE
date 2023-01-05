@@ -47,10 +47,10 @@
 
         <td>
 
-          <button mat-mini-fab color="primary" (click)="onDelete(stagiaire)">
+          <button mat-mini-fab color="primary" (click)="onDelete(poe)">
             <mat-icon>delete</mat-icon>
           </button>
-      </button>
+
         </td>
       </tr>
     </ng-container>
@@ -67,7 +67,7 @@
   Ajouter
 </a>
 
-<button>
+<button
   type="button"
   (click)="showLi = 'All'"
   [ngClass]="{ 'is-selected': showLi === 'All' }"
