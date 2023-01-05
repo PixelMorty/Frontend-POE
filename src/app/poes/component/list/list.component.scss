@@ -1,0 +1,114 @@
+$default-color: rgb(23, 23, 22);
+$button-font-color: rgb(255, 255, 255);
+$button-background-color: transparent;
+$button-inactive-color: rgba(20, 20, 200);
+
+/**
+* SCSS Rules
+**/
+button {
+  border: none; // No border
+  background-color: $button-background-color;
+  color: $button-inactive-color;
+  width: 5em;
+  height: 4em;
+
+  &.is-selected {
+    border-radius: 0.4em;
+    color: $button-font-color;
+    animation: coolAppear 1s ease-in 0s 1 forwards;
+  }
+}
+
+@keyframes coolAppear {
+  0% {
+    background-color: lighten($button-inactive-color, 80%);
+  }
+  50% {
+    background-color: lighten($button-inactive-color, 40%);
+    transform: rota;
+  }
+  100% {
+    background-color: $button-inactive-color;
+  }
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  padding: 8px;
+  width: auto;
+  height: auto;
+
+  tbody {
+    border: 1px solid #6c0342;
+    text-align: center;
+    color: rgb(5, 1, 10);
+
+    td {
+      &:first-child {
+        span {
+          cursor: pointer;
+          display: inline-block;
+          height: 2em;
+          width: 2em;
+          line-height: 2em;
+          vertical-align: middle;
+          border-radius: 50%;
+          text-align: center;
+          font-weight: 700;
+          &.male {
+            // table tbody tr td:first-child span.male {...}
+            background-color: rgb(20, 20, 225);
+            color: $button-font-color;
+          }
+
+          &.female {
+            background-color: rgb(243, 81, 227);
+            color: $button-font-color;
+          }
+        }
+      }
+      tr {
+        &.female {
+          color: rgb(0, 136, 255);
+        }
+        &.male {
+          color: rgb(255, 0, 0);
+        }
+      }
+    }
+  }
+
+  th {
+    color: rgb(19, 1, 2);
+    border: 1px solid #6c0303;
+  }
+  tfoot {
+    border: 1px solid #6c0303;
+    font-weight: bolder;
+    text-align: right;
+    color: rgb(225, 0, 255);
+  }
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+}
+
+a {
+  &.btn {
+    display: block;
+    text-decoration: none;
+    padding: 0.5em;
+    border-radius: 0.25em;
+    width: 5em;
+    margin: 0 auto;
+    text-align: center;
+    text-transform: uppercase;
+    &.btn-primary {
+      background-color: rgba(20, 20, 200);
+      color: rgb(255, 255, 255);
+    }
+  }
+}

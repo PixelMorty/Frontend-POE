@@ -9,6 +9,7 @@ import { map, take } from 'rxjs/operators';
 
 
 //@Injectable la classe devient un service, injectable dans tous les constructors
+
 @Injectable({
     //dispo à partir de la racine du projet
     providedIn: 'root'
@@ -22,7 +23,7 @@ export class StagiaireService {
     public constructor(
         //service qui permet d'envoyer de la requete http
         private httpClient: HttpClient
-        
+
     ){  }
 
     //CRUD methods: Create, Read, Update, Delete
@@ -48,9 +49,9 @@ export class StagiaireService {
             take(1), //récupère l'objet qui vient de l'API
             map((anyStagiaire: any) => { // transforme le any en StagiaireModel
                     return this.deserializeFromJson(anyStagiaire); // deserialise pour le transformer en StagiaireModel
-                }) 
+                })
         )
-         
+
     }
 
     // public create(datas: any): Observable<StagiaireModel> {
@@ -156,6 +157,6 @@ export class StagiaireService {
         return stagiaire;
     }
 
-   
+
 }
 
