@@ -18,25 +18,25 @@
 
   <tbody>
     <ng-container *ngFor="let poe of poes">
-    <tr *ngIf="(showLi === 'All' ) || (poe.poeType === showLi)">
-
+      <tr *ngIf="showLi === 'All' || poe.poeType === showLi">
         <td>
           <span
             [ngClass]="{
               bubble: true,
               male: poe.poeType === 'POEI',
               female: poe.poeType === 'POEC'
-            }">
-            {{poe.poeType}}
-           <!--(click)="goToDetail(stagiaire.id)" 
-           {{ poe | initials:full:lastNameFirst }}    -->   
+            }"
+          >
+            {{ poe.poeType }}
+            <!--(click)="goToDetail(stagiaire.id)"
+           {{ poe | initials:full:lastNameFirst }}    -->
           </span>
         </td>
         <td>
-            {{ poe.title | uppercase }}
+          {{ poe.title | uppercase }}
         </td>
         <td>
-          {{ poe.beginDate | date : "dd/MM/YYYY"}}
+          {{ poe.beginDate | date : "dd/MM/YYYY" }}
         </td>
         <td>
           {{ poe.endDate | date : "dd/MM/YYYY" }}
@@ -46,9 +46,8 @@
         </td>
 
         <td>
-
-          <button mat-mini-fab color="primary" (click)="onDelete(poe)"> <!-- implementer onDelete dans list.component.ts -->
-            <!--<mat-div>delete</mat-icon>  A FAIRE voir css-->
+          <button mat-mini-fab color="primary" (click)="onDelete(poe)">
+            <!-- <mat-icon>delete</mat-icon>-->
           </button>
         </td>
       </tr>
@@ -57,20 +56,19 @@
 
   <tfoot>
     <tr>
-      <td colspan="5">{{ getDisplayRowsNumber() }}/{{ poes.length }}</td> <!-- TODO-->
+      <td colspan="5">{{ getDisplayRowsNumber() }}/{{ poes.length }}</td>
+      <!-- TODO-->
     </tr>
   </tfoot>
 </table>
 
-<a [routerLink]="['/', 'poes', '/','add']" class="btn btn-primary">
-  Ajouter
-</a>
+<a [routerLink]="['/', 'poes', 'add']" class="btn btn-primary"> Ajouter </a>
 
 <button
   type="button"
   (click)="showLi = 'All'"
   [ngClass]="{ 'is-selected': showLi === 'All' }"
-  >
+>
   Tous
 </button>
 
@@ -79,7 +77,7 @@
   (click)="showLi = 'POEC'"
   [ngClass]="{ 'is-selected': showLi === 'POEC' }"
 >
-POEC
+  POEC
 </button>
 
 <button
@@ -87,5 +85,5 @@ POEC
   (click)="showLi = 'POEI'"
   [ngClass]="{ 'is-selected': showLi === 'POEI' }"
 >
-POEI
+  POEI
 </button>
