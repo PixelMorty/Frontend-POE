@@ -22,21 +22,20 @@
 
   <thead>
     <tr>
-      <th>Initials</th>
-      <th>Lastname</th>
-      <th>Firstname</th>
-      <th>Gender</th>
-      <th>Birthdate</th>
+      <th>&nbsp;</th>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Genre</th>
+      <th>Naissance</th>
       <th>&nbsp;</th>
     </tr>
   </thead>
 
   <tbody>
 
-    <ng-container *ngFor="let stagiaire of stagiaires"><!-- *ngFor => Directive de Structure -->
+    <ng-container *ngFor="let stagiaire of stagiaires">
       <ng-container
-        *ngIf="isShown(stagiaire)"><!-- *ngIf => Directive de structure qui injectera l'élément dans le DOM si vrai -->
-        <!-- <li *ngIf="(showLi === 'A') ? true : stagiaire.gender === showLi"> -->
+        *ngIf="isShown(stagiaire)">
         <tr>
           <td>
             <span (click)="goToDetail(stagiaire.id)" [ngClass]="{'bubble': true, 
@@ -61,7 +60,7 @@
             {{ stagiaire.birthDate | date : 'L/dd/yyyy'}}
           </td>
           <td>
-            <button mat-mini-flat class="material-icons color_green" (click)="onDelete(stagiaire)">
+            <button mat-mini-flat class="material-icons style" (click)="onDelete(stagiaire)">
               <mat-icon>delete</mat-icon>
             </button>
 

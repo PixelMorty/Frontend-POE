@@ -1,87 +1,89 @@
-$default-color: rgb(88, 42, 42);
-$button-font-color: #ebc4a4;
-$button-background-color: rgb(88, 42, 42);
-$button-active-color: #ebc4a4;
+$dark: rgb(88, 42, 42);
+$light: #ebc4a4;
 
 /**
 * SCSS Rules
 **/
 
-.material-icons.color_green { 
+
+
+div {
+  margin-left: 50vw;
+  margin-right: 25vw;
+  width: 500px;
+  padding: 8px;
+}
+
+
+.material-icons.style { 
   cursor: pointer;
   color: #ebc4a4; 
-  background-color: rgb(88, 42, 42);
+  background-color: $dark;
   background-repeat: no-repeat;
   border-radius: 50%;
   width: 50px;
   height: 50px;
   margin: 10px 5px 10px 5px;
-}
-
-div {
-  margin-left: 25vw;
-  margin-right: 5vw;
-  width: 70vw;
-  padding: 8px;
+  float:right
 }
 
 button {
     border: none; // No border
-    background-color: rgb(88, 42, 42);
-    color: $button-font-color;
+    background-color: $dark;
+    color: $light;
     border-radius: .4em;
     width: 100px;
     height: 32px;
     margin: 5px 5px 5px 5px;
     
     &.is-selected {
-        color: $button-background-color;
+        color: $dark;
         animation: coolAppear 1s ease-in 0s 1 forwards;
     }
 }
 
 .button2 {
   border: none; // No border
-  background-color: rgb(88, 42, 42);
-  color: $button-font-color;
+  background-color: $dark;
+  color: $light;
   border-radius: .4em;
   width: 100px;
   height: 32px;
   margin: 5px 5px 5px 5px;
   
   &.is-selected {
-      color: $button-background-color;
+      color: $dark;
       animation: coolAppear 1s ease-in 0s 1 forwards;
   }
 }
 
 @keyframes coolAppear {
     0% {
-        background-color: lighten($button-active-color, 80%);
+        background-color: lighten($light, 80%);
     }
     50% {
-        background-color: lighten($button-active-color, 40%);
+        background-color: lighten($light, 40%);
         transform: rota;
     }
     100% {
-        background-color: $button-active-color;
+        background-color: $light;
     }
 }
 
- table {
+table {
     font-family: arial, sans-serif;
     height: auto;
     border-collapse: collapse;
-    margin-left: 25vw;
-    margin-right: 5vw;
-    width: 70vw;
+    margin-left: 400px;
+    margin-right: 25vw;
+    width: 50vw;
+    min-width: 500px;
     padding: 8px;
-
   
 tbody{
 
-    text-align: center;
-    color: rgb(88, 42, 42);
+    text-align: left;
+    color: $dark;
   
   td {
     &:first-child {
@@ -119,24 +121,25 @@ tbody{
 }
  
 th{
-  color: rgb(88, 42, 42);
-  
+  color: $dark;
+  text-align: left;
 }
+
 tfoot{
   font-weight: bolder;
   text-align: right;
-  color: rgb(88, 42, 42);
+  color: $dark;
   
 
 
 }
 tr:nth-child(even) {
-  color: rgb(88, 42, 42);
+  color: $dark;
   background-color: #b4947f;
 }
 
 tr:nth-child(odd) {
-  color: #ebc4a4;
+  color: $light;
 }
 }
 
