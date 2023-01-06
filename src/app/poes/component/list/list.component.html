@@ -47,7 +47,7 @@
 
         <td>
           <button mat-mini-fab color="primary" (click)="onDelete(poe)">
-            <mat-icon>delete</mat-icon>
+             <mat-icon>delete</mat-icon>
           </button>
         </td>
       </tr>
@@ -62,6 +62,32 @@
   </tfoot>
 </table>
 
-<a [routerLink]="['/', 'poes', 'add']" class="btn btn-primary">
-  Ajouter
-</a>
+<a [routerLink]="['/', 'poes', 'add']" class="btn btn-primary"> Ajouter </a>
+
+
+
+<button
+  type="button"
+  (click)="showLi = 'All'"
+  [ngClass]="{ 'is-selected': showLi === 'All' }"
+>
+  Tous
+</button>
+
+
+<button
+  type="button"
+  (click)="showLi = 'POEC'"
+  [ngClass]="{ 'is-selected': showLi === 'POEC' }"
+>
+  POEC
+</button>
+
+
+<button
+  type="button"
+  (click)="showLi = 'POEI'"
+  [ngClass]="{ 'is-selected': showLi === 'POEI' }"
+>
+  POEI
+</button>
