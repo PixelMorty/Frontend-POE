@@ -1,35 +1,62 @@
 $default-color: rgb(23, 23, 22);
-$button-font-color: rgb(255, 255, 255);
-$button-background-color: transparent;
-$button-inactive-color: rgba(20, 20, 200);
+$button-font-color: #ebc4a4;
+$button-background-color: rgb(88, 42, 42);
+$button-active-color: #ebc4a4;
 
 /**
 * SCSS Rules
 **/
+
+.material-icons.color_green { 
+  color: #ebc4a4; 
+  background-color: rgb(88, 42, 42);
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin: 10px 5px 10px 5px;
+}
+
 button {
     border: none; // No border
     background-color: $button-background-color;
-    color: $button-inactive-color;
-    width: 5em;
-    height: 4em;
+    color: $button-font-color;
+    border-radius: .4em;
+    width: 100px;
+    height: 32px;
+    margin: 5px 5px 5px 5px;
     
     &.is-selected {
-        border-radius: .4em;
-        color: $button-font-color;
+        color: $button-background-color;
         animation: coolAppear 1s ease-in 0s 1 forwards;
     }
 }
 
+.button2 {
+  border: none; // No border
+  background-color: $button-background-color;
+  color: $button-font-color;
+  border-radius: .4em;
+  width: 100px;
+  height: 32px;
+  margin: 5px 5px 5px 5px;
+  
+  &.is-selected {
+      color: $button-background-color;
+      animation: coolAppear 1s ease-in 0s 1 forwards;
+  }
+}
+
 @keyframes coolAppear {
     0% {
-        background-color: lighten($button-inactive-color, 80%);
+        background-color: lighten($button-active-color, 80%);
     }
     50% {
-        background-color: lighten($button-inactive-color, 40%);
+        background-color: lighten($button-active-color, 40%);
         transform: rota;
     }
     100% {
-        background-color: $button-inactive-color;
+        background-color: $button-active-color;
     }
 }
 
@@ -53,35 +80,30 @@ tbody{
         span {
             cursor: pointer;
             display: inline-block;
-            height: 2em;
-            width: 2em;
-            line-height: 2em;
+            width: 50px;
+            height: 50px;
+            margin: 10px 5px 10px 5px;
+            line-height: 50px;
             vertical-align: middle;
             border-radius: 50%;
             text-align: center;
             font-weight: 700;
-            &.male { // table tbody tr td:first-child span.male {...}
-                background-color: rgb(20, 20, 225);
-                color: $button-font-color;
+            &.male {
+                background-color: rgb(103, 111, 214);
+                color: #ffffff;
             }
 
             &.female {
-                background-color: rgb(243, 81, 227);
-                color: $button-font-color;
+                background-color: rgb(214, 122, 168);
+                color: #ffffff;
             }
+
+            &.other {
+              background-color: rgb(122, 214, 168);
+              color: #ffffff;
+          }
         }
     }
-  tr{
-
-    &.female{
-
-      color: rgb(0, 136, 255);
-    }
-    &.male{
-        color: rgb(255, 0, 0);
-    }
-
-  }
 
  }
  
@@ -104,7 +126,7 @@ tfoot{
 
 }
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #b4947f;
 }
 }
 

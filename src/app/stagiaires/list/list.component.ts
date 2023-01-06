@@ -29,12 +29,17 @@ export class ListComponent implements OnInit {
     });
   }
 
-  public changeGender(): void {
-    if (this.showLi === 'M') {
-      this.showLi = 'F';
-    } else {
-      this.showLi = 'M';
+  public changeGender(): boolean {
+    if (this.showLi === 'F') {
+      return this.showLi === 'F';
     }
+
+    if (this.showLi === 'M') {
+      return this.showLi === 'M';
+    }
+
+  return this.showLi === 'X'  
+
   }
 
   public isShown(stagaire: any): boolean {
@@ -46,7 +51,12 @@ export class ListComponent implements OnInit {
       return stagaire.gender === 'F';
     }
 
-    return stagaire.gender === 'M';
+    if (this.showLi === 'M') {
+      return stagaire.gender === 'M';
+    }
+
+  return stagaire.gender === 'X';
+    
   }
 
   public getDisplayRowsNumber(): number {
