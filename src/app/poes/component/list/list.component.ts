@@ -9,6 +9,7 @@ import { PoeService } from '../../services/poe/poe.service';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })
+
 export class ListComponent implements OnInit {
   poes: Poe[] = [];
   public showLi: string = 'A';
