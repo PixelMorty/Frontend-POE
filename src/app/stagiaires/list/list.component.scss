@@ -1,4 +1,4 @@
-$default-color: rgb(23, 23, 22);
+$default-color: rgb(88, 42, 42);
 $button-font-color: #ebc4a4;
 $button-background-color: rgb(88, 42, 42);
 $button-active-color: #ebc4a4;
@@ -8,6 +8,7 @@ $button-active-color: #ebc4a4;
 **/
 
 .material-icons.color_green { 
+  cursor: pointer;
   color: #ebc4a4; 
   background-color: rgb(88, 42, 42);
   background-repeat: no-repeat;
@@ -17,9 +18,16 @@ $button-active-color: #ebc4a4;
   margin: 10px 5px 10px 5px;
 }
 
+div {
+  margin-left: 25vw;
+  margin-right: 5vw;
+  width: 70vw;
+  padding: 8px;
+}
+
 button {
     border: none; // No border
-    background-color: $button-background-color;
+    background-color: rgb(88, 42, 42);
     color: $button-font-color;
     border-radius: .4em;
     width: 100px;
@@ -34,7 +42,7 @@ button {
 
 .button2 {
   border: none; // No border
-  background-color: $button-background-color;
+  background-color: rgb(88, 42, 42);
   color: $button-font-color;
   border-radius: .4em;
   width: 100px;
@@ -62,18 +70,18 @@ button {
 
  table {
     font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    padding: 8px;
-    width: auto;
     height: auto;
+    border-collapse: collapse;
+    margin-left: 25vw;
+    margin-right: 5vw;
+    width: 70vw;
+    padding: 8px;
+
   
 tbody{
 
-    
-    border: 1px solid #6c0342;
     text-align: center;
-    color: rgb(5, 1, 10);
+    color: rgb(88, 42, 42);
   
   td {
     &:first-child {
@@ -111,22 +119,24 @@ tbody{
 }
  
 th{
-  color: rgb(19, 1, 2);
-  border: 1px solid #6c0303;
+  color: rgb(88, 42, 42);
   
 }
 tfoot{
-
-  border: 1px solid #6c0303;
   font-weight: bolder;
   text-align: right;
-  color: rgb(225, 0, 255);
+  color: rgb(88, 42, 42);
   
 
 
 }
 tr:nth-child(even) {
+  color: rgb(88, 42, 42);
   background-color: #b4947f;
+}
+
+tr:nth-child(odd) {
+  color: #ebc4a4;
 }
 }
 
@@ -140,10 +150,6 @@ a {
       margin: 0 auto;
       text-align: center;
       text-transform: uppercase;
-      &.btn-primary {
-          background-color: rgba(20, 20, 200);
-          color: rgb(255, 255, 255);
-      }
   }
 }
 
