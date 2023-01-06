@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddComponent } from './component/add/add.component';
 import { ListComponent } from './component/list/list.component';
-import { ManageComponent } from './component/manage/manage.component';
+
 
 const routes: Routes = [];
 
@@ -22,11 +23,11 @@ export class PoesRoutingModule {
     },
     {
       path: 'add',
-      component: ManageComponent,
+      component: AddComponent,
     },
     {
       path: 'update/:id',
-      component: ManageComponent,
+      component: AddComponent,
     },
     {
       path: '',
