@@ -88,7 +88,7 @@ export class StagiaireService {
     //     )
     // }
 
-    public create(datas: any): Observable<StagiaireModel> {
+    public create(datas: StagiaireModel): Observable<StagiaireModel> {
         // console.log(Values received by service : ${JSON.stringify(datas)});
         console.log("Values received by service:", datas);
 
