@@ -13,7 +13,7 @@ import { PoeService } from '../../services/poe/poe.service';
 
 export class ListComponent implements OnInit {
   poes: Poe[] = [];
-  public showLi: string = 'A';
+  public showLi: string = 'All';
   constructor(private _poeService: PoeService, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
