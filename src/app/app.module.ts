@@ -8,10 +8,10 @@ import { AppComponent } from './app.component';
 import { StagiairesModule } from './stagiaires/stagiaires.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 @NgModule({
   declarations: [
     AppComponent,
-
     
   ],
   imports: [

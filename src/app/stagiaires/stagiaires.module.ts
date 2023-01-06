@@ -8,6 +8,7 @@ import { InitialsPipe } from './pipes/initials.pipe';
 import { SharedModule } from '../shared/shared.module';
 import { GenrePipe } from './pipes/genre.pipe';
 import { AddComponent } from './add/add.component';
+import { FormulaireAddGeneralComponent } from '../shared/formulaire-add-general/formulaire-add-general.component';
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import { AddComponent } from './add/add.component';
     DetailComponent,
     InitialsPipe,
     GenrePipe,
-    AddComponent
+    AddComponent,
   ],
   imports: [
     CommonModule,

@@ -14,7 +14,8 @@ export class PoeService implements ICrud<Poe> {
   private static readonly _CONTROLLER_PATH: string = `${environment.api}poes`;
   constructor(private _httpClient: HttpClient) {}
   findAll(): Observable<Poe[]> {
-    return this._httpClient.get<any>(PoeService._CONTROLLER_PATH).pipe(
+    return this._httpClient.get<any>(PoeService._CONTROLLER_PATH)
+    .pipe(
       take(1),
       map((fromApiPoes: ApiPoeType[]) => {
         return fromApiPoes.map((fromApiPoe: ApiPoeType) => {

@@ -97,13 +97,14 @@ export class StagiaireService {
             StagiaireService.CONTROLLER_PATH,
             this.serializeJson(datas)
             //datas
-        )
+        ) 
         .pipe(
             take(1), // Récupère l'objet qui vient de l'API
             map((anyStagiaire: any) => { // Transforme le any en StagiaireModel
                 return this.deserializeFromForm(anyStagiaire);
             })
         )
+       
     }
 
     public update(datas:any):void{}

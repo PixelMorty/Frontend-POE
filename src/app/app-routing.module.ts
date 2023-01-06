@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormulaireAddGeneralComponent } from './shared/formulaire-add-general/formulaire-add-general.component';
 import { AddComponent } from './stagiaires/add/add.component';
 import { DetailComponent } from './stagiaires/detail/detail.component';
 import { ListComponent } from './stagiaires/list/list.component';
@@ -22,7 +23,7 @@ export class AppRoutingModule {
     },
     {
       path: 'stagiaires/add',
-      component: AddComponent,
+      component: FormulaireAddGeneralComponent,
     },
     {
       path: 'poes',
