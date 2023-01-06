@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Poe } from 'src/app/core/models/poe';
 import { PoeService } from '../../services/poe/poe.service';
 
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
