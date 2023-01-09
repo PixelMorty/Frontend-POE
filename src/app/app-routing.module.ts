@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { StagiairesPoes } from './shared/enums/stagiaires-poes';
+import { FormulaireAddGeneralComponent } from './shared/formulaire-add-general/formulaire-add-general.component';
 import { AddComponent } from './stagiaires/add/add.component';
 import { DetailComponent } from './stagiaires/detail/detail.component';
 import { ListComponent } from './stagiaires/list/list.component';
@@ -15,17 +17,13 @@ export class AppRoutingModule {
       redirectTo: 'stagiaires',
       pathMatch: 'full',
     },
-    { path: 'stagiaires', component: ListComponent },
     {
-      path: 'detail/:id',
-      component: DetailComponent,
+      path: StagiairesPoes.STAGIAIRES,
+      loadChildren: () =>
+        import('./stagiaires/stagiaires.module').then((m) => m.StagiairesModule),
     },
     {
-      path: 'stagiaires/add',
-      component: AddComponent,
-    },
-    {
-      path: 'poes',
+      path: StagiairesPoes.POES,
       loadChildren: () =>
         import('./poes/poes.module').then((m) => m.PoesModule),
     },
