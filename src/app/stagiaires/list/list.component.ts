@@ -104,5 +104,10 @@ export class ListComponent implements OnInit {
     this.router.navigate(['/stagiaires/add']);
   }
 
+  public goToTrainees(): void {
+
+    this.router.navigate(['/stagiaires']);
+  }
+
 
 }

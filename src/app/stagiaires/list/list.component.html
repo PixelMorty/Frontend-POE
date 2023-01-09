@@ -1,86 +1,128 @@
-<div>
+<body>
 
-  <button type="button" (click)="showLi = 'A'" [ngClass]="{'is-selected': showLi === 'A'}">
-    Tous
-  </button>
 
-  <button type="button" (click)="showLi='F'" [ngClass]="{'is-selected': showLi === 'F'}">
-    Femme
-  </button>
+  <div id="leftpanel">
 
-  <button type="button" (click)="showLi='M'" [ngClass]="{'is-selected': showLi === 'H'}">
-    Homme
-  </button>
+    <div id="title">
+      <p>MENU</p>
+    </div>
 
-  <button type="button" (click)="showLi='X'" [ngClass]="{'is-selected': showLi === 'X'}">
-    Autre
-  </button>
+    <div>
+      <ul class="menu-list">
+        <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Formations</button>
+          <ul class="menu-sub-list">
+            <div class="menu-item"><button class="menu-button">Needs review</button></div>
+            <div class="menu-item"><button class="menu-button">In progress</button></div>
+            <div class="menu-item"><button class="menu-button">Approved</button></div>
+            <div class="menu-item"><button class="menu-button">No status</button></div>
+          </ul>
+        </div>
+        <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Participants</button>
+          <ul class="menu-sub-list">
+            <div class="menu-item"><button class="menu-button">Needs review</button></div>
+            <div class="menu-item"><button class="menu-button">In progress</button></div>
+            <div class="menu-item"><button class="menu-button">Approved</button></div>
+            <div class="menu-item"><button class="menu-button">No status</button></div>
+          </ul>
+        </div>
+        <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Statistiques</button>
+        </div>
+        <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Archives</button></div>
+        <div class="menu-item"><button class="menu-button" (click)="goToAdd()">• &nbsp;&nbsp;Ajouter</button></div>
+      </ul>
+    </div>
+  </div>
 
-</div>
+  <div id="topbuttons">
 
-<table>
+    <br>
+    <br>
 
-  <thead>
-    <tr>
-      <th>&nbsp;</th>
-      <th>Nom</th>
-      <th>Prénom</th>
-      <th>Genre</th>
-      <th>Naissance</th>
-      <th>&nbsp;</th>
-    </tr>
-  </thead>
+    <button type="button" (click)="showLi = 'A'" [ngClass]="{'is-selected': showLi === 'A'}">
+      Tous
+    </button>
 
-  <tbody>
+    <button type="button" (click)="showLi='F'" [ngClass]="{'is-selected': showLi === 'F'}">
+      Femme
+    </button>
 
-    <ng-container *ngFor="let stagiaire of stagiaires">
-      <ng-container
-        *ngIf="isShown(stagiaire)">
-        <tr>
-          <td>
-            <span (click)="goToDetail(stagiaire.id)" [ngClass]="{'bubble': true, 
+    <button type="button" (click)="showLi='M'" [ngClass]="{'is-selected': showLi === 'M'}">
+      Homme
+    </button>
+
+    <button type="button" (click)="showLi='X'" [ngClass]="{'is-selected': showLi === 'X'}">
+      Autre
+    </button>
+
+    <br>
+    <br>
+
+  </div>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>&nbsp;</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Genre</th>
+        <th>Naissance</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <ng-container *ngFor="let stagiaire of stagiaires">
+        <ng-container *ngIf="isShown(stagiaire)">
+          <tr>
+            <td>
+              <span (click)="goToDetail(stagiaire.id)" [ngClass]="{'bubble': true, 
                 'male': stagiaire.gender === 'M', 
                 'female': stagiaire.gender === 'F',   
                 'other': stagiaire.gender === 'X'}">
-              {{ stagiaire | initials : full:lastNameFirst }}
-            </span>
+                {{ stagiaire | initials : full:lastNameFirst }}
+              </span>
 
-          </td>
-          <td>
-            {{ stagiaire.lastName | uppercase}}
-          </td>
-          <td>
-            {{ stagiaire.firstName }}
-          </td>
-          <td
-            [ngClass]="{'female': stagiaire.gender === 'F','male': stagiaire.gender === 'M','other': stagiaire.gender === 'X'}">
-            {{stagiaire.gender}}
-          </td>
-          <td>
-            {{ stagiaire.birthDate | date : 'L/dd/yyyy'}}
-          </td>
-          <td>
-            <button mat-mini-flat class="material-icons style" (click)="onDelete(stagiaire)">
-              <mat-icon>delete</mat-icon>
-            </button>
-
-          </td>
-        </tr>
+            </td>
+            <td>
+              {{ stagiaire.lastName | uppercase}}
+            </td>
+            <td>
+              {{ stagiaire.firstName }}
+            </td>
+            <td
+              [ngClass]="{'female': stagiaire.gender === 'F','male': stagiaire.gender === 'M','other': stagiaire.gender === 'X'}">
+              {{stagiaire.gender}}
+            </td>
+            <td>
+              {{ stagiaire.birthDate | date : 'L/dd/yyyy'}}
+            </td>
+            <td>
+              <button mat-mini-flat class="material-icons style" (click)="onDelete(stagiaire)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
       </ng-container>
-    </ng-container>
-  </tbody>
+    </tbody>
 
 
-  <tfoot>
-    <tr>
-      <td colspan="5">
-        {{getDisplayRowsNumber()}}/{{stagiaires.length}}
-      </td>
+    <tfoot>
+      <tr>
+        <td colspan="5">
+          {{getDisplayRowsNumber()}}/{{stagiaires.length}}
+        </td>
+      </tr>
 
-      <button type="button" (click)="goToAdd()">
-        Ajouter
-      </button>
-    </tr>
+    </tfoot>
+  </table>
 
-  </tfoot>
-</table>
+  <div>
+    <br>
+    <br>
+  </div>
+
+</body>
