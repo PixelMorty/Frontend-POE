@@ -6,19 +6,6 @@ $mid: #b4947f;
 * SCSS Rules
 **/
 
-:root {
-  --color-bg-primary: #d0d6df;
-  --color-bg-primary-offset: #f1f3f7;
-  --color-bg-secondary: #fff;
-  --color-text-primary: #3a3c42;
-  --color-text-primary-offset: #898c94;
-  --color-orange: #dc9960;
-  --color-green: #1eb8b1;
-  --color-purple: #657cc4;
-  --color-black: var(--color-text-primary);
-  --color-red: #d92027;
-}
-
 .menu-list {
   margin: 0;
   display: block;
@@ -92,7 +79,6 @@ $mid: #b4947f;
   }
 }
 
-// Codepen spesific styling - only to center the elements in the pen preview and viewport
 .container {
   float: right;
 	display: flex;
@@ -107,11 +93,7 @@ $mid: #b4947f;
   border-radius: .4em;
 	position: fixed;
 }
-// End Codepen spesific styling
 
-/**
-test
-**/
 
 #title {
   font-family: arial, sans-serif;
@@ -198,26 +180,6 @@ button {
   }
 }
 
-.button3 {
-  cursor: pointer;
-  font-family: arial, sans-serif;
-  font-size: 20px;
-  text-align: left;
-  text-indent: 16px;
-  border: none; // No border
-  box-shadow: 0 10px 20px rgba(#404040, 0.15);
-  background-color: $dark;
-  color: $light;
-  border-radius: .4em;
-  width: 260px;
-  height: 42px;
-  margin: 5px 0px 5px 0px;
-  
-  &.is-selected {
-      color: $dark;
-      animation: coolAppear 1s ease-in 0s 1 forwards;
-  }
-}
 
 @keyframes coolAppear {
     0% {
