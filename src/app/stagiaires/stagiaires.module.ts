@@ -16,7 +16,7 @@ import { AddComponent } from './add/add.component';
     DetailComponent,
     InitialsPipe,
     GenrePipe,
-    AddComponent
+    AddComponent,
   ],
   imports: [
     CommonModule,
