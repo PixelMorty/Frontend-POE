@@ -29,13 +29,13 @@ export class FormulaireAddGeneralComponent implements OnInit {
 
   ngOnInit(): void {
   //console.log(this.route.snapshot.pathFromRoot[this.route.snapshot.pathFromRoot.length -2].url.toString())
-  
+
   this.route.parent!.url.pipe(take(1),map((r)=>r[0].path)).subscribe(
     (urlType)=> {
       //console.log(urlType)
-      
+
       JSON.stringify(urlType)
-      
+
       //console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
       if (urlType==StagiairesPoes.STAGIAIRES){
         this.class_poe_or_Stagiaire = StagiairesPoes.STAGIAIRES;
@@ -91,7 +91,7 @@ export class FormulaireAddGeneralComponent implements OnInit {
             '',
             Validators.required
           ],
-    
+
           beginDate: [
             '',
             [
@@ -104,16 +104,16 @@ export class FormulaireAddGeneralComponent implements OnInit {
               Validators.required,
             ]
           ],
-    
+
         });
       }
-      
-      
+
+
     }
   );
-    
-   
-    
+
+
+
   }
 
 
