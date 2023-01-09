@@ -42,14 +42,17 @@ export class FormulaireAddGeneralComponent implements OnInit {
 
         //console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
         if (urlType == StagiairesPoes.STAGIAIRES) {
+
           this.class_poe_or_Stagiaire = StagiairesPoes.STAGIAIRES;
           // console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
         } else if (urlType == StagiairesPoes.POES) {
           this.class_poe_or_Stagiaire = StagiairesPoes.POES;
+
           //console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
         }
 
         if (this.class_poe_or_Stagiaire == StagiairesPoes.STAGIAIRES) {
+
           this.addForm = new FormStagiaire(new StagiaireModel()).form;
           // this.addForm = this.formBuilder.group({
           //   lastName: [
@@ -86,7 +89,6 @@ export class FormulaireAddGeneralComponent implements OnInit {
           // });
         } else if (this.class_poe_or_Stagiaire == StagiairesPoes.POES) {
           //TODO GERER UPDATE
-
           this.addForm = new FormPoe(new Poe()).form;
           //       this.addForm = this.formBuilder.group({
           //         poeType: [

@@ -1,6 +1,7 @@
 
 
 import { FormControl, Validators } from "@angular/forms";
+import { StagiaireModel } from "../models/stagiaire-model";
 
 import { Forms } from "./forms";
 
