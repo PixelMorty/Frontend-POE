@@ -50,7 +50,7 @@ export class FormulaireAddGeneralComponent implements OnInit {
         }
 
         if (this.class_poe_or_Stagiaire == StagiairesPoes.STAGIAIRES) {
-          this.addForm = new FormStagiaire(new StagiaireModel());
+          this.addForm = new FormStagiaire(new StagiaireModel()).form;
           // this.addForm = this.formBuilder.group({
           //   lastName: [
           //     '', // Default value (here empty)
@@ -87,7 +87,7 @@ export class FormulaireAddGeneralComponent implements OnInit {
         } else if (this.class_poe_or_Stagiaire == StagiairesPoes.POES) {
           //TODO GERER UPDATE
 
-          this.addForm = new FormPoe(new Poe());
+          this.addForm = new FormPoe(new Poe()).form;
           //       this.addForm = this.formBuilder.group({
           //         poeType: [
           //           '', // Default value (here empty)
