@@ -58,3 +58,76 @@
         {{ addForm.controls['birthDate'].errors | json }}
     </form>
 </ng-container>
+
+<ng-container *ngIf="class_poe_or_Stagiaire=='poes'">
+
+
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+        <!-- form fields go here -->
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Nom de formation..."
+            type="text"
+            formControlName="title"
+          />
+          <mat-error *ngIf="addForm.controls['title'].errors">
+            Le nom de la formation est obligatoire!
+          </mat-error>
+        </mat-form-field>
+      
+        <mat-form-field appearance="fill">
+          <mat-label>La date du début</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="beginDate" />
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      
+          <mat-error
+            *ngIf="
+              addForm.controls['beginDate'].errors &&
+              addForm.controls['beginDate'].touched
+            "
+          >
+            <span *ngIf="addForm.controls['beginDate'].hasError('required')">
+              La date du début est obligatoire.
+            </span>
+          </mat-error>
+        </mat-form-field>
+      
+        <mat-form-field appearance="fill">
+          <mat-label>La date de fin</mat-label>
+          <input matInput [matDatepicker]="pickerto" formControlName="endDate" />
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="pickerto"></mat-datepicker-toggle>
+          <mat-datepicker #pickerto></mat-datepicker>
+      
+          <mat-error
+            *ngIf="
+              addForm.controls['endDate'].errors &&
+              addForm.controls['endDate'].touched
+            "
+          >
+            <span *ngIf="addForm.controls['endDate'].hasError('required')">
+              La date de fin est obligatoire.
+            </span>
+          </mat-error>
+        </mat-form-field>
+      
+        <mat-radio-group formControlName="poeType">
+          <mat-radio-button [value]="'POEI'">POEI</mat-radio-button>
+          <mat-radio-button [value]="'POEC'">POEC</mat-radio-button>
+        </mat-radio-group>
+      
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="addForm.invalid"
+        >
+          Ajouter
+        </button>
+      </form>
+
+    
+</ng-container>
