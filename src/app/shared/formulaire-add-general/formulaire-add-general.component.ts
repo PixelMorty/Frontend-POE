@@ -131,6 +131,19 @@ export class FormulaireAddGeneralComponent implements OnInit {
   }
 
   public onSubmit(): void {
+    //TODO CELINE 
+    // dupliquer le code qui suit et mettre du if else :
+    // ce bloc là si pas d'id dans la requete
+    // ce bloc modifié qui utilise du update si on a un id
+
+  //pour choper l'id c'est :
+  // this.route.paramMap.subscribe(
+  //   (routeParams) => {
+
+  //     if (routeParams.get('id')===null){
+  //      }
+  // null si y'en a pas, un entier positif sinon 
+
     if (this.class_poe_or_Stagiaire == StagiairesPoes.STAGIAIRES) {
       this.stagiaireService
         .create(this.addForm.value)
