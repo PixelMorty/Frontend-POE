@@ -84,7 +84,7 @@
   </form>
 </ng-container>
 
-<ng-container *ngIf="class_poe_or_Stagiaire == 'poes'">
+<ng-container *ngIf="class_poe_or_Stagiaire == 'poes' && addForm">
   <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
     <!-- form fields go here -->
     <mat-form-field>
