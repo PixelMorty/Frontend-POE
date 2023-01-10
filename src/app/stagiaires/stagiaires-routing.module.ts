@@ -30,6 +30,10 @@ export class StagiairesRoutingModule {
       component: FormulaireAddGeneralComponent,
     },
     {
+      path: 'add/:id',
+      component: FormulaireAddGeneralComponent,
+    },
+    {
       path: '', //route fallback
       redirectTo: 'list',
       pathMatch: 'full',

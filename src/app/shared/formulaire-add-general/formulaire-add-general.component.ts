@@ -19,16 +19,19 @@ import { StagiairesPoes } from '../enums/stagiaires-poes';
 export class FormulaireAddGeneralComponent implements OnInit {
   public addForm!: FormGroup; // Groupe de Contrôles de formulaire
   public class_poe_or_Stagiaire!: String;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private stagiaireService: StagiaireService,
     private poeService: PoeService,
     private formBuilder: FormBuilder
+
   ) {}
 
   ngOnInit(): void {
     //console.log(this.route.snapshot.pathFromRoot[this.route.snapshot.pathFromRoot.length -2].url.toString())
+
 
     this.route
       .parent!.url.pipe(
@@ -39,7 +42,6 @@ export class FormulaireAddGeneralComponent implements OnInit {
         //console.log(urlType)
 
         JSON.stringify(urlType);
-
         //console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
         if (urlType == StagiairesPoes.STAGIAIRES) {
 
@@ -52,8 +54,8 @@ export class FormulaireAddGeneralComponent implements OnInit {
         }
 
         if (this.class_poe_or_Stagiaire == StagiairesPoes.STAGIAIRES) {
-
-          this.addForm = new FormStagiaire(new StagiaireModel()).form;
+          this.initFormStagiaire();
+          //this.addForm = new FormStagiaire(new StagiaireModel()).form;
           // this.addForm = this.formBuilder.group({
           //   lastName: [
           //     '', // Default value (here empty)
@@ -89,7 +91,8 @@ export class FormulaireAddGeneralComponent implements OnInit {
           // });
         } else if (this.class_poe_or_Stagiaire == StagiairesPoes.POES) {
           //TODO GERER UPDATE
-          this.addForm = new FormPoe(new Poe()).form;
+          this.initFormPoe();
+          //this.addForm = new FormPoe(new Poe()).form;
           //       this.addForm = this.formBuilder.group({
           //         poeType: [
           //           '', // Default value (here empty)
@@ -140,4 +143,50 @@ export class FormulaireAddGeneralComponent implements OnInit {
       });
     }
   }
+private initFormPoe (){
+  this.route.paramMap.subscribe(
+    (routeParams) => {
+
+      if (routeParams.get('id')===null){
+        this.addForm = new FormPoe(new Poe()).form;
+      }else{
+
+      
+      try {
+        this.poeService.findOne(+routeParams.get('id')!)
+          .subscribe((poe: Poe) => {
+            this.addForm = new FormPoe(poe).form;;
+          })
+       // console.log(JSON.stringify(this.stagiaire));
+      } catch (error) {
+        this.router.navigate(['/', StagiairesPoes.POES]);
+      }
+    }
+  }
+  )
+}
+
+private initFormStagiaire (){
+  this.route.paramMap.subscribe(
+    (routeParams) => {
+
+      if (routeParams.get('id')===null){
+        this.addForm = new FormStagiaire(new StagiaireModel()).form;
+      }else{
+
+      try {
+        this.stagiaireService.findOne(+routeParams.get('id')!)
+          .subscribe((stagiaire: StagiaireModel) => {
+            this.addForm = new FormStagiaire(stagiaire).form;
+          })
+       // console.log(JSON.stringify(this.stagiaire));
+      } catch (error) {
+        this.router.navigate(['/', StagiairesPoes.STAGIAIRES]);
+      }
+    }
+  }
+  )
+
+}
+
 }

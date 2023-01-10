@@ -28,7 +28,7 @@ export class DetailComponent implements OnInit {
             .subscribe((stagiaire: StagiaireModel) => {
               this.stagiaire = stagiaire;
             })
-          console.log(JSON.stringify(this.stagiaire));
+         // console.log(JSON.stringify(this.stagiaire));
         } catch (error) {
           this.router.navigate(['/', 'stagiaires']);
         }
