@@ -28,7 +28,12 @@ export class PoesRoutingModule {
       component: FormulaireAddGeneralComponent,
     },
     {
-      path: 'update/:id',//TODO CHECK SI CEST BIEN UN PARAM ET QUIL est pas pris comme un element du tableau url dans FormulaireAddGeneralcomponent
+      path: 'add/:id',//TODO CHECK SI CEST BIEN UN PARAM ET QUIL est pas pris comme un element du tableau url dans FormulaireAddGeneralcomponent
+      component: FormulaireAddGeneralComponent,
+
+    },
+    {
+      path: 'detail/:id',//TODO CHECK SI CEST BIEN UN PARAM ET QUIL est pas pris comme un element du tableau url dans FormulaireAddGeneralcomponent
       component: FormulaireAddGeneralComponent,
 
     },
