@@ -21,7 +21,7 @@ export class IntlService {
 }
 
 export const intlProvider = {
-  provide: APP_INITIALIZER, // L'application démarre. Indique à Angular qu'il y a quelque chose à faire via APP_INITIALIZER
+  provide: APP_INITIALIZER, // 1er tokken (jeton) L'application démarre. Indique à Angular qu'il y a quelque chose à faire via APP_INITIALIZER
   useFactory: IntlService.appInitializer, // Utilise le service
   deps: [
     IntlService, // Permet d'utiliser le service dans la static (instancier la class)
