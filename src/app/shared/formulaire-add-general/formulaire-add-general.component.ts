@@ -150,12 +150,11 @@ private initFormPoe (){
       if (routeParams.get('id')===null){
         this.addForm = new FormPoe(new Poe()).form;
       }else{
-
       
       try {
         this.poeService.findOne(+routeParams.get('id')!)
           .subscribe((poe: Poe) => {
-            this.addForm = new FormPoe(poe).form;;
+            this.addForm = new FormPoe(poe).form;
           })
        // console.log(JSON.stringify(this.stagiaire));
       } catch (error) {
@@ -178,6 +177,7 @@ private initFormStagiaire (){
         this.stagiaireService.findOne(+routeParams.get('id')!)
           .subscribe((stagiaire: StagiaireModel) => {
             this.addForm = new FormStagiaire(stagiaire).form;
+           //TODO CHOPER LE 404 ET REDIRIGER
           })
        // console.log(JSON.stringify(this.stagiaire));
       } catch (error) {
