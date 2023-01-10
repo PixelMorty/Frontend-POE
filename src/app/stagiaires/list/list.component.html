@@ -3,7 +3,7 @@
   <div id="leftpanel">
 
     <div id="title">
-      <p>MENU</p>
+      <p>> MENU</p>
     </div>
 
     <div>
@@ -41,15 +41,15 @@
       Tous
     </button>
 
-    <button type="button" (click)="showLi='F'" [ngClass]="{'is-selected': showLi === 'F'}">
+    <button type="button" class="woman" (click)="showLi='F'" [ngClass]="{'is-selected': showLi === 'F'}">
       Femme
     </button>
 
-    <button type="button" (click)="showLi='M'" [ngClass]="{'is-selected': showLi === 'M'}">
+    <button type="button" class="man" (click)="showLi='M'" [ngClass]="{'is-selected': showLi === 'M'}">
       Homme
     </button>
 
-    <button type="button" (click)="showLi='X'" [ngClass]="{'is-selected': showLi === 'X'}">
+    <button type="button" class="other" (click)="showLi='X'" [ngClass]="{'is-selected': showLi === 'X'}">
       Autre
     </button>
 
@@ -106,17 +106,15 @@
           </tr>
         </ng-container>
       </ng-container>
+
+
+      <td colspan="6" style="font-size: 20px; text-align: center; font-weight: bolder;">
+        <br>
+        {{getDisplayRowsNumber()}}/{{stagiaires.length}}
+      </td>
+
     </tbody>
 
-
-    <tfoot>
-      <tr>
-        <td colspan="3" style="float: right">
-          {{getDisplayRowsNumber()}}/{{stagiaires.length}} 3
-        </td>
-      </tr>
-
-    </tfoot>
   </table>
 
   <div>

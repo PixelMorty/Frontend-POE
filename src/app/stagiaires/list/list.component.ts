@@ -80,7 +80,10 @@ export class ListComponent implements OnInit {
     console.log(`Got ${id} from list`);
     this.router.navigate(['/detail', id]);
   }
+
   public onDelete(stagiaire: StagiaireModel): void {
+
+    var result = confirm("Supprimer le participant ?"); if (result) {
     this.stagiaireServices.delete(stagiaire)
     .subscribe((response: HttpResponse<any>) => {
       this.stagiaires.splice(
@@ -96,6 +99,7 @@ export class ListComponent implements OnInit {
         duration: 2500
       }
     );
+    }
   }
 
 

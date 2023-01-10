@@ -29,7 +29,7 @@ export class PoesRoutingModule {
       component: ManageComponent,
     },
     {
-      path: '',
+      path: '**',
       redirectTo: 'list',
       pathMatch: 'full',
     },
