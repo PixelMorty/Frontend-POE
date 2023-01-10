@@ -5,24 +5,17 @@ import { UiModule } from '../ui/ui.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormulaireAddGeneralComponent } from './formulaire-add-general/formulaire-add-general.component';
-
-
+import { IntlModule } from '../intl/intl.module';
 
 @NgModule({
-  declarations: [
-    FormulaireAddGeneralComponent
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatNativeDateModule,UiModule
-  ],
+  declarations: [FormulaireAddGeneralComponent],
+  imports: [CommonModule, ReactiveFormsModule, MatNativeDateModule, UiModule],
   exports: [
-
     HttpClientModule,
     ReactiveFormsModule,
     UiModule,
-    MatNativeDateModule
-  ]
+    MatNativeDateModule,
+    IntlModule,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}
