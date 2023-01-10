@@ -1,4 +1,4 @@
-<ng-container *ngIf="class_poe_or_Stagiaire == 'stagiaires'">
+<ng-container *ngIf="class_poe_or_Stagiaire == 'stagiaires' && addForm">
   <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
     <!-- form fields go here -->
     <mat-form-field>
