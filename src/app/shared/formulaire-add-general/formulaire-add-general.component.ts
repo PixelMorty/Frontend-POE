@@ -149,9 +149,11 @@ private initFormPoe (){
 
       if (routeParams.get('id')===null){
         this.addForm = new FormPoe(new Poe()).form;
+        console.log("stagiaire vide")
       }else{
       
       try {
+        console.log("pavide")
         this.poeService.findOne(+routeParams.get('id')!)
           .subscribe((poe: Poe) => {
             this.addForm = new FormPoe(poe).form;
