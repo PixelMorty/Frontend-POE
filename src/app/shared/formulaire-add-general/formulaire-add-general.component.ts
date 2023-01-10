@@ -123,6 +123,8 @@ export class FormulaireAddGeneralComponent implements OnInit {
           // );
         }
       });
+      // var forme =  new FormPoe(new Poe());
+      // this.addForm = forme.form;
   }
 
   public onSubmit(): void {
