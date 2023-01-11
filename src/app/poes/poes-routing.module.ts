@@ -38,7 +38,7 @@ export class PoesRoutingModule {
 
     },
     {
-      path: '',
+      path: '**',
       redirectTo: 'list',
       pathMatch: 'full',
     },

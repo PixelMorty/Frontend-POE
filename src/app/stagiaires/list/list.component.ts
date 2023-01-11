@@ -29,12 +29,17 @@ export class ListComponent implements OnInit {
     });
   }
 
-  public changeGender(): void {
-    if (this.showLi === 'M') {
-      this.showLi = 'F';
-    } else {
-      this.showLi = 'M';
+  public changeGender(): boolean {
+    if (this.showLi === 'F') {
+      return this.showLi === 'F';
     }
+
+    if (this.showLi === 'M') {
+      return this.showLi === 'M';
+    }
+
+  return this.showLi === 'X'  
+
   }
 
   public isShown(stagaire: any): boolean {
@@ -46,7 +51,12 @@ export class ListComponent implements OnInit {
       return stagaire.gender === 'F';
     }
 
-    return stagaire.gender === 'M';
+    if (this.showLi === 'M') {
+      return stagaire.gender === 'M';
+    }
+
+  return stagaire.gender === 'X';
+    
   }
 
   public getDisplayRowsNumber(): number {
@@ -70,7 +80,10 @@ export class ListComponent implements OnInit {
     console.log(`Got ${id} from list`);
     this.router.navigate(['/detail', id]);
   }
+
   public onDelete(stagiaire: StagiaireModel): void {
+
+    var result = confirm("Supprimer le participant ?"); if (result) {
     this.stagiaireServices.delete(stagiaire)
     .subscribe((response: HttpResponse<any>) => {
       this.stagiaires.splice(
@@ -86,12 +99,18 @@ export class ListComponent implements OnInit {
         duration: 2500
       }
     );
+    }
   }
 
 
   public goToAdd(): void {
 
     this.router.navigate(['/stagiaires/add']);
+  }
+
+  public goToTrainees(): void {
+
+    this.router.navigate(['/stagiaires']);
   }
 
 
