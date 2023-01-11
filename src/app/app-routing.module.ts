@@ -18,7 +18,7 @@ export class AppRoutingModule {
       pathMatch: 'full',
     },
     {
-      path: StagiairesPoes.STAGIAIRES,
+      path: StagiairesPoes.STAGIAIRE,
       loadChildren: () =>
         import('./stagiaires/stagiaires.module').then((m) => m.StagiairesModule),
     },

@@ -25,8 +25,6 @@ export class FormulaireAddGeneralComponent implements OnInit {
     private router: Router,
     private stagiaireService: StagiaireService,
     private poeService: PoeService,
-    private formBuilder: FormBuilder
-
   ) {}
 
   ngOnInit(): void {
@@ -43,17 +41,10 @@ export class FormulaireAddGeneralComponent implements OnInit {
 
         JSON.stringify(urlType);
         //console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
-        if (urlType == StagiairesPoes.STAGIAIRES) {
 
-          this.class_poe_or_Stagiaire = StagiairesPoes.STAGIAIRES;
-          // console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
-        } else if (urlType == StagiairesPoes.POES) {
-          this.class_poe_or_Stagiaire = StagiairesPoes.POES;
+        this.class_poe_or_Stagiaire=urlType;
 
-          //console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
-        }
-
-        if (this.class_poe_or_Stagiaire == StagiairesPoes.STAGIAIRES) {
+        if (this.class_poe_or_Stagiaire == StagiairesPoes.STAGIAIRE) {
           this.initFormStagiaire();
           //this.addForm = new FormStagiaire(new StagiaireModel()).form;
           // this.addForm = this.formBuilder.group({
@@ -131,7 +122,7 @@ export class FormulaireAddGeneralComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    //TODO CELINE 
+    //TODO CELINE
     // dupliquer le code qui suit et mettre du if else :
     // ce bloc là si pas d'id dans la requete
     // ce bloc modifié qui utilise du update si on a un id
@@ -142,17 +133,17 @@ export class FormulaireAddGeneralComponent implements OnInit {
 
   //     if (routeParams.get('id')===null){
   //      }
-  // null si y'en a pas, un entier positif sinon 
+  // null si y'en a pas, un entier positif sinon
 
-    if (this.class_poe_or_Stagiaire == StagiairesPoes.STAGIAIRES) {
+    if (this.class_poe_or_Stagiaire == StagiairesPoes.STAGIAIRE) {
       this.stagiaireService
         .create(this.addForm.value)
         .subscribe((stagiaire: StagiaireModel) => {
-          this.router.navigate(['/', StagiairesPoes.STAGIAIRES]);
+          this.router.navigate(['/', StagiairesPoes.STAGIAIRE]);
         });
     } else if (this.class_poe_or_Stagiaire == StagiairesPoes.POES) {
       this.poeService.create(this.addForm.value).subscribe((poe: Poe) => {
-        this.router.navigate(['/', StagiairesPoes.POES]);
+        this.router.navigate(['/', StagiairesPoes.STAGIAIRE]);
       });
     }
   }
@@ -164,9 +155,8 @@ private initFormPoe (){
         this.addForm = new FormPoe(new Poe()).form;
         console.log("stagiaire vide")
       }else{
-      
+
       try {
-        console.log("pavide")
         this.poeService.findOne(+routeParams.get('id')!)
           .subscribe((poe: Poe) => {
             this.addForm = new FormPoe(poe).form;
@@ -196,7 +186,7 @@ private initFormStagiaire (){
           })
        // console.log(JSON.stringify(this.stagiaire));
       } catch (error) {
-        this.router.navigate(['/', StagiairesPoes.STAGIAIRES]);
+        this.router.navigate(['/', StagiairesPoes.STAGIAIRE]);
       }
     }
   }
