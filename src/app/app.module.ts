@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MomentDateModule } from '@angular/material-moment-adapter';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 
@@ -26,6 +27,7 @@ import { MAT_DATE_FORMATS } from '@angular/material/core';
     MatInputModule, 
     MatDatepickerModule,
     MomentDateModule,
+    ModalModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

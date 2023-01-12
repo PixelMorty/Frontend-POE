@@ -1,5 +1,7 @@
 <body>
 
+
+
   <div id="leftpanel">
 
     <div id="title">
@@ -100,9 +102,19 @@
               {{ stagiaire.birthDate | date : 'L/dd/yyyy'}}
             </td>
             <td>
-              <button mat-mini-flat class="material-icons style" (click)="onDelete(stagiaire)">
+              <button mat-mini-flat class="material-icons style" (click)="openModal(template)">
                 <mat-icon>delete</mat-icon>
               </button>
+              <br><br>
+              <ng-template #template>
+                <div class="modal-body text-center"  style="
+                background-color: white;
+                border-radius: .4em;">
+                  <p style="font-size: 22px;">Confirmer la suppression ?</p>
+                  <button type="button" (click)="confirm(stagiaire)" >Supprimer</button>
+                  <button type="button" (click)="decline()" >Annuler</button>
+                </div>
+              </ng-template>
             </td>
           </tr>
         </ng-container>
