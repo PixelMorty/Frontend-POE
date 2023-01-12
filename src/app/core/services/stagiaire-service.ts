@@ -90,17 +90,36 @@ export class StagiaireService {
             StagiaireService.CONTROLLER_PATH,
             this.serializeJson(datas)
             //datas
-        ) 
+        )
         .pipe(
             take(1), // Récupère l'objet qui vient de l'API
             map((anyStagiaire: any) => { // Transforme le any en StagiaireModel
                 return this.deserializeFromForm(anyStagiaire);
             })
         )
-       
+
     }
 
-    public update(datas:any):void{}
+    public update(datas: StagiaireModel): Observable<StagiaireModel> {
+      return this.httpClient
+        .put<StagiaireModel>(
+          StagiaireService.CONTROLLER_PATH,
+          this.serializeJson(datas)
+          //datas
+        )
+        .pipe(
+          take(1), // Récupère l'objet qui vient de l'API
+          map((anyStagiaire: any) => {
+            // Transforme le any en StagiaireModel
+            return this.deserializeFromForm(anyStagiaire);
+          })
+        );
+    }
+
+
+
+
+
 
     public delete(datas:StagiaireModel):Observable<HttpResponse<any>>{
         return this.httpClient.delete<any>(

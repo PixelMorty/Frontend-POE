@@ -1,4 +1,4 @@
 export enum StagiairesPoes {
-    STAGIAIRE ='stagiaires',
+    STAGIAIRES ='stagiaires',
     POES = 'poes'
 }
