@@ -12,7 +12,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MomentDateModule } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import { MY_DATE_FORMATS } from './my-date-formats';
+import { MY_DATE_FORMAT } from './my-date-format';
 
 
 @Component({
@@ -85,7 +85,7 @@ export class AddComponent implements OnInit {
   ],
   providers: [
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMAT }
   ],
 })
 

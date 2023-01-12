@@ -1,4 +1,4 @@
-export const MY_DATE_FORMATS = {
+export const MY_DATE_FORMAT = {
   parse: {
     dateInput: 'DD/MM/YYYY',
   },
