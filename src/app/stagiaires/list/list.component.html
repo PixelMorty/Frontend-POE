@@ -10,24 +10,25 @@
       <ul class="menu-list">
         <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Formations</button>
           <ul class="menu-sub-list">
-            <div class="menu-item"><button class="menu-button">Needs review</button></div>
-            <div class="menu-item"><button class="menu-button">In progress</button></div>
-            <div class="menu-item"><button class="menu-button">Approved</button></div>
-            <div class="menu-item"><button class="menu-button">No status</button></div>
+            <div class="menu-item"><button class="menu-button">Panorama</button></div>
+            <div class="menu-item"><button class="menu-button" (click)="goToPOEList()">Liste</button></div>
           </ul>
         </div>
         <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Participants</button>
           <ul class="menu-sub-list">
-            <div class="menu-item"><button class="menu-button">Needs review</button></div>
-            <div class="menu-item"><button class="menu-button">In progress</button></div>
-            <div class="menu-item"><button class="menu-button">Approved</button></div>
-            <div class="menu-item"><button class="menu-button">No status</button></div>
+            <div class="menu-item"><button class="menu-button">Panorama</button></div>
+            <div class="menu-item"><button class="menu-button" (click)="goToTrainees()">Liste</button></div>
+          </ul>
+        </div>
+        <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Ajouter</button>
+          <ul class="menu-sub-list">
+            <div class="menu-item"><button class="menu-button">Formation</button></div>
+            <div class="menu-item"><button class="menu-button" (click)="goToAdd()">Participant</button></div>
           </ul>
         </div>
         <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Statistiques</button>
         </div>
         <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Archives</button></div>
-        <div class="menu-item"><button class="menu-button" (click)="goToAdd()">• &nbsp;&nbsp;Ajouter</button></div>
       </ul>
     </div>
   </div>

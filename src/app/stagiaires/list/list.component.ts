@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
 import { StagiaireService } from 'src/app/core/services/stagiaire-service';
+import { IntlService } from 'src/app/intl/services/intl.service';
 
 @Component({
   selector: 'app-list',
@@ -102,16 +103,19 @@ export class ListComponent implements OnInit {
     }
   }
 
+  public goToTrainees(): void {
+
+    this.router.navigate(['/stagiaires/list']);
+  }
 
   public goToAdd(): void {
 
     this.router.navigate(['/stagiaires/add']);
   }
 
-  public goToTrainees(): void {
+  public goToPOEList(): void {
 
-    this.router.navigate(['/stagiaires']);
+    this.router.navigate(['/poes/list']);
   }
-
 
 }

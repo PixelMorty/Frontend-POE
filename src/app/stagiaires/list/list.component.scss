@@ -70,6 +70,11 @@
       position: absolute;
     }
   }
+
+  &:active {
+    background-color: #2D3041;
+    color: white;
+  }
 }
 
 #title {
@@ -134,7 +139,7 @@ button {
     cursor: pointer;
     font-family: arial, sans-serif;
     font-size: 18px;
-    border: none; // No border
+    border: none;
     background-color: #9698A0;
     color: white;
     border-radius: .4em;
