@@ -8,6 +8,7 @@ import { ApiPoeType } from 'src/app/core/types/api-poe-type';
 import { environment } from 'src/environments/environment';
 import { PoesModule } from '../../poes.module';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -60,7 +61,21 @@ export class PoeService implements ICrud<Poe> {
 
   }
 
-  update(datas: Poe): void {}
+  public update(datas: Poe): Observable<Poe> {
+    return this._httpClient
+      .put<Poe>(
+        PoeService._CONTROLLER_PATH,
+        this.serializeJson(datas)
+        //datas
+      )
+      .pipe(
+        take(1), // Récupère l'objet qui vient de l'API
+        map((anyPoe: any) => {
+          // Transforme le any en StagiaireModel
+          return this.deserializeFromForm(anyPoe);
+        })
+      );
+  }
 
   delete(datas: Poe): Observable<HttpResponse<any>> {
     return this._httpClient.delete<any>(
