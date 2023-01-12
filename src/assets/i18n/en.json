@@ -1,3 +1,6 @@
 {
-  "appTitle": "Interns survey"
+  "appTitle": "Interns survey",
+  "traineeF": "Woman",
+  "traineeM": "Man",
+  "traineeX": "Other"
 }

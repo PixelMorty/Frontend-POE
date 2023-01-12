@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { FormulaireAddGeneralComponent } from './formulaire-add-general.component';
+
+
 
 describe('FormulaireAddGeneralComponent', () => {
   let component: FormulaireAddGeneralComponent;
@@ -23,3 +24,4 @@ describe('FormulaireAddGeneralComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

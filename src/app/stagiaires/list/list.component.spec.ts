@@ -5,7 +5,6 @@ import { AppModule } from 'src/app/app.module';
 import { StagiaireService } from 'src/app/core/services/stagiaire-service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { InitialsPipe } from 'src/app/stagiaires/pipes/initials.pipe';
-
 import { ListComponent } from './list.component';
 
 describe('ListComponent', () => {

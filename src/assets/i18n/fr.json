@@ -1,3 +1,6 @@
 {
-  "appTitle": "Suivi des stagiaires"
+  "appTitle": "Suivi des stagiaires",
+  "traineeF": "Femme",
+  "traineeM": "Homme",
+  "traineeX": "Autre"
 }

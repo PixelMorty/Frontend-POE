@@ -3,19 +3,30 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, take } from 'rxjs';
 import { FormPoe } from 'src/app/core/forms/formPoe';
+import { NgModule } from '@angular/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MomentDateModule } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+
+
 import { FormStagiaire } from 'src/app/core/forms/FormStagiaire';
 import { Poe } from 'src/app/core/models/poe';
 import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
-import { StagiaireService } from 'src/app/core/services/stagiaire-service';
 import { DateLessThan } from 'src/app/core/validators/date-less-than';
+import { StagiaireService } from 'src/app/core/services/stagiaire-service';
 import { PoeService } from 'src/app/poes/services/poe/poe.service';
 import { StagiairesPoes } from '../enums/stagiaires-poes';
+import { MY_DATE_FORMATS } from './my-date-formats';
 
 @Component({
   selector: 'app-formulaire-add-general',
   templateUrl: './formulaire-add-general.component.html',
   styleUrls: ['./formulaire-add-general.component.scss'],
+  
 })
+
 export class FormulaireAddGeneralComponent implements OnInit {
   public addForm!: FormGroup; // Groupe de Contrôles de formulaire
   public class_poe_or_Stagiaire!: String;
@@ -195,3 +206,17 @@ private initFormStagiaire (){
 }
 
 }
+
+@NgModule({
+  imports: [
+    MatInputModule, 
+    MatDatepickerModule,
+    MomentDateModule
+  ],
+  providers: [
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
+  ],
+})
+
+export class AppModule { } 

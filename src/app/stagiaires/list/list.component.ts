@@ -2,8 +2,16 @@ import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { TemplateRef } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
 import { StagiaireService } from 'src/app/core/services/stagiaire-service';
+import { IntlService } from 'src/app/intl/services/intl.service';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
+
+
+
 
 @Component({
   selector: 'app-list',
@@ -16,10 +24,14 @@ export class ListComponent implements OnInit {
   public full =false
   public showLi: string = 'A';
   
+  modalRef: BsModalRef | undefined;
+  message: string | undefined;
+
   constructor(
     private router: Router, // DI => Dependency Injection
     private stagiaireServices : StagiaireService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private modalService: BsModalService
   ) {
   }
 
@@ -102,16 +114,52 @@ export class ListComponent implements OnInit {
     }
   }
 
+  public goToTrainees(): void {
+
+    this.router.navigate(['/stagiaires/list']);
+  }
 
   public goToAdd(): void {
 
     this.router.navigate(['/stagiaires/add']);
   }
 
-  public goToTrainees(): void {
+  public goToPOEList(): void {
 
-    this.router.navigate(['/stagiaires']);
+    this.router.navigate(['/poes/list']);
   }
-
+ 
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+ 
+  confirm(stagiaire: StagiaireModel): void {
+    this.message = 'Confirmed!';
+    this?.modalRef?.hide();
+      this.stagiaireServices.delete(stagiaire)
+      .subscribe((response: HttpResponse<any>) => {
+        this.stagiaires.splice(
+        
+          this.stagiaires.findIndex((obj: StagiaireModel) => obj.id === stagiaire.id),
+          1
+        )
+      })
+      this.snackBar.open(
+        `Le stagiaire ${stagiaire.id} a été supprimé`,
+        'Compris',
+        {
+          duration: 2500
+        }
+      );
+      }
+      decline(): void {
+    this.message = 'Declined!';
+    this?.modalRef?.hide();
+  }
+  
 
 }
+    
+ 
+
+

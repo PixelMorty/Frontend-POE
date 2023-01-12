@@ -8,6 +8,14 @@ import { StagiairesModule } from './stagiaires/stagiaires.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MomentDateModule } from '@angular/material-moment-adapter';
+import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
+
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -16,6 +24,10 @@ import { SharedModule } from './shared/shared.module';
     StagiairesModule,
     BrowserAnimationsModule,
     SharedModule,
+    MatInputModule, 
+    MatDatepickerModule,
+    MomentDateModule,
+    ModalModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
