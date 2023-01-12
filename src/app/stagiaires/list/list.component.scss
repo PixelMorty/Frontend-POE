@@ -28,6 +28,22 @@
   position: relative;
 }
 
+@keyframes coolAppear {
+  0% {
+    background-color: #2D3041, 80%;
+  }
+  50% {
+    background-color: #2D3041, 40%;
+  }
+  100% {
+    background-color: white;
+    color: #2D3041;
+    border: 3px solid;
+    border-color: #2D3041;
+  }
+}
+
+
 .menu-button {
   cursor: pointer;
   font-family: arial, sans-serif;
@@ -105,8 +121,7 @@
 #topbuttons {
   margin-left: 500px;
   margin-right: auto;
-  width: 50vw;
-  min-width: 500px;
+  width: 600px;
   
 }
 
@@ -139,7 +154,8 @@ button {
     cursor: pointer;
     font-family: arial, sans-serif;
     font-size: 18px;
-    border: none;
+    border: 3px solid;
+    border-color: #00000000;
     background-color: #9698A0;
     color: white;
     border-radius: .4em;
@@ -159,6 +175,11 @@ button {
 
     &.other {
       background-color: #EC851D;
+      color: white;
+    }
+
+    &.delete {
+      background-color: red;
       color: white;
     }
     
@@ -195,22 +216,6 @@ button {
     background-color: white;
     animation: coolAppear 0.35s ease-in 0s 1 forwards;
   }
-}
-
-
-@keyframes coolAppear {
-    0% {
-      background-color: #2D3041, 80%;
-    }
-    50% {
-      background-color: #2D3041, 40%;
-    }
-    100% {
-      background-color: white;
-      color: #2D3041;
-      border: 3px solid;
-      border-color: #2D3041;
-    }
 }
 
 table {
