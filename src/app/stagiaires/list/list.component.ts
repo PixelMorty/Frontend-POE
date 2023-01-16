@@ -105,6 +105,10 @@ export class ListComponent implements OnInit {
     this.router.navigate([StagiairesPoes.STAGIAIRES, 'detail', id]);
   }
 
+  public goToUpdate(id: number): void {
+    this.router.navigate([StagiairesPoes.STAGIAIRES, 'add', id]);
+  }
+
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }

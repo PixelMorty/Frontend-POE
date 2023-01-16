@@ -9,22 +9,42 @@
         <div class="menu-item">
           <button class="menu-button">• &nbsp;&nbsp;Formations</button>
           <ul class="menu-sub-list">
-            <div class="menu-item"><button class="menu-button">Panorama</button></div>
-            <div class="menu-item"><button class="menu-button" (click)="goToPOESList()">Liste</button></div>
+            <div class="menu-item">
+              <button class="menu-button">Panorama</button>
+            </div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToPOESList()">
+                Liste
+              </button>
+            </div>
           </ul>
         </div>
         <div class="menu-item">
           <button class="menu-button">• &nbsp;&nbsp;Participants</button>
           <ul class="menu-sub-list">
-            <div class="menu-item"><button class="menu-button">Panorama</button></div>
-            <div class="menu-item"><button class="menu-button" (click)="goToTraineesList()">Liste</button></div>
+            <div class="menu-item">
+              <button class="menu-button">Panorama</button>
+            </div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToTraineesList()">
+                Liste
+              </button>
+            </div>
           </ul>
         </div>
         <div class="menu-item">
           <button class="menu-button">• &nbsp;&nbsp;Ajouter</button>
           <ul class="menu-sub-list">
-            <div class="menu-item"><button class="menu-button" (click)="goToPOESAdd()">Formation</button></div>
-            <div class="menu-item"><button class="menu-button" (click)="goToTraineesAdd()">Participant</button></div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToPOESAdd()">
+                Formation
+              </button>
+            </div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToTraineesAdd()">
+                Participant
+              </button>
+            </div>
           </ul>
         </div>
         <div class="menu-item">
@@ -141,13 +161,21 @@
                   style="background-color: white; border-radius: 0.4em"
                 >
                   <p style="font-size: 22px">Confirmer la suppression ?</p>
-                  <button type="button" class="delete" (click)="confirm(stagiaire)">
+                  <button
+                    type="button"
+                    class="delete"
+                    (click)="confirm(stagiaire)"
+                  >
                     Supprimer
                   </button>
                   <button type="button" (click)="decline()">Annuler</button>
                 </div>
               </ng-template>
-              <button mat-mini-flat class="material-icons style2">
+              <button
+                mat-mini-flat
+                class="material-icons style2"
+                (click)="goToUpdate(stagiaire.id)"
+              >
                 <mat-icon>edit</mat-icon>
               </button>
             </td>
