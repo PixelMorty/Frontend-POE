@@ -9,10 +9,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 
 import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MomentDateModule } from '@angular/material-moment-adapter';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { ModalModule } from 'ngx-bootstrap/modal';
+
+import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { MY_DATE_FORMATS } from './shared/formulaire-add-general/my-date-formats';
 
 
 
@@ -21,7 +25,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StagiairesModule,
     BrowserAnimationsModule,
     SharedModule,
     MatInputModule, 
@@ -29,7 +32,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     MomentDateModule,
     ModalModule.forRoot(),
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

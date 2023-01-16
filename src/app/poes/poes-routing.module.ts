@@ -4,8 +4,6 @@ import { ListComponent } from './component/list/list.component';
 
 import { FormulaireAddGeneralComponent } from '../shared/formulaire-add-general/formulaire-add-general.component';
 
-import { AddComponent } from './component/add/add.component';
-
 const routes: Routes = [];
 
 @NgModule({
