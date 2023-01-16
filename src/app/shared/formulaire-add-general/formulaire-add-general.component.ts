@@ -43,22 +43,24 @@ export class FormulaireAddGeneralComponent implements OnInit {
         //console.log(urlType)
 
         JSON.stringify(urlType);
+        console.log(urlType);
+        console.log(StagiairesPoes.STAGIAIRES);
+        
         //console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
         if (urlType == StagiairesPoes.STAGIAIRES) {
           this.class_poe_or_Stagiaire = StagiairesPoes.STAGIAIRES;
           // console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
         } else if (urlType == StagiairesPoes.POES) {
           this.class_poe_or_Stagiaire = StagiairesPoes.POES;
-
-          this.class_poe_or_Stagiaire = urlType;
-
+        }
+         this.class_poe_or_Stagiaire = urlType;
           if (this.class_poe_or_Stagiaire == StagiairesPoes.STAGIAIRES) {
             this.initFormStagiaire();
           } else if (this.class_poe_or_Stagiaire == StagiairesPoes.POES) {
             this.initFormPoe();
           }
         }
-      });
+      );
     // var forme =  new FormPoe(new Poe());
     // this.addForm = forme.form;
   }
@@ -94,9 +96,10 @@ export class FormulaireAddGeneralComponent implements OnInit {
   }
 
   private initFormPoe() {
+
     if (this.id.valueOf() === 0) {
       this.addForm = new FormPoe(new Poe()).form;
-      console.log('stagiaire vide');
+
     } else {
       try {
         this.poeService.findOne(this.id.valueOf()).subscribe((poe: Poe) => {
@@ -110,6 +113,7 @@ export class FormulaireAddGeneralComponent implements OnInit {
   }
 
   private initFormStagiaire() {
+
     if (this.id.valueOf() === 0) {
       this.addForm = new FormStagiaire(new StagiaireModel()).form;
     } else {
