@@ -10,14 +10,6 @@ import { StagiaireService } from 'src/app/core/services/stagiaire-service';
 import { PoeService } from 'src/app/poes/services/poe/poe.service';
 import { StagiairesPoes } from '../enums/stagiaires-poes';
 
-import {
-  DateAdapter,
-  MAT_DATE_FORMATS,
-  MAT_DATE_LOCALE,
-} from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MomentDateAdapter } from '@angular/material-moment-adapter';
-
 @Component({
   selector: 'app-formulaire-add-general',
   templateUrl: './formulaire-add-general.component.html',
