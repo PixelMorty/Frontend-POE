@@ -101,10 +101,10 @@ export class StagiaireService {
       );
   }
 
-  public update(datas: StagiaireModel): Observable<StagiaireModel> {
+  public update(datas: StagiaireModel, id: Number): Observable<StagiaireModel> {
     return this.httpClient
       .put<StagiaireModel>(
-        StagiaireService.CONTROLLER_PATH,
+        `${StagiaireService.CONTROLLER_PATH}/${id}`,
         this.serializeJson(datas)
         //datas
       )
