@@ -1,7 +1,58 @@
-<div [ngSwitch]="showLi">
-  <div *ngSwitchCase="'All'">Toutes les poes</div>
-  <div *ngSwitchCase="'POEI'">POEI</div>
-  <div *ngSwitchCase="'POEC'">POEC</div>
+<body>
+
+<div id="leftpanel">
+
+  <div id="title">
+    <p>> MENU</p>
+  </div>
+
+  <div>
+    <ul class="menu-list">
+      <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Formations</button>
+        <ul class="menu-sub-list">
+          <div class="menu-item"><button class="menu-button">Panorama</button></div>
+          <div class="menu-item"><button class="menu-button" (click)="goToPOESList()">Liste</button></div>
+        </ul>
+      </div>
+      <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Participants</button>
+        <ul class="menu-sub-list">
+          <div class="menu-item"><button class="menu-button">Panorama</button></div>
+          <div class="menu-item"><button class="menu-button" (click)="goToTraineesList()">Liste</button></div>
+        </ul>
+      </div>
+      <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Ajouter</button>
+        <ul class="menu-sub-list">
+          <div class="menu-item"><button class="menu-button" (click)="goToPOESAdd()">Formation</button></div>
+          <div class="menu-item"><button class="menu-button" (click)="goToTraineesAdd()">Participant</button></div>
+        </ul>
+      </div>
+      <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Statistiques</button>
+      </div>
+      <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Archives</button></div>
+    </ul>
+  </div>
+</div>
+
+<div id="topbuttons">
+
+  <br>
+  <br>
+
+  <button type="button" (click)="showLi = 'All'" [ngClass]="{ 'is-selected': showLi === 'All' }">
+    Tous
+  </button>
+
+  <button type="button" class="poei" (click)="showLi = 'POEI'" [ngClass]="{ 'is-selected': showLi === 'POEI' }">
+    POEI
+  </button>
+
+  <button type="button" class="poec" (click)="showLi = 'POEC'" [ngClass]="{ 'is-selected': showLi === 'POEC' }">
+    POEC
+  </button>
+
+  <br>
+  <br>
+
 </div>
 
 <table>
@@ -18,20 +69,15 @@
 
   <tbody>
     <ng-container *ngFor="let poe of poes">
-    <tr *ngIf="(showLi === 'All' ) || (poe.poeType === showLi)">
+      <tr *ngIf="(showLi === 'All' ) || (poe.poeType === showLi)">
 
         <td>
-          <span
-            [ngClass]="{
+          <span [ngClass]="{
               bubble: true,
-              male: poe.poeType === 'POEI',
-              female: poe.poeType === 'POEC'
-            }"
-          >
+              poei: poe.poeType === 'POEI',
+              poec: poe.poeType === 'POEC'
+            }">
             {{ poe.poeType }}
-            <!--(click)="goToDetail(stagiaire.id)"
->>>>>>> 5c227440592700f71a64ff21611085449cb2104f
-           {{ poe | initials:full:lastNameFirst }}    -->
           </span>
         </td>
         <td>
@@ -48,48 +94,29 @@
         </td>
 
         <td>
-          <button mat-mini-fab color="primary" (click)="onDelete(poe)">
-             <mat-icon>delete</mat-icon>
+          <button mat-mini-flat class="material-icons style" (click)="openModal(template)">
+            <mat-icon>delete</mat-icon>
           </button>
+          <ng-template #template>
+            <div class="modal-body text-center"  style="
+            background-color: white;
+            border-radius: .4em;">
+              <p style="font-size: 22px;">Confirmer la suppression ?</p>
+              <button type="button" class="delete" (click)="confirm(poe)" >Supprimer</button>
+              <button type="button" (click)="decline()" >Annuler</button>
+            </div>
+          </ng-template>
         </td>
       </tr>
     </ng-container>
   </tbody>
 
-  <tfoot>
     <tr>
-      <td colspan="5">{{ getDisplayRowsNumber() }}/{{ poes.length }}</td>
-      <!-- TODO-->
+      <td colspan="5" style="font-size: 20px; text-align: center; font-weight: bolder;">
+        <br>
+        {{ getDisplayRowsNumber() }}/{{ poes.length }}</td>
     </tr>
-  </tfoot>
+
 </table>
 
-<a [routerLink]="['/', 'poes', 'add']" class="btn btn-primary"> Ajouter </a>
-
-
-
-<button
-  type="button"
-  (click)="showLi = 'All'"
-  [ngClass]="{ 'is-selected': showLi === 'All' }"
->
-  Tous
-</button>
-
-
-<button
-  type="button"
-  (click)="showLi = 'POEC'"
-  [ngClass]="{ 'is-selected': showLi === 'POEC' }"
->
-  POEC
-</button>
-
-
-<button
-  type="button"
-  (click)="showLi = 'POEI'"
-  [ngClass]="{ 'is-selected': showLi === 'POEI' }"
->
-  POEI
-</button>
+</body>

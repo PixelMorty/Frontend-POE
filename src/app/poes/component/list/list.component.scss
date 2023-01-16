@@ -28,6 +28,22 @@
   position: relative;
 }
 
+@keyframes coolAppear {
+  0% {
+    background-color: #2D3041, 80%;
+  }
+  50% {
+    background-color: #2D3041, 40%;
+  }
+  100% {
+    background-color: white;
+    color: #2D3041;
+    border: 3px solid;
+    border-color: #2D3041;
+  }
+}
+
+
 .menu-button {
   cursor: pointer;
   font-family: arial, sans-serif;
@@ -105,8 +121,7 @@
 #topbuttons {
   margin-left: 500px;
   margin-right: auto;
-  width: 50vw;
-  min-width: 500px;
+  width: 600px;
   
 }
 
@@ -135,10 +150,37 @@
   }
 }
 
+.material-icons.style2 { 
+  cursor: pointer;
+  color: white; 
+  background-color: #9698A0;
+  border-radius: .4em;
+  width: 50px;
+  height: 50px;
+  margin: 10px 5px 10px 5px;
+  float: right;
+
+
+  &:hover {
+    background-color: #2D3041;
+    color: white;
+  }
+
+  &:focus {
+    color: #2D3041;
+    border: 3px solid;
+    border-color: #2D3041;
+    background-color: white;
+    animation: coolAppear 0.35s ease-in 0s 1 forwards;
+  }
+}
+
 button {
     cursor: pointer;
     font-family: arial, sans-serif;
     font-size: 18px;
+    border: 3px solid;
+    border-color: #00000000;
     background-color: #9698A0;
     color: white;
     border-radius: .4em;
@@ -146,18 +188,18 @@ button {
     height: 32px;
     margin: 10px 5px 10px 5px;
 
-    &.woman {
+    &.poei {
       background-color: #CF1B6D;
       color: white;
     }
-
-    &.man {
-      background-color: #25AAE1;
+    
+    &.poec {
+      background-color: #EC851D;
       color: white;
     }
 
-    &.other {
-      background-color: #EC851D;
+    &.delete {
+      background-color: red;
       color: white;
     }
     
@@ -196,22 +238,6 @@ button {
   }
 }
 
-
-@keyframes coolAppear {
-    0% {
-      background-color: #2D3041, 80%;
-    }
-    50% {
-      background-color: #2D3041, 40%;
-    }
-    100% {
-      background-color: white;
-      color: #2D3041;
-      border: 3px solid;
-      border-color: #2D3041;
-    }
-}
-
 table {
     font-family: arial, sans-serif;
     font-size: 20px;
@@ -244,24 +270,11 @@ tbody{
             text-align: center;
             font-weight: bolder;
             color: #2D3041;
-            &.male {
-                background-color: #25AAE1;
-                color: white;
 
-                &:hover {
-                  background-color: #2D3041;
-                  color: white;
-                }
-              
-                &:focus {
-                  color: white;
-                  animation: coolAppear 0.35s ease-in 0s 1 forwards;
-                }
-            }
-
-            &.female {
+            &.poei {
                 background-color: #CF1B6D;
                 color: white;
+                font-size: 16px;
 
                 &:hover {
                   background-color: #2D3041;
@@ -274,9 +287,10 @@ tbody{
                 }
             }
 
-            &.other {
+            &.poec {
               background-color: #EC851D;
               color: white;
+              font-size: 16px;
 
               &:hover {
                 background-color: #2D3041;

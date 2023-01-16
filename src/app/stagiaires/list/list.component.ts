@@ -84,44 +84,25 @@ export class ListComponent implements OnInit {
     return displayedItem;
   }
 
+  public goToTraineesList(): void {
+    this.router.navigate([StagiairesPoes.STAGIAIRES, 'list']);
+  }
+
+  public goToTraineesAdd(): void {
+    this.router.navigate([StagiairesPoes.STAGIAIRES, 'add']);
+  }
+
+  public goToPOESList(): void {
+    this.router.navigate([StagiairesPoes.POES, 'list']);
+  }
+
+  public goToPOESAdd(): void {
+    this.router.navigate([StagiairesPoes.POES, 'add']);
+  }
+
   public goToDetail(id: number): void {
     console.log(`Got ${id} from list`);
     this.router.navigate([StagiairesPoes.STAGIAIRES, 'detail', id]);
-  }
-
-  public onDelete(stagiaire: StagiaireModel): void {
-    var result = confirm('Supprimer le participant ?');
-    if (result) {
-      this.stagiaireServices
-        .delete(stagiaire)
-        .subscribe((response: HttpResponse<any>) => {
-          this.stagiaires.splice(
-            this.stagiaires.findIndex(
-              (obj: StagiaireModel) => obj.id === stagiaire.id
-            ),
-            1
-          );
-        });
-      this.snackBar.open(
-        `Le stagiaire ${stagiaire.id} a été supprimé`,
-        'Compris',
-        {
-          duration: 2500,
-        }
-      );
-    }
-  }
-
-  public goToTrainees(): void {
-    this.router.navigate(['/stagiaires/list']);
-  }
-
-  public goToAdd(): void {
-    this.router.navigate(['/stagiaires/add']);
-  }
-
-  public goToPOEList(): void {
-    this.router.navigate(['/poes/list']);
   }
 
   openModal(template: TemplateRef<any>) {

@@ -1,7 +1,11 @@
 import { HttpResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Poe } from 'src/app/core/models/poe';
+import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
+import { StagiairesPoes } from 'src/app/shared/enums/stagiaires-poes';
 import { PoeService } from '../../services/poe/poe.service';
 
 
@@ -14,7 +18,16 @@ import { PoeService } from '../../services/poe/poe.service';
 export class ListComponent implements OnInit {
   poes: Poe[] = [];
   public showLi: string = 'All';
-  constructor(private _poeService: PoeService, private snackBar: MatSnackBar) {}
+
+  modalRef: BsModalRef | undefined;
+  message: string | undefined;
+
+  constructor(
+    private _poeService: PoeService, 
+    private snackBar: MatSnackBar, 
+    private router: Router,
+    private modalService: BsModalService
+    ) {}
 
   ngOnInit(): void {
     this._poeService.findAll().subscribe((poes: Poe[]) => {
@@ -35,16 +48,55 @@ export class ListComponent implements OnInit {
     return displayedItem;
   }
 
-  public onDelete(poe: Poe): void {
-    this._poeService.delete(poe).subscribe((response: HttpResponse<any>) => {
-      // Supprimer la ligne dans this.stagiaires
-      this.poes.splice(
-        this.poes.findIndex((obj: Poe) => obj.id === poe.id),
-        1
-      );
-      this.snackBar.open(`Le stagiaire ${poe.id} a été supprimé`, 'Compris', {
-        duration: 2500,
+
+  public goToTraineesList(): void {
+    this.router.navigate([StagiairesPoes.STAGIAIRES, 'list']);
+  }
+
+  public goToTraineesAdd(): void {
+    this.router.navigate([StagiairesPoes.STAGIAIRES, 'add']);
+  }
+
+  public goToPOESList(): void {
+    this.router.navigate([StagiairesPoes.POES, 'list']);
+  }
+
+  public goToPOESAdd(): void {
+    this.router.navigate([StagiairesPoes.POES, 'add']);
+  }
+
+  public goToDetail(id: number): void {
+    console.log(`Got ${id} from list`);
+    this.router.navigate([StagiairesPoes.STAGIAIRES, 'detail', id]);
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+  }
+
+  confirm(poe: Poe): void {
+    this.message = 'Confirmed!';
+    this?.modalRef?.hide();
+    this._poeService
+      .delete(poe)
+      .subscribe((response: HttpResponse<any>) => {
+        this.poes.splice(
+          this.poes.findIndex(
+            (obj: Poe) => obj.id === poe.id
+          ),
+          1
+        );
       });
-    });
+    this.snackBar.open(
+      `Le stagiaire ${poe.id} a été supprimé`,
+      'Compris',
+      {
+        duration: 2500,
+      }
+    );
+  }
+  decline(): void {
+    this.message = 'Declined!';
+    this?.modalRef?.hide();
   }
 }
