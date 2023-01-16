@@ -9,36 +9,33 @@ import { StagiaireService } from 'src/app/core/services/stagiaire-service';
 import { IntlService } from 'src/app/intl/services/intl.service';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
-
-
-
-
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
   public stagiaires: StagiaireModel[] = [];
-  public lastNameFirst =false
-  public full =false
+  public lastNameFirst = false;
+  public full = false;
   public showLi: string = 'A';
-  
+
   modalRef: BsModalRef | undefined;
   message: string | undefined;
 
   constructor(
     private router: Router, // DI => Dependency Injection
-    private stagiaireServices : StagiaireService,
+    private stagiaireServices: StagiaireService,
     private snackBar: MatSnackBar,
     private modalService: BsModalService
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.stagiaireServices.findAll().subscribe((stagiaires:StagiaireModel[])=>{
-        this.stagiaires=stagiaires // initialise this.stagiaires quand la requette observée a stagiaireService est finie 
-    });
+    this.stagiaireServices
+      .findAll()
+      .subscribe((stagiaires: StagiaireModel[]) => {
+        this.stagiaires = stagiaires; // initialise this.stagiaires quand la requette observée a stagiaireService est finie
+      });
   }
 
   public changeGender(): boolean {
@@ -50,8 +47,7 @@ export class ListComponent implements OnInit {
       return this.showLi === 'M';
     }
 
-  return this.showLi === 'X'  
-
+    return this.showLi === 'X';
   }
 
   public isShown(stagaire: any): boolean {
@@ -67,15 +63,14 @@ export class ListComponent implements OnInit {
       return stagaire.gender === 'M';
     }
 
-  return stagaire.gender === 'X';
-    
+    return stagaire.gender === 'X';
   }
 
   public getDisplayRowsNumber(): number {
     if (this.showLi === 'A') {
       return this.stagiaires.length;
     }
-    
+
     //return this.stagiaires.filter((stagiaire: any) => stagiaire.gender === this.showLi).length;
 
     // Avec un for of
@@ -94,72 +89,67 @@ export class ListComponent implements OnInit {
   }
 
   public onDelete(stagiaire: StagiaireModel): void {
-
-    var result = confirm("Supprimer le participant ?"); if (result) {
-    this.stagiaireServices.delete(stagiaire)
-    .subscribe((response: HttpResponse<any>) => {
-      this.stagiaires.splice(
-      
-        this.stagiaires.findIndex((obj: StagiaireModel) => obj.id === stagiaire.id),
-        1
-      )
-    })
-    this.snackBar.open(
-      `Le stagiaire ${stagiaire.id} a été supprimé`,
-      'Compris',
-      {
-        duration: 2500
-      }
-    );
-    }
-  }
-
-  public goToTrainees(): void {
-
-    this.router.navigate(['/stagiaires/list']);
-  }
-
-  public goToAdd(): void {
-
-    this.router.navigate(['/stagiaires/add']);
-  }
-
-  public goToPOEList(): void {
-
-    this.router.navigate(['/poes/list']);
-  }
- 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
-  }
- 
-  confirm(stagiaire: StagiaireModel): void {
-    this.message = 'Confirmed!';
-    this?.modalRef?.hide();
-      this.stagiaireServices.delete(stagiaire)
-      .subscribe((response: HttpResponse<any>) => {
-        this.stagiaires.splice(
-        
-          this.stagiaires.findIndex((obj: StagiaireModel) => obj.id === stagiaire.id),
-          1
-        )
-      })
+    var result = confirm('Supprimer le participant ?');
+    if (result) {
+      this.stagiaireServices
+        .delete(stagiaire)
+        .subscribe((response: HttpResponse<any>) => {
+          this.stagiaires.splice(
+            this.stagiaires.findIndex(
+              (obj: StagiaireModel) => obj.id === stagiaire.id
+            ),
+            1
+          );
+        });
       this.snackBar.open(
         `Le stagiaire ${stagiaire.id} a été supprimé`,
         'Compris',
         {
-          duration: 2500
+          duration: 2500,
         }
       );
+    }
+  }
+
+  public goToTrainees(): void {
+    this.router.navigate(['/stagiaires/list']);
+  }
+
+  public goToAdd(): void {
+    this.router.navigate(['/stagiaires/add']);
+  }
+
+  public goToPOEList(): void {
+    this.router.navigate(['/poes/list']);
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+  }
+
+  confirm(stagiaire: StagiaireModel): void {
+    this.message = 'Confirmed!';
+    this?.modalRef?.hide();
+    this.stagiaireServices
+      .delete(stagiaire)
+      .subscribe((response: HttpResponse<any>) => {
+        this.stagiaires.splice(
+          this.stagiaires.findIndex(
+            (obj: StagiaireModel) => obj.id === stagiaire.id
+          ),
+          1
+        );
+      });
+    this.snackBar.open(
+      `Le stagiaire ${stagiaire.id} a été supprimé`,
+      'Compris',
+      {
+        duration: 2500,
       }
-      decline(): void {
+    );
+  }
+  decline(): void {
     this.message = 'Declined!';
     this?.modalRef?.hide();
   }
-  
-
 }
-    
- 
-
-
