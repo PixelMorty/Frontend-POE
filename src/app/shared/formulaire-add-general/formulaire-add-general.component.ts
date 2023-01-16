@@ -1,56 +1,50 @@
-import { TypeModifier } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { create } from 'domain';
-import { updateLocale } from 'moment';
 import { map, take } from 'rxjs';
 import { FormPoe } from 'src/app/core/forms/formPoe';
-import { NgModule } from '@angular/core';
-import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MomentDateModule } from '@angular/material-moment-adapter';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MomentDateAdapter } from '@angular/material-moment-adapter';
-
-
 import { FormStagiaire } from 'src/app/core/forms/FormStagiaire';
 import { Poe } from 'src/app/core/models/poe';
 import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
-import { DateLessThan } from 'src/app/core/validators/date-less-than';
 import { StagiaireService } from 'src/app/core/services/stagiaire-service';
+import { DateLessThan } from 'src/app/core/validators/date-less-than';
 import { PoeService } from 'src/app/poes/services/poe/poe.service';
 import { StagiairesPoes } from '../enums/stagiaires-poes';
-import { MY_DATE_FORMATS } from './my-date-formats';
+
+export const MY_FORMATS = {
+  parse: {
+      dateInput: 'LL'
+  },
+  display: {
+      dateInput: 'DD-MM-YYYY',
+      monthYearLabel: 'YYYY',
+      dateA11yLabel: 'LL',
+      monthYearA11yLabel: 'YYYY'
+  }
+};
 
 @Component({
   selector: 'app-formulaire-add-general',
   templateUrl: './formulaire-add-general.component.html',
   styleUrls: ['./formulaire-add-general.component.scss'],
-  
 })
 
 export class FormulaireAddGeneralComponent implements OnInit {
   public addForm!: FormGroup; // Groupe de Contrôles de formulaire
   public class_poe_or_Stagiaire!: String;
-  public id !: Number;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private stagiaireService: StagiaireService,
     private poeService: PoeService,
+    private formBuilder: FormBuilder
+
   ) {}
 
   ngOnInit(): void {
     //console.log(this.route.snapshot.pathFromRoot[this.route.snapshot.pathFromRoot.length -2].url.toString())
 
-    this.route.paramMap.subscribe(
-      (routeParams) => {
-
-        this.id=new Number(routeParams.get('id'));
-
-      });
 
     this.route
       .parent!.url.pipe(
@@ -62,13 +56,18 @@ export class FormulaireAddGeneralComponent implements OnInit {
 
         JSON.stringify(urlType);
         //console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
+        if (urlType == StagiairesPoes.STAGIAIRES) {
 
-        this.class_poe_or_Stagiaire=urlType;
+          this.class_poe_or_Stagiaire = StagiairesPoes.STAGIAIRES;
+          // console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
+        } else if (urlType == StagiairesPoes.POES) {
+          this.class_poe_or_Stagiaire = StagiairesPoes.POES;
+
+          //console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
+        }
 
         if (this.class_poe_or_Stagiaire == StagiairesPoes.STAGIAIRES) {
           this.initFormStagiaire();
-
-
           //this.addForm = new FormStagiaire(new StagiaireModel()).form;
           // this.addForm = this.formBuilder.group({
           //   lastName: [
@@ -104,9 +103,7 @@ export class FormulaireAddGeneralComponent implements OnInit {
           //   ]
           // });
         } else if (this.class_poe_or_Stagiaire == StagiairesPoes.POES) {
-
           //TODO GERER UPDATE
-
           this.initFormPoe();
           //this.addForm = new FormPoe(new Poe()).form;
           //       this.addForm = this.formBuilder.group({
@@ -147,7 +144,7 @@ export class FormulaireAddGeneralComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    //TODO CELINE
+    //TODO CELINE 
     // dupliquer le code qui suit et mettre du if else :
     // ce bloc là si pas d'id dans la requete
     // ce bloc modifié qui utilise du update si on a un id
@@ -158,63 +155,32 @@ export class FormulaireAddGeneralComponent implements OnInit {
 
   //     if (routeParams.get('id')===null){
   //      }
-  // null si y'en a pas, un entier positif sinon
+  // null si y'en a pas, un entier positif sinon 
 
-  //
-  //id !=null ---> update
-
-          if (this.id.valueOf() === 0){
-            ////CREEERR
-
-            if (this.class_poe_or_Stagiaire == StagiairesPoes.STAGIAIRES) {
-              this.stagiaireService
-                .create(this.addForm.value)
-                .subscribe((stagiaire: StagiaireModel) => {
-                  this.router.navigate(['/', StagiairesPoes.STAGIAIRES]);
-                });
-            } else if (this.class_poe_or_Stagiaire == StagiairesPoes.POES) {
-              this.poeService.create(this.addForm.value).subscribe((poe: Poe) => {
-                this.router.navigate(['/', StagiairesPoes.STAGIAIRES]);
-              });
-            }
-
-          }else{
-
-            if (this.class_poe_or_Stagiaire == StagiairesPoes.STAGIAIRES) {
-              this.stagiaireService
-                .update(this.addForm.value)
-                .subscribe((stagiaire: StagiaireModel) => {
-                  this.router.navigate(['/', StagiairesPoes.STAGIAIRES]);
-                });
-            } else if (this.class_poe_or_Stagiaire == StagiairesPoes.POES) {
-              this.poeService.update(this.addForm.value).subscribe((poe: Poe) => {
-                this.router.navigate(['/', StagiairesPoes.STAGIAIRES]);
-            });
-            }
-
-              ///UPDAAATE
-
-          }
-
-
-
-
+    if (this.class_poe_or_Stagiaire == StagiairesPoes.STAGIAIRES) {
+      this.stagiaireService
+        .create(this.addForm.value)
+        .subscribe((stagiaire: StagiaireModel) => {
+          this.router.navigate(['/', StagiairesPoes.STAGIAIRES]);
+        });
+    } else if (this.class_poe_or_Stagiaire == StagiairesPoes.POES) {
+      this.poeService.create(this.addForm.value).subscribe((poe: Poe) => {
+        this.router.navigate(['/', StagiairesPoes.POES]);
+      });
     }
-
-
-
-
-
+  }
 private initFormPoe (){
+  this.route.paramMap.subscribe(
+    (routeParams) => {
 
-
-      if (this.id.valueOf()===0){
+      if (routeParams.get('id')===null){
         this.addForm = new FormPoe(new Poe()).form;
         console.log("stagiaire vide")
       }else{
-
+      
       try {
-        this.poeService.findOne(this.id.valueOf())
+        console.log("pavide")
+        this.poeService.findOne(+routeParams.get('id')!)
           .subscribe((poe: Poe) => {
             this.addForm = new FormPoe(poe).form;
           })
@@ -224,15 +190,19 @@ private initFormPoe (){
       }
     }
   }
-
+  )
+}
 
 private initFormStagiaire (){
-  if (this.id.valueOf()===0){
+  this.route.paramMap.subscribe(
+    (routeParams) => {
+
+      if (routeParams.get('id')===null){
         this.addForm = new FormStagiaire(new StagiaireModel()).form;
       }else{
 
       try {
-        this.stagiaireService.findOne(this.id.valueOf())
+        this.stagiaireService.findOne(+routeParams.get('id')!)
           .subscribe((stagiaire: StagiaireModel) => {
             this.addForm = new FormStagiaire(stagiaire).form;
            //TODO CHOPER LE 404 ET REDIRIGER
@@ -242,23 +212,9 @@ private initFormStagiaire (){
         this.router.navigate(['/', StagiairesPoes.STAGIAIRES]);
       }
     }
-
-
-
-}
+  }
+  )
 
 }
 
-@NgModule({
-  imports: [
-    MatInputModule, 
-    MatDatepickerModule,
-    MomentDateModule
-  ],
-  providers: [
-    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
-  ],
-})
-
-export class AppModule { } 
+}

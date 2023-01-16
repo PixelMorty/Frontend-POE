@@ -21,7 +21,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StagiairesModule,
     BrowserAnimationsModule,
     SharedModule,
     MatInputModule, 
