@@ -7,21 +7,14 @@ import { FormStagiaire } from 'src/app/core/forms/FormStagiaire';
 import { Poe } from 'src/app/core/models/poe';
 import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
 import { StagiaireService } from 'src/app/core/services/stagiaire-service';
-import { DateLessThan } from 'src/app/core/validators/date-less-than';
 import { PoeService } from 'src/app/poes/services/poe/poe.service';
 import { StagiairesPoes } from '../enums/stagiaires-poes';
 
-export const MY_FORMATS = {
-  parse: {
-      dateInput: 'LL'
-  },
-  display: {
-      dateInput: 'DD-MM-YYYY',
-      monthYearLabel: 'YYYY',
-      dateA11yLabel: 'LL',
-      monthYearA11yLabel: 'YYYY'
-  }
-};
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+
+
 
 @Component({
   selector: 'app-formulaire-add-general',
@@ -217,4 +210,6 @@ private initFormStagiaire (){
 
 }
 
+
 }
+
