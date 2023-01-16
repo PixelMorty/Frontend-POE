@@ -1,66 +1,102 @@
 <body>
-
   <div id="leftpanel">
-
     <div id="title">
       <p>> MENU</p>
     </div>
 
     <div>
       <ul class="menu-list">
-        <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Formations</button>
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Formations</button>
           <ul class="menu-sub-list">
-            <div class="menu-item"><button class="menu-button">Panorama</button></div>
-            <div class="menu-item"><button class="menu-button" (click)="goToPOEList()">Liste</button></div>
+            <div class="menu-item">
+              <button class="menu-button">Panorama</button>
+            </div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToPOEList()">Liste</button>
+            </div>
           </ul>
         </div>
-        <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Participants</button>
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Participants</button>
           <ul class="menu-sub-list">
-            <div class="menu-item"><button class="menu-button">Panorama</button></div>
-            <div class="menu-item"><button class="menu-button" (click)="goToTrainees()">Liste</button></div>
+            <div class="menu-item">
+              <button class="menu-button">Panorama</button>
+            </div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToTrainees()">
+                Liste
+              </button>
+            </div>
           </ul>
         </div>
-        <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Ajouter</button>
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Ajouter</button>
           <ul class="menu-sub-list">
-            <div class="menu-item"><button class="menu-button">Formation</button></div>
-            <div class="menu-item"><button class="menu-button" (click)="goToAdd()">Participant</button></div>
+            <div class="menu-item">
+              <button class="menu-button">Formation</button>
+            </div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToAdd()">
+                Participant
+              </button>
+            </div>
           </ul>
         </div>
-        <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Statistiques</button>
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Statistiques</button>
         </div>
-        <div class="menu-item"><button class="menu-button">• &nbsp;&nbsp;Archives</button></div>
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Archives</button>
+        </div>
       </ul>
     </div>
   </div>
 
   <div id="topbuttons">
+    <br />
+    <br />
 
-    <br>
-    <br>
-
-    <button type="button" (click)="showLi = 'A'" [ngClass]="{'is-selected': showLi === 'A'}">
+    <button
+      type="button"
+      (click)="showLi = 'A'"
+      [ngClass]="{ 'is-selected': showLi === 'A' }"
+    >
       Tous
     </button>
 
-    <button type="button" class="woman" (click)="showLi='F'" [ngClass]="{'is-selected': showLi === 'F'}">
+    <button
+      type="button"
+      class="woman"
+      (click)="showLi = 'F'"
+      [ngClass]="{ 'is-selected': showLi === 'F' }"
+    >
       Femme
     </button>
 
-    <button type="button" class="man" (click)="showLi='M'" [ngClass]="{'is-selected': showLi === 'M'}">
+    <button
+      type="button"
+      class="man"
+      (click)="showLi = 'M'"
+      [ngClass]="{ 'is-selected': showLi === 'M' }"
+    >
       Homme
     </button>
 
-    <button type="button" class="other" (click)="showLi='X'" [ngClass]="{'is-selected': showLi === 'X'}">
+    <button
+      type="button"
+      class="other"
+      (click)="showLi = 'X'"
+      [ngClass]="{ 'is-selected': showLi === 'X' }"
+    >
       Autre
     </button>
 
-    <br>
-    <br>
-
+    <br />
+    <br />
   </div>
 
   <table>
-
     <thead>
       <tr>
         <th>&nbsp;</th>
@@ -73,67 +109,88 @@
     </thead>
 
     <tbody>
-
       <ng-container *ngFor="let stagiaire of stagiaires">
         <ng-container *ngIf="isShown(stagiaire)">
           <tr>
             <td>
-              <span (click)="goToDetail(stagiaire.id)" [ngClass]="{'bubble': true, 
-                'male': stagiaire.gender === 'M', 
-                'female': stagiaire.gender === 'F',   
-                'other': stagiaire.gender === 'X'}">
-                {{ stagiaire | initials : full:lastNameFirst }}
+              <span
+                (click)="goToDetail(stagiaire.id)"
+                [ngClass]="{
+                  bubble: true,
+                  male: stagiaire.gender === 'M',
+                  female: stagiaire.gender === 'F',
+                  other: stagiaire.gender === 'X'
+                }"
+              >
+                {{ stagiaire | initials : full : lastNameFirst }}
               </span>
-
             </td>
             <td>
-              {{ stagiaire.lastName | uppercase}}
+              {{ stagiaire.lastName | uppercase }}
             </td>
             <td>
               {{ stagiaire.firstName }}
             </td>
             <td
-              [ngClass]="{'female': stagiaire.gender === 'F','male': stagiaire.gender === 'M','other': stagiaire.gender === 'X'}">
-              {{stagiaire.gender}}
+              [ngClass]="{
+                female: stagiaire.gender === 'F',
+                male: stagiaire.gender === 'M',
+                other: stagiaire.gender === 'X'
+              }"
+            >
+              {{ stagiaire.gender }}
             </td>
             <td>
-              {{ stagiaire.birthDate | date : 'L/dd/yyyy'}}
+              {{ stagiaire.birthDate | date : "L/dd/yyyy" }}
             </td>
             <td>
-              <button mat-mini-flat class="material-icons style" (click)="openModal(template)">
+              <button
+                mat-mini-flat
+                class="material-icons style"
+                (click)="openModal(template)"
+              >
                 <mat-icon>delete</mat-icon>
               </button>
               <ng-template #template>
-                <div class="modal-body text-center"  style="
-                background-color: white;
-                border-radius: .4em;">
-                  <p style="font-size: 22px;">Confirmer la suppression ?</p>
-                  <button type="button" class="delete" (click)="confirm(stagiaire)" >Supprimer</button>
-                  <button type="button" (click)="decline()" >Annuler</button>
+                <div
+                  class="modal-body text-center"
+                  style="background-color: white; border-radius: 0.4em"
+                >
+                  <p style="font-size: 22px">Confirmer la suppression ?</p>
+                  <button
+                    type="button"
+                    class="delete"
+                    (click)="confirm(stagiaire)"
+                  >
+                    Supprimer
+                  </button>
+                  <button type="button" (click)="decline()">Annuler</button>
                 </div>
               </ng-template>
-              <button mat-mini-flat class="material-icons style2">
+              <button
+                mat-mini-flat
+                class="material-icons style2"
+                (click)="goToUpdate(stagiaire.id)"
+              >
                 <mat-icon>edit</mat-icon>
               </button>
-              
             </td>
           </tr>
         </ng-container>
       </ng-container>
 
-
-      <td colspan="6" style="font-size: 20px; text-align: center; font-weight: bolder;">
-        <br>
-        {{getDisplayRowsNumber()}}/{{stagiaires.length}}
+      <td
+        colspan="6"
+        style="font-size: 20px; text-align: center; font-weight: bolder"
+      >
+        <br />
+        {{ getDisplayRowsNumber() }}/{{ stagiaires.length }}
       </td>
-
     </tbody>
-
   </table>
 
   <div>
-    <br>
-    <br>
+    <br />
+    <br />
   </div>
-
 </body>
