@@ -8,6 +8,7 @@ import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
 import { StagiaireService } from 'src/app/core/services/stagiaire-service';
 import { IntlService } from 'src/app/intl/services/intl.service';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { StagiairesPoes } from 'src/app/shared/enums/stagiaires-poes';
 
 @Component({
   selector: 'app-list',
@@ -85,7 +86,7 @@ export class ListComponent implements OnInit {
 
   public goToDetail(id: number): void {
     console.log(`Got ${id} from list`);
-    this.router.navigate(['/detail', id]);
+    this.router.navigate([StagiairesPoes.STAGIAIRES, 'detail', id]);
   }
 
   public onDelete(stagiaire: StagiaireModel): void {
