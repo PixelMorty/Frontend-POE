@@ -103,7 +103,7 @@ export class StagiaireService {
 
   public update(datas: StagiaireModel): Observable<StagiaireModel> {
     return this.httpClient
-      .patch<StagiaireModel>(
+      .put<StagiaireModel>(
         StagiaireService.CONTROLLER_PATH,
         this.serializeJson(datas)
         //datas

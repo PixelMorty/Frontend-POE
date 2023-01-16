@@ -60,7 +60,7 @@ export class PoeService implements ICrud<Poe> {
 
   public update(datas: Poe): Observable<Poe> {
     return this._httpClient
-      .patch<Poe>(
+      .put<Poe>(
         PoeService._CONTROLLER_PATH,
         this.serializeJson(datas)
         //datas
