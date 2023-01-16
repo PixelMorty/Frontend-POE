@@ -5,6 +5,16 @@ import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
 import { StagiaireService } from 'src/app/core/services/stagiaire-service';
 import { DateLessThan } from 'src/app/core/validators/date-less-than';
 
+
+import { NgModule } from '@angular/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MomentDateModule } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { MY_DATE_FORMAT } from './my-date-format';
+
+
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
@@ -66,3 +76,17 @@ export class AddComponent implements OnInit {
     });
   }
 }
+
+@NgModule({
+  imports: [
+    MatInputModule, 
+    MatDatepickerModule,
+    MomentDateModule
+  ],
+  providers: [
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMAT }
+  ],
+})
+
+export class AppModule { } 
