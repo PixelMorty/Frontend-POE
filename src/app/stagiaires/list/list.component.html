@@ -141,21 +141,13 @@
                   style="background-color: white; border-radius: 0.4em"
                 >
                   <p style="font-size: 22px">Confirmer la suppression ?</p>
-                  <button
-                    type="button"
-                    class="delete"
-                    (click)="confirm(stagiaire)"
-                  >
+                  <button type="button" class="delete" (click)="confirm(stagiaire)">
                     Supprimer
                   </button>
                   <button type="button" (click)="decline()">Annuler</button>
                 </div>
               </ng-template>
-              <button
-                mat-mini-flat
-                class="material-icons style2"
-                (click)="goToUpdate(stagiaire.id)"
-              >
+              <button mat-mini-flat class="material-icons style2">
                 <mat-icon>edit</mat-icon>
               </button>
             </td>
