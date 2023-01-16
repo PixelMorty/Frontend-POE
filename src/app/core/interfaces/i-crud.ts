@@ -28,7 +28,7 @@ export interface ICrud<T> {
    * @param datas Datas representing Object to update in the database
    * @returns void
    */
-  update(datas: T): void;
+  update(datas: T, id: Number): void;
 
   /**
    * delete(datas: T) Remove an Object from the database

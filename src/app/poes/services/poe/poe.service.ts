@@ -58,10 +58,10 @@ export class PoeService implements ICrud<Poe> {
       );
   }
 
-  public update(datas: Poe): Observable<Poe> {
+  public update(datas: Poe, id: Number): Observable<Poe> {
     return this._httpClient
       .put<Poe>(
-        PoeService._CONTROLLER_PATH,
+        `${PoeService._CONTROLLER_PATH}/${id}`,
         this.serializeJson(datas)
         //datas
       )
