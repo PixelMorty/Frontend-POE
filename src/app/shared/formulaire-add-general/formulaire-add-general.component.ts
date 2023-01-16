@@ -10,11 +10,13 @@ import { StagiaireService } from 'src/app/core/services/stagiaire-service';
 import { PoeService } from 'src/app/poes/services/poe/poe.service';
 import { StagiairesPoes } from '../enums/stagiaires-poes';
 
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+} from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
-
-
 
 @Component({
   selector: 'app-formulaire-add-general',
@@ -51,86 +53,18 @@ export class FormulaireAddGeneralComponent implements OnInit {
         JSON.stringify(urlType);
         //console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
         if (urlType == StagiairesPoes.STAGIAIRES) {
-
           this.class_poe_or_Stagiaire = StagiairesPoes.STAGIAIRES;
           // console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
         } else if (urlType == StagiairesPoes.POES) {
           this.class_poe_or_Stagiaire = StagiairesPoes.POES;
 
-        this.class_poe_or_Stagiaire = urlType;
+          this.class_poe_or_Stagiaire = urlType;
 
-        if (this.class_poe_or_Stagiaire == StagiairesPoes.STAGIAIRES) {
-          this.initFormStagiaire();
-
-          //this.addForm = new FormStagiaire(new StagiaireModel()).form;
-          // this.addForm = this.formBuilder.group({
-          //   lastName: [
-          //     '', // Default value (here empty)
-          //     // <input placeholder="Helper text..." value="">
-          //     [
-          //       Validators.required // Indique que le contrôle doit impérativement être défini avec une valeur non nulle
-          //     ]
-          //   ],
-          //   firstName: [
-          //     '',
-          //     Validators.required
-          //   ],
-          //   gender: [
-          //     'M'
-          //   ],
-          //   birthDate: [
-          //     '',
-          //     [
-          //       Validators.required,
-          //       DateLessThan.dateLessThan()
-          //     ]
-          //   ],
-          //   phoneNumber: [
-          //     ''
-          //   ],
-          //   email: [
-          //     '',
-          //     [
-          //       Validators.required,
-          //       Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
-          //     ]
-          //   ]
-          // });
-        } else if (this.class_poe_or_Stagiaire == StagiairesPoes.POES) {
-          //TODO GERER UPDATE
-          this.initFormPoe();
-          //this.addForm = new FormPoe(new Poe()).form;
-          //       this.addForm = this.formBuilder.group({
-          //         poeType: [
-          //           '', // Default value (here empty)
-          //           // <input placeholder="Helper text..." value="">
-          //           [
-          //             Validators.required // Indique que le contrôle doit impérativement être défini avec une valeur non nulle
-          //           ]
-          //         ],
-          //         title: [
-          //           '',
-          //           Validators.required
-          //         ],
-
-          //         beginDate: [
-          //           '',
-          //           [
-          //             Validators.required,
-          //           ]
-          //         ],
-          //         endDate: [
-          //           '',
-          //           [
-          //             Validators.required,
-          //           ]
-          //         ],
-
-          //       });
-          //     }
-
-          //   }
-          // );
+          if (this.class_poe_or_Stagiaire == StagiairesPoes.STAGIAIRES) {
+            this.initFormStagiaire();
+          } else if (this.class_poe_or_Stagiaire == StagiairesPoes.POES) {
+            this.initFormPoe();
+          }
         }
       });
     // var forme =  new FormPoe(new Poe());
@@ -138,25 +72,7 @@ export class FormulaireAddGeneralComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    //TODO CELINE
-    // dupliquer le code qui suit et mettre du if else :
-    // ce bloc là si pas d'id dans la requete
-    // ce bloc modifié qui utilise du update si on a un id
-
-    //pour choper l'id c'est :
-    // this.route.paramMap.subscribe(
-    //   (routeParams) => {
-
-    //     if (routeParams.get('id')===null){
-    //      }
-    // null si y'en a pas, un entier positif sinon
-
-    //
-    //id !=null ---> update
-
     if (this.id.valueOf() === 0) {
-      ////CREEERR
-
       if (this.class_poe_or_Stagiaire == StagiairesPoes.STAGIAIRES) {
         this.stagiaireService
           .create(this.addForm.value)
@@ -182,8 +98,6 @@ export class FormulaireAddGeneralComponent implements OnInit {
             this.router.navigate(['/', StagiairesPoes.STAGIAIRES]);
           });
       }
-
-      ///UPDAAATE
     }
   }
 
@@ -221,4 +135,3 @@ export class FormulaireAddGeneralComponent implements OnInit {
     }
   }
 }
-
