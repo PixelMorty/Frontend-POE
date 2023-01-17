@@ -128,11 +128,18 @@ export class StagiaireService {
 
  
   public setPoe(idTrainee : Number, idPoe :Number){
-    // envoyer requete au back patch  /{idTrainee}/setPoe/{idPoe}"
+        // envoyer requete au back patch  /setPoe/{idTrainee}/{idPoe}"
+    this.httpClient.patch<any>(
+      `${StagiaireService.CONTROLLER_PATH}/setPoe/${idTrainee}/${idPoe}` ,
+      null).subscribe();
+
   }
  
-  public removePoe(idTrainee : Number, idPoe :Number){
+  public removePoe(idTrainee : Number){
     // envoyer requete au back  patch /{idTrainee}/setPoe/{idPoe}"
+    this.httpClient.patch<any>(
+      `${StagiaireService.CONTROLLER_PATH}/remPoe/${idTrainee}` ,
+      null).subscribe();
   }
 
 

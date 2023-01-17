@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NumberValueAccessor } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Poe } from 'src/app/core/models/poe';
+import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
 import { StagiaireService } from 'src/app/core/services/stagiaire-service';
+import { StagiairesPoes } from 'src/app/shared/enums/stagiaires-poes';
+import { PoeService } from '../../services/poe/poe.service';
 
 @Component({
   selector: 'app-poe-add-remove-stagiaire',
@@ -10,20 +14,50 @@ import { StagiaireService } from 'src/app/core/services/stagiaire-service';
 })
 export class PoeAddRemoveStagiaireComponent implements OnInit {
 
-  private idPoe! : Number;
-  private idTrainee !:Number;
+  private idPoe !: Number;
+  public stagiaires !: StagiaireModel[];
+  public poe !: Poe;
 
   constructor(
     private stagiaireService : StagiaireService,
+    private poeService : PoeService,
     private router : Router,
     private activatedRoute:ActivatedRoute
     ) { }
 
   ngOnInit(): void {
-// instancier idPoe et tout
+// instancier stagiaires et poe
+
+try {
+  this.activatedRoute.paramMap.subscribe((routeParams)=>{
+    this.idPoe = new Number(routeParams.get('id'));
+  
+  
+  // initi poe
+    this.poeService.findOne(this.idPoe.valueOf()).subscribe((poe: Poe) => {
+        this.poe= poe;
+  // init stagiaires
+    });
+
+//TOPDO DetailedPoe plus besoin du taleau de stagiaire
+  this.stagiaireService.findAll().subscribe((stg:StagiaireModel[]) => {
+    stg.filter((s)=>s.$)
+    this.stagiaires= stg;
+  });
+});
+} catch (error) {
+  this.router.navigate(['/', StagiairesPoes.POES]);
+}
+
   }
 
-  onSubmit(){
-    //this.stagiaireService.setPoe(this.idPoe,this.idTrainee);
+    
+  public onRemove(idTrainee: Number){
+    this.stagiaireService.removePoe(idTrainee);
   }
+
+  public onAdd(idTrainee: Number){
+    this.stagiaireService.setPoe(idTrainee,this.idPoe);
+  }
+  
 }
