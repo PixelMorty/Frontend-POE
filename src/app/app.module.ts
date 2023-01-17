@@ -17,11 +17,12 @@ import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { MY_DATE_FORMATS } from './shared/formulaire-add-general/my-date-formats';
+import { Poes } from './poes.component.detail/poes.component.detail.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, Poes.Component.DetailComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
