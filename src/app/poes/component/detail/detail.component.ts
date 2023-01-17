@@ -22,30 +22,26 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     // recup l'id
+
+    // recup le detailpoe:
     this.route.paramMap.subscribe(
       (routeParams) => {
       this.id = new Number(routeParams.get('id'));
-    });
-    // recup le detailpoe:
-
+    
     try {
     this.poeService.findOneDetailed(this.id)
         .subscribe((detailpoe: Detailpoe) => {
           this.poedetail = detailpoe;
         
-      console.log(JSON.stringify(this.poedetail));
-      console.log(this.poedetail.id)
+
     })
     } catch (error) {
             
  
 
-     // this.router.navigate(['/', StagiairesPoes.POES]);
+      this.router.navigate(['/', StagiairesPoes.POES]);
+    }
+  });
     }
 
   }
-
-
-  
-
-}
