@@ -61,29 +61,15 @@
     <br />
     <br />
 
-    <button
-      type="button"
-      (click)="showLi = 'All'"
-      [ngClass]="{ 'is-selected': showLi === 'All' }"
-    >
+    <button type="button" (click)="showLi = 'All'" [ngClass]="{ 'is-selected': showLi === 'All' }">
       Tous
     </button>
 
-    <button
-      type="button"
-      class="poei"
-      (click)="showLi = 'POEI'"
-      [ngClass]="{ 'is-selected': showLi === 'POEI' }"
-    >
+    <button type="button" class="poei" (click)="showLi = 'POEI'" [ngClass]="{ 'is-selected': showLi === 'POEI' }">
       POEI
     </button>
 
-    <button
-      type="button"
-      class="poec"
-      (click)="showLi = 'POEC'"
-      [ngClass]="{ 'is-selected': showLi === 'POEC' }"
-    >
+    <button type="button" class="poec" (click)="showLi = 'POEC'" [ngClass]="{ 'is-selected': showLi === 'POEC' }">
       POEC
     </button>
 
@@ -107,13 +93,11 @@
       <ng-container *ngFor="let poe of poes">
         <tr *ngIf="showLi === 'All' || poe.poeType === showLi">
           <td>
-            <span
-              [ngClass]="{
+            <span [ngClass]="{
                 bubble: true,
                 poei: poe.poeType === 'POEI',
                 poec: poe.poeType === 'POEC'
-              }"
-            >
+              }">
               {{ poe.poeType }}
             </span>
           </td>
@@ -131,18 +115,11 @@
           </td>
 
           <td>
-            <button
-              mat-mini-flat
-              class="material-icons style"
-              (click)="openModal(template)"
-            >
+            <button nmat-mini-flat class="material-icons style" (click)="openModal(template)">
               <mat-icon>delete</mat-icon>
             </button>
             <ng-template #template>
-              <div
-                class="modal-body text-center"
-                style="background-color: white; border-radius: 0.4em"
-              >
+              <div class="modal-body text-center" style="background-color: white; border-radius: 0.4em">
                 <p style="font-size: 22px">Confirmer la suppression ?</p>
                 <button type="button" class="delete" (click)="confirm(poe)">
                   Supprimer
@@ -150,11 +127,7 @@
                 <button type="button" (click)="decline()">Annuler</button>
               </div>
             </ng-template>
-            <button
-              mat-mini-flat
-              class="material-icons style2"
-              (click)="goToUpdate(poe.id)"
-            >
+            <button mat-mini-flat class="material-icons style2" (click)="goToUpdate(poe.id)">
               <mat-icon>edit</mat-icon>
             </button>
         </tr>
@@ -162,10 +135,7 @@
     </tbody>
 
     <tr>
-      <td
-        colspan="5"
-        style="font-size: 20px; text-align: center; font-weight: bolder"
-      >
+      <td colspan="5" style="font-size: 20px; text-align: center; font-weight: bolder">
         <br />
         {{ getDisplayRowsNumber() }}/{{ poes.length }}
       </td>
