@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { StagiaireModel } from '../models/stagiaire-model';
 import { environment } from './../../../environments/environment';
 import { map, take } from 'rxjs/operators';
+import { Detailtrainee } from '../models/detailtrainee.model';
+import { Poe } from '../models/poe';
 
 //@Injectable la classe devient un service, injectable dans tous les constructors
 
@@ -32,7 +34,50 @@ export class StagiaireService {
       }) //transforme un Observable(ici O<any[]>) en un autre Observable (O<StagiaireModel[]>)
     ); //pipeline
   }
+  public findAllDetailed(): Observable<StagiaireModel[]> {
+    return this.httpClient.get<any[]>(StagiaireService.CONTROLLER_PATH).pipe(
+      take(1), //prends le 1er résultat et arrête d'observer
+      map((httpResponseBody: any[]) => {
+        return httpResponseBody.map((anyStagiaire: any) => {
+          return this.deserializeFromJson(anyStagiaire);
+        }); // transforme un tableau en un autre tableau
+      }) //transforme un Observable(ici O<any[]>) en un autre Observable (O<StagiaireModel[]>)
+    ); //pipeline
+  }
+  public findbyPoe(idPoe:Number): Observable<Detailtrainee[]>{
+    return this.httpClient.get<any[]>( `${StagiaireService.CONTROLLER_PATH}/getByPoeId/${idPoe}` // http://localhost:3000/stagiaires/2
+    )
+    .pipe(
+      take(1), //récupère l'objet qui vient de l'API
+      map((httpResponseBody: any[]) => {
+        return httpResponseBody.map((anyStagiaireDetail: any) => {
+          return this.deserializeFromJsonDetail(anyStagiaireDetail);
+        }); // transforme un tableau en un autre tableau
+       // deserialise pour le transformer en StagiaireModel
+      })
+    );
+  }
+  private deserializeFromJsonDetail(detailTrainee : any) : Detailtrainee{
 
+    var traineeTemp=this.deserializeFromJson(detailTrainee);
+    //rempli tt le reste
+    const returnedDetailedTrainee = new Detailtrainee(); 
+    returnedDetailedTrainee.setStagiaireModelPart(traineeTemp);
+    // rajouter le Poe
+    
+    returnedDetailedTrainee.poe=this.deserializePoeFromJson(detailTrainee.poe);
+    return returnedDetailedTrainee;
+  }
+
+  public deserializePoeFromJson(anyPoe: any): Poe {
+    const poe: Poe = new Poe();
+    poe.id = anyPoe.id;
+    poe.title = anyPoe.title;
+    poe.beginDate = new Date(anyPoe.beginDate);
+    poe.endDate = new Date(anyPoe.endDate);
+    poe.poeType = anyPoe.poeType;
+    return poe;
+  }
   public findOne(id: number): Observable<StagiaireModel> {
     return this.httpClient
       .get<any>(

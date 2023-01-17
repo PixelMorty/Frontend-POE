@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NumberValueAccessor } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Detailtrainee } from 'src/app/core/models/detailtrainee.model';
 import { Poe } from 'src/app/core/models/poe';
 import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
 import { StagiaireService } from 'src/app/core/services/stagiaire-service';
@@ -15,7 +16,7 @@ import { PoeService } from '../../services/poe/poe.service';
 export class PoeAddRemoveStagiaireComponent implements OnInit {
 
   private idPoe !: Number;
-  public stagiaires !: StagiaireModel[];
+  public stagiaires !: Detailtrainee[];
   public poe !: Poe;
 
   constructor(
@@ -40,9 +41,8 @@ try {
     });
 
 //TOPDO DetailedPoe plus besoin du taleau de stagiaire
-  this.stagiaireService.findAll().subscribe((stg:StagiaireModel[]) => {
-    stg.filter((s)=>s.$)
-    this.stagiaires= stg;
+  this.stagiaireService.findbyPoe(this.idPoe).subscribe((detailTrainee:Detailtrainee[]) => {
+    this.stagiaires= detailTrainee;
   });
 });
 } catch (error) {

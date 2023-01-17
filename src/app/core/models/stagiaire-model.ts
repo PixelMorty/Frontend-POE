@@ -7,6 +7,17 @@ export class StagiaireModel {
     protected _phoneNumber: string = '';
     protected _email: string = ''; 
 
+
+    public setStagiaireModelPart(stagiaireModel : StagiaireModel){
+      this._id = stagiaireModel.id ;
+      this._lastName=stagiaireModel.lastName;
+      this._firstName=stagiaireModel.firstName;
+      this._gender=stagiaireModel.gender;
+      this._birthDate=stagiaireModel.birthDate;
+      this._phoneNumber=stagiaireModel.phoneNumber;
+      this._email=stagiaireModel.email; 
+    }
+
     get id() {
       return this._id
     }
