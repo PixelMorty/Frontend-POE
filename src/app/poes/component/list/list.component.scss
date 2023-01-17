@@ -2,6 +2,17 @@
 * SCSS Rules
 **/
 
+#headline {
+  font-family: arial, sans-serif;
+  text-align: left;
+  font-size: 26px;
+  font-weight: bolder;
+  color: #2D3041;
+  position: fixed;
+  left: 500px;
+  top: 100px;
+}
+
 .menu-list {
   margin: 0;
   display: block;
@@ -111,11 +122,12 @@
 	justify-content: left;
 	align-items: flex-start;
 	align-content: flex-start;
-	margin: 150px auto 50px 150px;
 	height: 360px;
 	width: 300px;
   border-radius: .4em;
-	position: fixed;
+  left: 150px;
+  top:150px;
+  position: fixed;
 }
 
 #topbuttons {
@@ -245,9 +257,8 @@ table {
     border-collapse: collapse;
     margin-left: 500px;
     margin-right: auto;
-    width: 50vw;
+    width: 960px;
     min-width: 500px;
-    padding: 8px;
     color: #2D3041;
     
   
@@ -274,7 +285,7 @@ tbody{
             &.poei {
                 background-color: #CF1B6D;
                 color: white;
-                font-size: 16px;
+                font-size: 15px;
 
                 &:hover {
                   background-color: #2D3041;
@@ -290,7 +301,7 @@ tbody{
             &.poec {
               background-color: #EC851D;
               color: white;
-              font-size: 16px;
+              font-size: 15px;
 
               &:hover {
                 background-color: #2D3041;
