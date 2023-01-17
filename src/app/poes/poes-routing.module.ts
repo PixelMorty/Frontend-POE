@@ -4,6 +4,8 @@ import { ListComponent } from './component/list/list.component';
 
 import { FormulaireAddGeneralComponent } from '../shared/formulaire-add-general/formulaire-add-general.component';
 
+import { DetailComponent } from './component/detail/detail.component';
+
 const routes: Routes = [];
 
 @NgModule({
@@ -32,7 +34,7 @@ export class PoesRoutingModule {
     },
     {
       path: 'detail/:id',//TODO CHECK SI CEST BIEN UN PARAM ET QUIL est pas pris comme un element du tableau url dans FormulaireAddGeneralcomponent
-      component: FormulaireAddGeneralComponent,
+      component: DetailComponent,
 
     },
     {

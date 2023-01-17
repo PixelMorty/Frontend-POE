@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 import { ICrud } from 'src/app/core/interfaces/i-crud';
+import { Detailpoe } from 'src/app/core/models/detailpoe.model';
 import { Poe } from 'src/app/core/models/poe';
+import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
 import { ApiPoeType } from 'src/app/core/types/api-poe-type';
 import { environment } from 'src/environments/environment';
 import { PoesModule } from '../../poes.module';
@@ -41,6 +43,16 @@ export class PoeService implements ICrud<Poe> {
         })
       );
   }
+  findOneDetailed(id: Number): Observable<Detailpoe> {
+    return this._httpClient
+      .get<any>(`${PoeService._CONTROLLER_PATH}/${id}`)
+      .pipe(
+        take(1),
+        map((anyPoe: any) => {
+          return this.deserializeFromJsonDetailed(anyPoe);
+        })
+      );
+  }
 
   create(datas: Poe): Observable<Poe> {
     return this._httpClient
@@ -57,6 +69,7 @@ export class PoeService implements ICrud<Poe> {
         })
       );
   }
+
 
   public update(datas: Poe, id: Number): Observable<Poe> {
     return this._httpClient
@@ -93,6 +106,40 @@ export class PoeService implements ICrud<Poe> {
 
     return poe;
   }
+  public deserializeFromJsonDetailed(anyPoeDetailed: any): Detailpoe {
+    //TODO TOUT REFAIRE MAIS PROPRE
+    const detailpoe: Detailpoe = new Detailpoe();
+    detailpoe.id = anyPoeDetailed.id;
+    detailpoe.title = anyPoeDetailed.title;
+    detailpoe.beginDate = new Date(anyPoeDetailed.beginDate);
+    detailpoe.endDate = new Date(anyPoeDetailed.endDate);
+    detailpoe.poeType = anyPoeDetailed.poeType;
+ 
+    anyPoeDetailed.trainees.forEach((stagiaire:any) => {
+      console.log(stagiaire)
+      detailpoe.trainees.push(
+        this.deserializeFromJsonStagiaire(stagiaire)
+        );
+      
+    });
+    console.log(detailpoe)
+    return detailpoe;
+
+  }
+//TODO SUPPRIMER CETTE MERDE
+  public deserializeFromJsonStagiaire(anyStagiaire: any): StagiaireModel {
+    const stagiaire: StagiaireModel = new StagiaireModel();
+    stagiaire.id = anyStagiaire.id;
+    stagiaire.lastName = anyStagiaire.lastname;
+    stagiaire.firstName = anyStagiaire.firstname;
+    stagiaire.birthDate = new Date(anyStagiaire.birthdate);
+    stagiaire.gender = anyStagiaire.gender;
+    stagiaire.phoneNumber = anyStagiaire.phoneNumber;
+    stagiaire.email = anyStagiaire.email;
+
+    return stagiaire;
+  }
+
 
   public serializeJson(anyPoe: any): any {
     const poe: any = {

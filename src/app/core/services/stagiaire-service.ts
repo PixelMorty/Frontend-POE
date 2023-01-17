@@ -125,6 +125,18 @@ export class StagiaireService {
       }
     );
   }
+
+ 
+  public setPoe(idTrainee : Number, idPoe :Number){
+    // envoyer requete au back patch  /{idTrainee}/setPoe/{idPoe}"
+  }
+ 
+  public removePoe(idTrainee : Number, idPoe :Number){
+    // envoyer requete au back  patch /{idTrainee}/setPoe/{idPoe}"
+  }
+
+
+
   //du back vers le front
   public deserializeFromJson(anyStagiaire: any): StagiaireModel {
     const stagiaire: StagiaireModel = new StagiaireModel();
