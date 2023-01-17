@@ -34,12 +34,12 @@ export class StagiaireService {
       }) //transforme un Observable(ici O<any[]>) en un autre Observable (O<StagiaireModel[]>)
     ); //pipeline
   }
-  public findAllDetailed(): Observable<StagiaireModel[]> {
-    return this.httpClient.get<any[]>(StagiaireService.CONTROLLER_PATH).pipe(
+  public findAllDetailed(): Observable<Detailtrainee[]> {
+    return this.httpClient.get<any[]>(`${StagiaireService.CONTROLLER_PATH}/detailList`).pipe(
       take(1), //prends le 1er résultat et arrête d'observer
       map((httpResponseBody: any[]) => {
         return httpResponseBody.map((anyStagiaire: any) => {
-          return this.deserializeFromJson(anyStagiaire);
+          return this.deserializeFromJsonDetail(anyStagiaire);
         }); // transforme un tableau en un autre tableau
       }) //transforme un Observable(ici O<any[]>) en un autre Observable (O<StagiaireModel[]>)
     ); //pipeline
@@ -64,9 +64,13 @@ export class StagiaireService {
     const returnedDetailedTrainee = new Detailtrainee(); 
     returnedDetailedTrainee.setStagiaireModelPart(traineeTemp);
     // rajouter le Poe
-    
+    try  {
     returnedDetailedTrainee.poe=this.deserializePoeFromJson(detailTrainee.poe);
-    return returnedDetailedTrainee;
+  
+      }catch{
+        returnedDetailedTrainee.poe=new Poe();
+      }
+        return returnedDetailedTrainee;
   }
 
   public deserializePoeFromJson(anyPoe: any): Poe {

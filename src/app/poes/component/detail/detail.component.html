@@ -2,9 +2,13 @@
 <!-- TODO AFFICHER DETAIL POE ET LISTE DE STAGIAIRES-->
 
 <ng-container *ngIf="poedetail">
-    <p>{{poedetail.trainees[0].firstName}}</p>
-    <p>{{poedetail.title}}</p>
 
+    <ng-container *ngFor="let trainee of poedetail.trainees">
+    
+    <p>{{trainee.firstName}}</p>
+
+
+    <ng-container>
 
 <ng-container>
 

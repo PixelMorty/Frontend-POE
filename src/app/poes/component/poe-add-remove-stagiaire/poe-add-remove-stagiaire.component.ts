@@ -41,7 +41,7 @@ try {
     });
 
 //TOPDO DetailedPoe plus besoin du taleau de stagiaire
-  this.stagiaireService.findbyPoe(this.idPoe).subscribe((detailTrainee:Detailtrainee[]) => {
+  this.stagiaireService.findAllDetailed().subscribe((detailTrainee:Detailtrainee[]) => {
     this.stagiaires= detailTrainee;
   });
 });
