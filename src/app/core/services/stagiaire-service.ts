@@ -125,6 +125,13 @@ export class StagiaireService {
       }
     );
   }
+
+ 
+
+
+
+
+
   //du back vers le front
   public deserializeFromJson(anyStagiaire: any): StagiaireModel {
     const stagiaire: StagiaireModel = new StagiaireModel();

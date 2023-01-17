@@ -1,11 +1,11 @@
 export class StagiaireModel {
-    private  _id : number =0 ;
-    private _lastName: string = '';
-    private _firstName: string = '';
-    private _gender: string = '';
-    private _birthDate?: Date | undefined;
-    private _phoneNumber: string = '';
-    private _email: string = ''; 
+    protected  _id : number =0 ;
+    protected _lastName: string = '';
+    protected _firstName: string = '';
+    protected _gender: string = '';
+    protected _birthDate?: Date | undefined;
+    protected _phoneNumber: string = '';
+    protected _email: string = ''; 
 
     get id() {
       return this._id

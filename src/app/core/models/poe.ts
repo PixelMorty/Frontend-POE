@@ -1,16 +1,16 @@
 export class Poe {
-  private _id: number = 0;
-  private _title: string = '';
-  private _beginDate!: Date; // le point "!" (ne sera pas null)
-  private _endDate!: Date;
-  private _poeType: any; // @todo use an enum instead of any
+  protected _id: number=0;
+  protected _title: string = '';
+  protected _beginDate!: Date; // le point "!" (ne sera pas null)
+  protected _endDate!: Date;
+  protected _poeType: any; // @todo use an enum instead of any
 
   // Get et Set methode magique avec Extension TypeScript Getter Setter
 
   /**
    * @usage const id = myObj.id
    */
-  get id() {
+  get id()  {
     return this._id;
   }
 
