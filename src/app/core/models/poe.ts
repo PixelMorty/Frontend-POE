@@ -1,5 +1,5 @@
 export class Poe {
-  private _id?: number;
+  private _id: number = 0;
   private _title: string = '';
   private _beginDate!: Date; // le point "!" (ne sera pas null)
   private _endDate!: Date;
@@ -10,11 +10,11 @@ export class Poe {
   /**
    * @usage const id = myObj.id
    */
-  get id(): number | undefined {
+  get id() {
     return this._id;
   }
 
-  set id(val: number | undefined) {
+  set id(val: number) {
     this._id = val;
   }
 

@@ -4,30 +4,27 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Poe } from 'src/app/core/models/poe';
-import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
 import { StagiairesPoes } from 'src/app/shared/enums/stagiaires-poes';
 import { PoeService } from '../../services/poe/poe.service';
-
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })
-
 export class ListComponent implements OnInit {
-  poes: Poe[] = [];
+  public poes: Poe[] = [];
   public showLi: string = 'All';
 
   modalRef: BsModalRef | undefined;
   message: string | undefined;
 
   constructor(
-    private _poeService: PoeService, 
-    private snackBar: MatSnackBar, 
+    private _poeService: PoeService,
+    private snackBar: MatSnackBar,
     private router: Router,
     private modalService: BsModalService
-    ) {}
+  ) {}
 
   ngOnInit(): void {
     this._poeService.findAll().subscribe((poes: Poe[]) => {
@@ -48,7 +45,6 @@ export class ListComponent implements OnInit {
     return displayedItem;
   }
 
-
   public goToTraineesList(): void {
     this.router.navigate([StagiairesPoes.STAGIAIRES, 'list']);
   }
@@ -65,9 +61,13 @@ export class ListComponent implements OnInit {
     this.router.navigate([StagiairesPoes.POES, 'add']);
   }
 
-  public goToDetail(id: number): void {
-    console.log(`Got ${id} from list`);
-    this.router.navigate([StagiairesPoes.STAGIAIRES, 'detail', id]);
+  // public goToDetail(id: number): void {
+  //   console.log(`Got ${id} from list`);
+  //   this.router.navigate([StagiairesPoes.STAGIAIRES, 'detail', id]);
+  // }
+
+  public goToUpdate(id: number): void {
+    this.router.navigate([StagiairesPoes.POES, 'add', id]);
   }
 
   openModal(template: TemplateRef<any>) {
@@ -77,23 +77,15 @@ export class ListComponent implements OnInit {
   confirm(poe: Poe): void {
     this.message = 'Confirmed!';
     this?.modalRef?.hide();
-    this._poeService
-      .delete(poe)
-      .subscribe((response: HttpResponse<any>) => {
-        this.poes.splice(
-          this.poes.findIndex(
-            (obj: Poe) => obj.id === poe.id
-          ),
-          1
-        );
-      });
-    this.snackBar.open(
-      `Le stagiaire ${poe.id} a été supprimé`,
-      'Compris',
-      {
-        duration: 2500,
-      }
-    );
+    this._poeService.delete(poe).subscribe((response: HttpResponse<any>) => {
+      this.poes.splice(
+        this.poes.findIndex((obj: Poe) => obj.id === poe.id),
+        1
+      );
+    });
+    this.snackBar.open(`Le stagiaire ${poe.id} a été supprimé`, 'Compris', {
+      duration: 2500,
+    });
   }
   decline(): void {
     this.message = 'Declined!';
