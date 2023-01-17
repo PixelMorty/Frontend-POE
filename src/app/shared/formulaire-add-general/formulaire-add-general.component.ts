@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, take } from 'rxjs';
 import { FormPoe } from 'src/app/core/forms/formPoe';
@@ -9,6 +10,7 @@ import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
 import { StagiaireService } from 'src/app/core/services/stagiaire-service';
 import { PoeService } from 'src/app/poes/services/poe/poe.service';
 import { StagiairesPoes } from '../enums/stagiaires-poes';
+
 
 
 @Component({
@@ -131,4 +133,25 @@ export class FormulaireAddGeneralComponent implements OnInit {
       }
     }
   }
+
+  public goToTraineesList(): void {
+    this.router.navigate([StagiairesPoes.STAGIAIRES, 'list']);
+  }
+
+  public goToTraineesAdd(): void {
+    this.router.navigate([StagiairesPoes.STAGIAIRES, 'add']);
+  }
+
+  public goToPOESList(): void {
+    this.router.navigate([StagiairesPoes.POES, 'list']);
+  }
+
+  public goToPOESAdd(): void {
+    this.router.navigate([StagiairesPoes.POES, 'add']);
+  }
+
+  
 }
+
+
+

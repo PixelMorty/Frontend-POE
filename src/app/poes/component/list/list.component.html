@@ -57,48 +57,43 @@
     </div>
   </div>
 
-  <div id="topbuttons">
-    <br />
-    <br />
+  
+  <br>
+  <br>
+  <br> 
+  <br> 
+  <div id="headline">
+    <p>Liste des formations</p>
+  </div>
+  <br>
 
-    <button
-      type="button"
-      (click)="showLi = 'All'"
-      [ngClass]="{ 'is-selected': showLi === 'All' }"
-    >
+  <div id="topbuttons">
+    <br/>
+    <br/>
+
+    <button type="button" (click)="showLi = 'All'" [ngClass]="{ 'is-selected': showLi === 'All' }">
       Tous
     </button>
 
-    <button
-      type="button"
-      class="poei"
-      (click)="showLi = 'POEI'"
-      [ngClass]="{ 'is-selected': showLi === 'POEI' }"
-    >
+    <button type="button" class="poei" (click)="showLi = 'POEI'" [ngClass]="{ 'is-selected': showLi === 'POEI' }">
       POEI
     </button>
 
-    <button
-      type="button"
-      class="poec"
-      (click)="showLi = 'POEC'"
-      [ngClass]="{ 'is-selected': showLi === 'POEC' }"
-    >
+    <button type="button" class="poec" (click)="showLi = 'POEC'" [ngClass]="{ 'is-selected': showLi === 'POEC' }">
       POEC
     </button>
 
-    <br />
-    <br />
+    <br/>
+    <br/>
   </div>
 
   <table>
     <thead>
       <tr>
         <th>&nbsp;</th>
-        <th>Titre</th>
-        <th>Date du début</th>
-        <th>Date de fin</th>
-        <th>Type de Poe</th>
+        <th>Intitulé</th>
+        <th>Début</th>
+        <th>Fin</th>
         <th>&nbsp;</th>
       </tr>
     </thead>
@@ -113,8 +108,7 @@
                 bubble: true,
                 poei: poe.poeType === 'POEI',
                 poec: poe.poeType === 'POEC'
-              }"
-            >
+              }">
               {{ poe.poeType }}
             </span>
           </td>
@@ -127,23 +121,13 @@
           <td>
             {{ poe.endDate | date : "dd/MM/YYYY" }}
           </td>
-          <td>
-            {{ poe.poeType | uppercase }}
-          </td>
 
           <td>
-            <button
-              mat-mini-flat
-              class="material-icons style"
-              (click)="openModal(template)"
-            >
+            <button nmat-mini-flat class="material-icons style" (click)="openModal(template)">
               <mat-icon>delete</mat-icon>
             </button>
             <ng-template #template>
-              <div
-                class="modal-body text-center"
-                style="background-color: white; border-radius: 0.4em"
-              >
+              <div class="modal-body text-center" style="background-color: white; border-radius: 0.4em">
                 <p style="font-size: 22px">Confirmer la suppression ?</p>
                 <button type="button" class="delete" (click)="confirm(poe)">
                   Supprimer  
@@ -151,26 +135,15 @@
                 <button type="button" (click)="decline()">Annuler</button>
               </div>
             </ng-template>
-            <button
-              mat-mini-flat
-              class="material-icons style2"
-              (click)="goToUpdate(poe.id)"
-            >
+            <button mat-mini-flat class="material-icons style2" (click)="goToUpdate(poe.id)">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-mini-flat class="material-icons style2">
-              <mat-icon>add</mat-icon>
-            </button>
-          </td>
         </tr>
       </ng-container>
     </tbody>
 
     <tr>
-      <td
-        colspan="5"
-        style="font-size: 20px; text-align: center; font-weight: bolder"
-      >
+      <td colspan="6" style="font-size: 20px; text-align: center; font-weight: bolder">
         <br />
         {{ getDisplayRowsNumber() }}/{{ poes.length }}
       </td>

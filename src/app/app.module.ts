@@ -17,6 +17,7 @@ import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { MY_DATE_FORMATS } from './shared/formulaire-add-general/my-date-formats';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -31,6 +32,11 @@ import { MY_DATE_FORMATS } from './shared/formulaire-add-general/my-date-formats
     MomentDateModule,
     ModalModule.forRoot(),
   ],
+  providers: [
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+

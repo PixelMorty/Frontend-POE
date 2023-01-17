@@ -9,42 +9,22 @@
         <div class="menu-item">
           <button class="menu-button">• &nbsp;&nbsp;Formations</button>
           <ul class="menu-sub-list">
-            <div class="menu-item">
-              <button class="menu-button">Panorama</button>
-            </div>
-            <div class="menu-item">
-              <button class="menu-button" (click)="goToPOESList()">
-                Liste
-              </button>
-            </div>
+            <div class="menu-item"><button class="menu-button">Panorama</button></div>
+            <div class="menu-item"><button class="menu-button" (click)="goToPOESList()">Liste</button></div>
           </ul>
         </div>
         <div class="menu-item">
           <button class="menu-button">• &nbsp;&nbsp;Participants</button>
           <ul class="menu-sub-list">
-            <div class="menu-item">
-              <button class="menu-button">Panorama</button>
-            </div>
-            <div class="menu-item">
-              <button class="menu-button" (click)="goToTraineesList()">
-                Liste
-              </button>
-            </div>
+            <div class="menu-item"><button class="menu-button">Panorama</button></div>
+            <div class="menu-item"><button class="menu-button" (click)="goToTraineesList()">Liste</button></div>
           </ul>
         </div>
         <div class="menu-item">
           <button class="menu-button">• &nbsp;&nbsp;Ajouter</button>
           <ul class="menu-sub-list">
-            <div class="menu-item">
-              <button class="menu-button" (click)="goToPOESAdd()">
-                Formation
-              </button>
-            </div>
-            <div class="menu-item">
-              <button class="menu-button" (click)="goToTraineesAdd()">
-                Participant
-              </button>
-            </div>
+            <div class="menu-item"><button class="menu-button" (click)="goToPOESAdd()">Formation</button></div>
+            <div class="menu-item"><button class="menu-button" (click)="goToTraineesAdd()">Participant</button></div>
           </ul>
         </div>
         <div class="menu-item">
@@ -57,47 +37,38 @@
     </div>
   </div>
 
+  <br>
+  <br>
+  <br> 
+  <br> 
+  <div id="headline">
+    <p>Liste des participants</p>
+  </div>
+  <br>
+
   <div id="topbuttons">
     <br />
     <br />
 
-    <button
-      type="button"
-      (click)="showLi = 'A'"
-      [ngClass]="{ 'is-selected': showLi === 'A' }"
+    <button type="button" (click)="showLi = 'A'" [ngClass]="{ 'is-selected': showLi === 'A' }"
     >
       Tous
     </button>
 
-    <button
-      type="button"
-      class="woman"
-      (click)="showLi = 'F'"
-      [ngClass]="{ 'is-selected': showLi === 'F' }"
-    >
+    <button type="button" class="woman" (click)="showLi = 'F'" [ngClass]="{ 'is-selected': showLi === 'F' }">
       Femme
     </button>
 
-    <button
-      type="button"
-      class="man"
-      (click)="showLi = 'M'"
-      [ngClass]="{ 'is-selected': showLi === 'M' }"
-    >
+    <button type="button" class="man" (click)="showLi = 'M'" [ngClass]="{ 'is-selected': showLi === 'M' }">
       Homme
     </button>
 
-    <button
-      type="button"
-      class="other"
-      (click)="showLi = 'X'"
-      [ngClass]="{ 'is-selected': showLi === 'X' }"
-    >
+    <button type="button" class="other" (click)="showLi = 'X'" [ngClass]="{ 'is-selected': showLi === 'X' }">
       Autre
     </button>
 
-    <br />
-    <br />
+    <br/>
+    <br/>
   </div>
 
   <table>
@@ -148,48 +119,27 @@
               {{ stagiaire.birthDate | date : "L/dd/yyyy" }}
             </td>
             <td>
-              <button
-                mat-mini-flat
-                class="material-icons style"
-                (click)="openModal(template)"
-              >
+              <button mat-mini-flat class="material-icons style" (click)="openModal(template)">
                 <mat-icon>delete</mat-icon>
               </button>
               <ng-template #template>
-                <div
-                  class="modal-body text-center"
-                  style="background-color: white; border-radius: 0.4em"
-                >
+                <div class="modal-body text-center" style="background-color: white; border-radius: 0.4em">
                   <p style="font-size: 22px">Confirmer la suppression ?</p>
-                  <button
-                    type="button"
-                    class="delete"
-                    (click)="confirm(stagiaire)"
-                  >
+                  <button type="button" class="delete" (click)="confirm(stagiaire)">
                     Supprimer
                   </button>
                   <button type="button" (click)="decline()">Annuler</button>
                 </div>
               </ng-template>
-              <button
-                mat-mini-flat
-                class="material-icons style2"
-                (click)="goToUpdate(stagiaire.id)"
-              >
-                <mat-icon>edit</mat-icon>
-              </button>
               <button mat-mini-flat class="material-icons style2">
-                <mat-icon>add</mat-icon>
+                <mat-icon>edit</mat-icon>
               </button>
             </td>
           </tr>
         </ng-container>
       </ng-container>
 
-      <td
-        colspan="6"
-        style="font-size: 20px; text-align: center; font-weight: bolder"
-      >
+      <td colspan="6" style="font-size: 20px; text-align: center; font-weight: bolder">
         <br />
         {{ getDisplayRowsNumber() }}/{{ stagiaires.length }}
       </td>
