@@ -2,17 +2,20 @@
 <ng-container *ngIf="stagiaires">
     <ng-container *ngIf="poe" >
 
+<!-- TODO AFFICHER DETAIL POE-->
+
 
         <p>poe-add-remove-stagiaire works!</p>
     <ng-container *ngFor="let stagiaire of stagiaires">
-        <p>{{stagiaire.firstName}}  {{stagiaire.lastName}} </p>
-        
-        <button class="button" (click)="onRemove(stagiaire.id)">
-            remove
-        </button>
-        <button class="button" (click)="onAdd(stagiaire.id)">
-            add
-        </button>
+        <p>{{stagiaire.firstName}}  {{stagiaire.lastName}} {{stagiaire.poe.id}} </p>
+        si stagiaire.poe.id == idPoe
+
+        <ng-container *ngIf="stagiaire.poe.id !=poe.id" >
+            <button class="button" (click)="onAdd(stagiaire.id)">
+                add
+            </button>
+        <ng-container>
+
     </ng-container>
     </ng-container>
 </ng-container>

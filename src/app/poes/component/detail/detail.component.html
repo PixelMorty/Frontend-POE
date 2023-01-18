@@ -1,15 +1,18 @@
 
-<!-- TODO AFFICHER DETAIL POE ET LISTE DE STAGIAIRES-->
+
 
 <ng-container *ngIf="poedetail">
+    
+<!-- TODO AFFICHER DETAIL POE-->
+
 
     <ng-container *ngFor="let trainee of poedetail.trainees">
     
     <p>{{trainee.firstName}}</p>
 
-
+<!-- AJOUTER BOUTON ENLEVER DE LA POE-->
     <ng-container>
-
+<!-- AJOUTER BOUTON Ajouter des stagiaires --- poe-add-remove-stagiaire component -->
 <ng-container>
 
     
