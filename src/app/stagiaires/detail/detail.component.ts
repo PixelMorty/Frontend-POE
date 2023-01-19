@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
@@ -36,9 +36,7 @@ export class DetailComponent implements OnInit {
       }
     )
   }
-  public goToMenu():void{
-    this.router.navigate(['/', 'stagiaires']);
-  }
+  
 
   public goToTraineesList(): void {
     this.router.navigate([StagiairesPoes.STAGIAIRES, 'list']);
@@ -66,3 +64,4 @@ export class DetailComponent implements OnInit {
   }
 
 }
+

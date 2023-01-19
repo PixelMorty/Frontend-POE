@@ -262,6 +262,17 @@
     color: #2D3041;
     position: fixed;
 }
+
+  .photobox {
+    background-color: #9698A0;
+    color: white;
+    border-radius: .4em;
+    width: 350px;
+    height: 450px;
+    position: absolute;
+    right: 500px;
+    margin-top: 155px;
+  }
   
   a {
     &.btn {
