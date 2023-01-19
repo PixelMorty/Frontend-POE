@@ -10,11 +10,19 @@
 
     <ng-container *ngFor="let trainee of poedetail.trainees">
     
-    <p>{{trainee.firstName}}</p>
+        <p>{{trainee.firstName}}</p>
+    </ng-container>
+
 
 <!-- AJOUTER BOUTON ENLEVER DE LA POE-->
-    <ng-container>
+
 <!-- AJOUTER BOUTON Ajouter des stagiaires --- poe-add-remove-stagiaire component -->
-<ng-container>
+
+
+</ng-container>
 
     
+
+<button class="button" (click)="OnAddRemove()">
+    Ajouter/Retirer stagiaires
+</button>

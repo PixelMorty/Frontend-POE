@@ -44,4 +44,8 @@ export class DetailComponent implements OnInit {
   });
     }
 
+
+    public  OnAddRemove(){
+      this.router.navigate(['/', StagiairesPoes.POES,"poe-add-remove",this.poedetail.id]);
+    }
   }
