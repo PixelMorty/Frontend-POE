@@ -57,19 +57,19 @@
     </div>
   </div>
 
-  
+
   <br>
   <br>
-  <br> 
-  <br> 
+  <br>
+  <br>
   <div id="headline">
     <p>Liste des formations</p>
   </div>
   <br>
 
   <div id="topbuttons">
-    <br/>
-    <br/>
+    <br />
+    <br />
 
     <button type="button" (click)="showLi = 'All'" [ngClass]="{ 'is-selected': showLi === 'All' }">
       Tous
@@ -83,8 +83,8 @@
       POEC
     </button>
 
-    <br/>
-    <br/>
+    <br />
+    <br />
   </div>
 
   <table>
@@ -94,7 +94,7 @@
         <th>Intitulé</th>
         <th>Début</th>
         <th>Fin</th>
-        <th>&nbsp;</th>
+        <th style="text-align: right;">{{ getDisplayRowsNumber() }}/{{ poes.length }}</th>
       </tr>
     </thead>
 
@@ -102,9 +102,7 @@
       <ng-container *ngFor="let poe of poes">
         <tr *ngIf="showLi === 'All' || poe.poeType === showLi">
           <td>
-            <span 
-            (click)="goToDetail(poe.id)"
-              [ngClass]=" {
+            <span (click)="goToDetail(poe.id)" [ngClass]=" {
                 bubble: true,
                 poei: poe.poeType === 'POEI',
                 poec: poe.poeType === 'POEC'
@@ -130,7 +128,7 @@
               <div class="modal-body text-center" style="background-color: white; border-radius: 0.4em">
                 <p style="font-size: 22px">Confirmer la suppression ?</p>
                 <button type="button" class="delete" (click)="confirm(poe)">
-                  Supprimer  
+                  Supprimer
                 </button>
                 <button type="button" (click)="decline()">Annuler</button>
               </div>
@@ -141,12 +139,9 @@
         </tr>
       </ng-container>
     </tbody>
-
-    <tr>
-      <td colspan="6" style="font-size: 20px; text-align: center; font-weight: bolder">
-        <br />
-        {{ getDisplayRowsNumber() }}/{{ poes.length }}
-      </td>
-    </tr>
   </table>
+  <div>
+    <br />
+    <br />
+  </div>
 </body>

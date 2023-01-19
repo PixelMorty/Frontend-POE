@@ -1,3 +1,4 @@
+
 <body>
   <div id="leftpanel">
     <div id="title">
@@ -39,8 +40,8 @@
 
   <br>
   <br>
-  <br> 
-  <br> 
+  <br>
+  <br>
   <div id="headline">
     <p>Liste des participants</p>
   </div>
@@ -50,8 +51,7 @@
     <br />
     <br />
 
-    <button type="button" (click)="showLi = 'A'" [ngClass]="{ 'is-selected': showLi === 'A' }"
-    >
+    <button type="button" (click)="showLi = 'A'" [ngClass]="{ 'is-selected': showLi === 'A' }">
       Tous
     </button>
 
@@ -67,11 +67,12 @@
       Autre
     </button>
 
-    <br/>
-    <br/>
+    <br />
+    <br />
   </div>
 
   <table>
+
     <thead>
       <tr>
         <th>&nbsp;</th>
@@ -79,7 +80,9 @@
         <th>Prénom</th>
         <th>Genre</th>
         <th>Naissance</th>
-        <th>&nbsp;</th>
+        <th style="text-align: right;">{{ getDisplayRowsNumber() }}/{{ stagiaires.length }}</th>
+
+
       </tr>
     </thead>
 
@@ -88,15 +91,12 @@
         <ng-container *ngIf="isShown(stagiaire)">
           <tr>
             <td>
-              <span
-                (click)="goToDetail(stagiaire.id)"
-                [ngClass]="{
+              <span (click)="goToDetail(stagiaire.id)" [ngClass]="{
                   bubble: true,
                   male: stagiaire.gender === 'M',
                   female: stagiaire.gender === 'F',
                   other: stagiaire.gender === 'X'
-                }"
-              >
+                }">
                 {{ stagiaire | initials : full : lastNameFirst }}
               </span>
             </td>
@@ -106,13 +106,11 @@
             <td>
               {{ stagiaire.firstName }}
             </td>
-            <td
-              [ngClass]="{
+            <td [ngClass]="{
                 female: stagiaire.gender === 'F',
                 male: stagiaire.gender === 'M',
                 other: stagiaire.gender === 'X'
-              }"
-            >
+              }">
               {{ stagiaire.gender }}
             </td>
             <td>
@@ -138,13 +136,10 @@
           </tr>
         </ng-container>
       </ng-container>
-
-      <td colspan="6" style="font-size: 20px; text-align: center; font-weight: bolder">
-        <br />
-        {{ getDisplayRowsNumber() }}/{{ stagiaires.length }}
-      </td>
     </tbody>
+
   </table>
+
 
   <div>
     <br />
