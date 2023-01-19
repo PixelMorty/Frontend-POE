@@ -1,21 +1,32 @@
-
+<!--AJOUTER FONCTIONALITES DE TRI-->
 <ng-container *ngIf="stagiaires">
     <ng-container *ngIf="poe" >
 
+        <p>
+            ajouter ou supprimer des stagiaires de la Poe :  {{poe.title}}    
+
+        </p>
+        <p>
+
+        </p>
 <!-- TODO AFFICHER DETAIL POE-->
+        <ng-container *ngFor="let stagiaire of stagiaires">
+            <p>{{stagiaire.firstName}}  {{stagiaire.lastName}} {{stagiaire.poe.id}} </p>
 
 
-        <p>poe-add-remove-stagiaire works!</p>
-    <ng-container *ngFor="let stagiaire of stagiaires">
-        <p>{{stagiaire.firstName}}  {{stagiaire.lastName}} {{stagiaire.poe.id}} </p>
-        si stagiaire.poe.id == idPoe
+            <ng-container *ngIf="stagiaire.poe.id !=poe.id">
+                <button class="button" (click)="onAdd(stagiaire.id)">
+                    add
 
-        <ng-container *ngIf="stagiaire.poe.id !=poe.id" >
-            <button class="button" (click)="onAdd(stagiaire.id)">
-                add
-            </button>
-        <ng-container>
+                </button>
+            </ng-container>
 
-    </ng-container>
+            <ng-container *ngIf="!(stagiaire.poe.id!=poe.id)">
+                <button class="button" (click)="onRemove(stagiaire.id)">
+                    remove
+                </button>
+            </ng-container>
+
+        </ng-container>
     </ng-container>
 </ng-container>

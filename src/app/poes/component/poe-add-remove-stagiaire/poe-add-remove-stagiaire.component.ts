@@ -54,10 +54,12 @@ try {
     
   public onRemove(idTrainee: Number){
     this.stagiaireService.removePoe(idTrainee);
+    window.location.reload();
   }
 
   public onAdd(idTrainee: Number){
     this.stagiaireService.setPoe(idTrainee,this.idPoe);
+    window.location.reload();
   }
   
 }
