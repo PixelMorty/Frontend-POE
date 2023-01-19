@@ -1,28 +1,111 @@
+<body>
+  <div id="leftpanel">
+    <div id="title">
+      <p>> MENU</p>
+    </div>
 
+    <div>
+      <ul class="menu-list">
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Formations</button>
+          <ul class="menu-sub-list">
+            <div class="menu-item">
+              <button class="menu-button">Panorama</button>
+            </div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToPOESList()">
+                Liste
+              </button>
+            </div>
+          </ul>
+        </div>
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Participants</button>
+          <ul class="menu-sub-list">
+            <div class="menu-item">
+              <button class="menu-button">Panorama</button>
+            </div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToTraineesList()">
+                Liste
+              </button>
+            </div>
+          </ul>
+        </div>
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Ajouter</button>
+          <ul class="menu-sub-list">
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToPOESAdd()">
+                Formation
+              </button>
+            </div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToTraineesAdd()">
+                Participant
+              </button>
+            </div>
+          </ul>
+        </div>
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Statistiques</button>
+        </div>
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Archives</button>
+        </div>
+      </ul>
+    </div>
+  </div>
 
+  <br />
+  <br />
+  <br />
+  <br />
 
-<ng-container *ngIf="poedetail">
-    
-    <p>{{poedetail.title}}</p>
-    <p>poe d'id = {{poedetail.id}}</p>
-<!-- TODO AFFICHER DETAIL POE-->
+  <div id="headline">Détail de la formation</div>
 
+  <div class="detailsblock">
+    <ng-container *ngIf="poedetail">
+      <div style="font-size: 50px">
+        <p>
+          <span
+            class="type"
+            [ngClass]="{
+              poei: poedetail.poeType === 'POEI',
+              poec: poedetail.poeType === 'POEC'
+            }"
+            >{{ poedetail.poeType | type }}</span
+          >
+          {{ poedetail.title | uppercase }}
+        </p>
 
-    <ng-container *ngFor="let trainee of poedetail.trainees">
-    
-        <p>{{trainee.firstName}}</p>
+        <!-- TODO AFFICHER DETAIL POE-->
+      </div>
+
+      <div>
+        Du
+        <span style="font-weight: bold">{{
+          poedetail.beginDate | date : "dd/LL/yyyy"
+        }}</span>
+        au
+        <span style="font-weight: bold">{{
+          poedetail.endDate | date : "dd/LL/yyyy"
+        }}</span>
+      </div>
+
+      <ng-container *ngFor="let trainee of poedetail.trainees">
+        <div>
+          <p>{{ trainee.firstName }} {{ trainee.lastName }}</p>
+        </div>
+      </ng-container>
+
+      <!-- AJOUTER BOUTON ENLEVER DE LA POE-->
+
+      <!-- AJOUTER BOUTON Ajouter des stagiaires --- poe-add-remove-stagiaire component -->
+
+      <button class="button" (click)="OnAddRemove()">
+        Ajouter/Retirer stagiaires
+      </button>
     </ng-container>
-
-
-<!-- AJOUTER BOUTON ENLEVER DE LA POE-->
-
-<!-- AJOUTER BOUTON Ajouter des stagiaires --- poe-add-remove-stagiaire component -->
-
-
-</ng-container>
-
-    
-
-<button class="button" (click)="OnAddRemove()">
-    Ajouter/Retirer stagiaires
-</button>
+  </div>
+</body>
