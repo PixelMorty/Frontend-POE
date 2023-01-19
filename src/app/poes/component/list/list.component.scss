@@ -330,6 +330,8 @@ table {
       &:first-child {
         span {
           cursor: pointer;
+          font-family: consolas, sans-serif, monospace;
+          font-size: 20px;
           display: inline-block;
           width: 50px;
           height: 50px;
@@ -345,7 +347,7 @@ table {
           &.poei {
             background-color: #CF1B6D;
             color: white;
-            font-size: 15px;
+            
 
             &:hover {
               background-color: #2D3041;
@@ -361,7 +363,6 @@ table {
           &.poec {
             background-color: #EC851D;
             color: white;
-            font-size: 15px;
 
             &:hover {
               background-color: #2D3041;
