@@ -90,18 +90,18 @@
   <table>
     <thead>
       <tr>
-        <th>&nbsp;</th>
-        <th>Intitulé</th>
-        <th>Début</th>
-        <th>Fin</th>
-        <th style="text-align: right;">{{ getDisplayRowsNumber() }}/{{ poes.length }}</th>
+        <th style="width: 80px;">&nbsp;</th>
+        <th style="width: 440px;">Intitulé</th>
+        <th style="width: 120px;">Début</th>
+        <th style="width: 120px;">Fin</th>
+        <th style="text-align: right; width: 160px;">{{ getDisplayRowsNumber() }}/{{ poes.length }}</th>
       </tr>
     </thead>
 
     <tbody>
       <ng-container *ngFor="let poe of poes">
         <tr *ngIf="showLi === 'All' || poe.poeType === showLi">
-          <td>
+          <td style="width: 80px;">
             <span (click)="goToDetail(poe.id)" [ngClass]=" {
                 bubble: true,
                 poei: poe.poeType === 'POEI',
@@ -110,17 +110,18 @@
               {{ poe.poeType }}
             </span>
           </td>
-          <td>
+          <td style="width: 440px;">
             {{ poe.title | uppercase }}
           </td>
-          <td>
+          <td style="width: 120px;">
             {{ poe.beginDate | date : "dd/MM/YYYY" }}
           </td>
-          <td>
+          <td style="width: 120px;">
             {{ poe.endDate | date : "dd/MM/YYYY" }}
           </td>
 
-          <td>
+
+          <td style="width: 160px;">
             <button nmat-mini-flat class="material-icons style" (click)="openModal(template)">
               <mat-icon>delete</mat-icon>
             </button>

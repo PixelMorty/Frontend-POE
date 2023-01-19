@@ -1,4 +1,3 @@
-
 <body>
   <div id="leftpanel">
     <div id="title">
@@ -75,14 +74,12 @@
 
     <thead>
       <tr>
-        <th>&nbsp;</th>
-        <th>Nom</th>
-        <th>Prénom</th>
-        <th>Genre</th>
-        <th>Naissance</th>
-        <th style="text-align: right;">{{ getDisplayRowsNumber() }}/{{ stagiaires.length }}</th>
-
-
+        <th style="width: 80px;">&nbsp;</th>
+        <th style="width: 260px;">Nom</th>
+        <th style="width: 220px;">Prénom</th>
+        <th style="width: 70px; text-align: center;">Genre</th>
+        <th style="width: 150px; text-align: center;">Naissance</th>
+        <th style="width: 160px; text-align: right;">{{ getDisplayRowsNumber() }}/{{ stagiaires.length }}</th>
       </tr>
     </thead>
 
@@ -90,7 +87,7 @@
       <ng-container *ngFor="let stagiaire of stagiaires">
         <ng-container *ngIf="isShown(stagiaire)">
           <tr>
-            <td>
+            <td style="width: 80px;">
               <span (click)="goToDetail(stagiaire.id)" [ngClass]="{
                   bubble: true,
                   male: stagiaire.gender === 'M',
@@ -100,23 +97,23 @@
                 {{ stagiaire | initials : full : lastNameFirst }}
               </span>
             </td>
-            <td>
+            <td style="width: 260px;">
               {{ stagiaire.lastName | uppercase }}
             </td>
-            <td>
+            <td style="width: 220px;">
               {{ stagiaire.firstName }}
             </td>
-            <td [ngClass]="{
+            <td style="width: 70px; text-align: center;" [ngClass]="{
                 female: stagiaire.gender === 'F',
                 male: stagiaire.gender === 'M',
                 other: stagiaire.gender === 'X'
               }">
               {{ stagiaire.gender }}
             </td>
-            <td>
+            <td style="width: 150px; text-align: center;">
               {{ stagiaire.birthDate | date : "L/dd/yyyy" }}
             </td>
-            <td>
+            <td style="width: 160px;">
               <button mat-mini-flat class="material-icons style" (click)="openModal(template)">
                 <mat-icon>delete</mat-icon>
               </button>
