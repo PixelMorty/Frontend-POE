@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class GenrePipe implements PipeTransform {
 
   transform(value: unknown, ...args: unknown[]): unknown {
-    return value=='M' ? 'masculin':(value=='F' ? "feminin":"autre")
+    return value=='M' ? 'M':(value=='F' ? "F":"X")
   }
 
 }
