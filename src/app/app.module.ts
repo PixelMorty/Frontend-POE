@@ -22,7 +22,6 @@ import { ListComponent } from './survey-manager/survey/list/list.component';
 
 import { UpdateComponent } from './survey-manager/survey/update/update.component';
 
-
 @NgModule({
   declarations: [AppComponent, ListComponent, UpdateComponent],
   imports: [
@@ -30,16 +29,17 @@ import { UpdateComponent } from './survey-manager/survey/update/update.component
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    MatInputModule, 
+    MatInputModule,
     MatDatepickerModule,
     MomentDateModule,
     ModalModule.forRoot(),
   ],
   providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline' },
+    },
   ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-
-
