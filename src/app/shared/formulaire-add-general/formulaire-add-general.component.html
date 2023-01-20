@@ -194,7 +194,8 @@
 
         <mat-form-field style="width: 960px;">
           <mat-label>Description*</mat-label>
-          <textarea matInput #textarea placeholder="Your Message" maxlength="850" formControlName="message" cdkTextareaAutosize
+
+          <textarea matInput formControlName="description" #textarea placeholder="Your Message" maxlength="850"  cdkTextareaAutosize
           cdkAutosizeMinRows="10"></textarea>
           <mat-hint align="end">{{textarea.value.length || 0}}/850</mat-hint>
           <mat-error *ngIf="addForm.controls['title'].errors">

@@ -15,7 +15,8 @@ export class FormPoe extends Forms{
         ['title', {control : new FormControl(), validators : [Validators.required]} ],
         ['beginDate', {control : new FormControl(), validators : [Validators.required]} ],
         ['endDate', {control : new FormControl(), validators : [Validators.required]} ],
-        ['poeType', {control : new FormControl(), validators : [Validators.required]} ]
+        ['poeType', {control : new FormControl(), validators : [Validators.required]} ],
+        ['description', {control : new FormControl(), validators : []} ]
     ]);
     this.buildForm();
     }

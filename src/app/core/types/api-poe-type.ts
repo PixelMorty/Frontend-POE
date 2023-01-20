@@ -4,4 +4,5 @@ export type ApiPoeType = {
   beginDate: Date;
   endDate: Date;
   poeType: any;
+  description : String;
 };

@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { map, take } from 'rxjs';
 import { FormPoe } from 'src/app/core/forms/formPoe';
 import { FormStagiaire } from 'src/app/core/forms/FormStagiaire';
+import { Detailpoe } from 'src/app/core/models/detailpoe.model';
 import { Poe } from 'src/app/core/models/poe';
 import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
 import { StagiaireService } from 'src/app/core/services/stagiaire-service';

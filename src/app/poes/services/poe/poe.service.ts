@@ -27,6 +27,7 @@ export class PoeService implements ICrud<Poe> {
           poe.beginDate = new Date(fromApiPoe.beginDate);
           poe.endDate = new Date(fromApiPoe.endDate);
           poe.poeType = fromApiPoe.poeType;
+          poe.description = fromApiPoe.description;
           return poe;
         });
       })
@@ -103,7 +104,7 @@ export class PoeService implements ICrud<Poe> {
     poe.beginDate = new Date(anyPoe.beginDate);
     poe.endDate = new Date(anyPoe.endDate);
     poe.poeType = anyPoe.poeType;
-
+    poe.description=anyPoe.description;
     return poe;
   }
   public deserializeFromJsonDetailed(anyPoeDetailed: any): Detailpoe {
@@ -114,7 +115,7 @@ export class PoeService implements ICrud<Poe> {
     detailpoe.beginDate = new Date(anyPoeDetailed.beginDate);
     detailpoe.endDate = new Date(anyPoeDetailed.endDate);
     detailpoe.poeType = anyPoeDetailed.poeType;
- 
+    detailpoe.description=anyPoeDetailed.description;
     anyPoeDetailed.trainees.forEach((stagiaire:any) => {
       console.log(stagiaire)
       detailpoe.trainees.push(
@@ -148,6 +149,7 @@ export class PoeService implements ICrud<Poe> {
       beginDate: new Date(anyPoe.beginDate),
       endDate: new Date(anyPoe.endDate),
       poeType: anyPoe.poeType,
+      description:anyPoe.description
     };
     return poe;
   }
@@ -159,7 +161,7 @@ export class PoeService implements ICrud<Poe> {
     poe.beginDate = new Date(anyPoe.beginDate);
     poe.endDate = new Date(anyPoe.endDate);
     poe.poeType = anyPoe.poeType;
-
+    poe.description = anyPoe.description;
     return poe;
   }
 }

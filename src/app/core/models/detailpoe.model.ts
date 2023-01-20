@@ -5,10 +5,15 @@ export class Detailpoe extends Poe{
 
     private _trainees: StagiaireModel[] = [];
 
-    get trainees(){
-        return this._trainees;
+
+    get trainees() {
+      return this._trainees
     }
-    set trainees(trainees: StagiaireModel[] ){
-        this._trainees=trainees;
+    
+    set trainees(val: StagiaireModel[]) {
+      this._trainees = val
     }
+    
+
+
 }
