@@ -54,11 +54,18 @@ import { map, take } from 'rxjs/operators';
     }
 
     public update(survey :Survey,id:number) : Observable<Survey[]>{
-        return this.httpClient.patch<Survey[]>(`${SurveyService.CONTROLLER_PATH}/update/${survey.id}`,survey).pipe(
+        return this.httpClient.patch<Survey[]>(`${SurveyService.CONTROLLER_PATH}/update/${id}`,survey).pipe(
             take(1), //prends le 1er résultat et arrête d'observer
              // transforme un tableau en un autre tableau
             ) //transforme un Observable(ici O<any[]>) en un autre Observable (O<StagiaireModel[]>)
           ; //pipeline
+
+    }
+    public changeQuestions(questionIds:number[],id:number) : Observable<Survey>{
+        return this.httpClient.patch<Survey>(`${SurveyService.CONTROLLER_PATH}/change-questions/${id}`,questionIds).pipe(
+            take(1), 
+            ) 
+          ; 
 
     }
 }
