@@ -11,8 +11,6 @@ import { StagiaireService } from 'src/app/core/services/stagiaire-service';
 import { PoeService } from 'src/app/poes/services/poe/poe.service';
 import { StagiairesPoes } from '../enums/stagiaires-poes';
 
-
-
 @Component({
   selector: 'app-formulaire-add-general',
   templateUrl: './formulaire-add-general.component.html',
@@ -35,37 +33,34 @@ export class FormulaireAddGeneralComponent implements OnInit {
 
     this.route.paramMap.subscribe((routeParams) => {
       this.id = new Number(routeParams.get('id'));
-    });
 
-    this.route
-      .parent!.url.pipe(
-        take(1),
-        map((r) => r[0].path)
-      )
-      .subscribe((urlType) => {
-        //console.log(urlType)
+      this.route
+        .parent!.url.pipe(
+          take(1),
+          map((r) => r[0].path)
+        )
+        .subscribe((urlType) => {
+          //console.log(urlType)
 
-        JSON.stringify(urlType);
-        console.log(urlType);
-        console.log(StagiairesPoes.STAGIAIRES);
-        
-        //console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
-        if (urlType == StagiairesPoes.STAGIAIRES) {
-          this.class_poe_or_Stagiaire = StagiairesPoes.STAGIAIRES;
-          // console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
-        } else if (urlType == StagiairesPoes.POES) {
-          this.class_poe_or_Stagiaire = StagiairesPoes.POES;
-        }
-         this.class_poe_or_Stagiaire = urlType;
+          JSON.stringify(urlType);
+          console.log(urlType);
+          console.log(StagiairesPoes.STAGIAIRES);
+
+          //console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
+          if (urlType == StagiairesPoes.STAGIAIRES) {
+            this.class_poe_or_Stagiaire = StagiairesPoes.STAGIAIRES;
+            // console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
+          } else if (urlType == StagiairesPoes.POES) {
+            this.class_poe_or_Stagiaire = StagiairesPoes.POES;
+          }
+          this.class_poe_or_Stagiaire = urlType;
           if (this.class_poe_or_Stagiaire == StagiairesPoes.STAGIAIRES) {
             this.initFormStagiaire();
           } else if (this.class_poe_or_Stagiaire == StagiairesPoes.POES) {
             this.initFormPoe();
           }
-        }
-      );
-    // var forme =  new FormPoe(new Poe());
-    // this.addForm = forme.form;
+        });
+    });
   }
 
   public onSubmit(): void {
@@ -99,10 +94,8 @@ export class FormulaireAddGeneralComponent implements OnInit {
   }
 
   private initFormPoe() {
-
     if (this.id.valueOf() === 0) {
       this.addForm = new FormPoe(new Poe()).form;
-
     } else {
       try {
         this.poeService.findOne(this.id.valueOf()).subscribe((poe: Poe) => {
@@ -116,7 +109,6 @@ export class FormulaireAddGeneralComponent implements OnInit {
   }
 
   private initFormStagiaire() {
-
     if (this.id.valueOf() === 0) {
       this.addForm = new FormStagiaire(new StagiaireModel()).form;
     } else {
@@ -149,9 +141,4 @@ export class FormulaireAddGeneralComponent implements OnInit {
   public goToPOESAdd(): void {
     this.router.navigate([StagiairesPoes.POES, 'add']);
   }
-
-  
 }
-
-
-
