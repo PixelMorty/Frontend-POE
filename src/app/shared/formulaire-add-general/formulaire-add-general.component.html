@@ -1,5 +1,4 @@
 <body>
-
   <div id="leftpanel">
     <div id="title">
       <p>> MENU</p>
@@ -10,22 +9,42 @@
         <div class="menu-item">
           <button class="menu-button">• &nbsp;&nbsp;Formations</button>
           <ul class="menu-sub-list">
-            <div class="menu-item"><button class="menu-button">Panorama</button></div>
-            <div class="menu-item"><button class="menu-button" (click)="goToPOESList()">Liste</button></div>
+            <div class="menu-item">
+              <button class="menu-button">Panorama</button>
+            </div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToPOESList()">
+                Liste
+              </button>
+            </div>
           </ul>
         </div>
         <div class="menu-item">
           <button class="menu-button">• &nbsp;&nbsp;Participants</button>
           <ul class="menu-sub-list">
-            <div class="menu-item"><button class="menu-button">Panorama</button></div>
-            <div class="menu-item"><button class="menu-button" (click)="goToTraineesList()">Liste</button></div>
+            <div class="menu-item">
+              <button class="menu-button">Panorama</button>
+            </div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToTraineesList()">
+                Liste
+              </button>
+            </div>
           </ul>
         </div>
         <div class="menu-item">
           <button class="menu-button">• &nbsp;&nbsp;Ajouter</button>
           <ul class="menu-sub-list">
-            <div class="menu-item"><button class="menu-button" (click)="goToPOESAdd()">Formation</button></div>
-            <div class="menu-item"><button class="menu-button" (click)="goToTraineesAdd()">Participant</button></div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToPOESAdd()">
+                Formation
+              </button>
+            </div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToTraineesAdd()">
+                Participant
+              </button>
+            </div>
           </ul>
         </div>
         <div class="menu-item">
@@ -39,31 +58,33 @@
   </div>
 
   <div class="formblock">
-
     <br />
     <br />
     <ng-container *ngIf="class_poe_or_Stagiaire == 'stagiaires' && addForm">
-
       <div id="headline">
         <p>Ajouter un nouveau participant :</p>
       </div>
-      <br>
-      <br>
-      <br>
+      <br />
+      <br />
+      <br />
 
       <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
         <!-- form fields go here -->
 
         <mat-radio-group formControlName="gender">
-          <mat-radio-button [value]="'F'" style="margin-right: 25px;">Femme</mat-radio-button>
-          <mat-radio-button [value]="'M'" style="margin-right: 25px;">Homme</mat-radio-button>
+          <mat-radio-button [value]="'F'" style="margin-right: 25px"
+            >Femme</mat-radio-button
+          >
+          <mat-radio-button [value]="'M'" style="margin-right: 25px"
+            >Homme</mat-radio-button
+          >
           <mat-radio-button [value]="'X'">Autre</mat-radio-button>
         </mat-radio-group>
 
-<br>
-<br>
+        <br />
+        <br />
 
-        <mat-form-field style="width: 470px; margin-right: 20px;">
+        <mat-form-field style="width: 470px; margin-right: 20px">
           <input matInput type="text" formControlName="lastName" />
           <mat-label>Nom</mat-label>
           <mat-error *ngIf="addForm.controls['lastName'].errors">
@@ -71,7 +92,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field style="width: 470px;">
+        <mat-form-field style="width: 470px">
           <input matInput type="text" formControlName="firstName" />
           <mat-label>Prénom</mat-label>
           <mat-error *ngIf="addForm.controls['firstName'].errors">
@@ -79,34 +100,45 @@
           </mat-error>
         </mat-form-field>
 
-        <br>
+        <br />
 
-        <mat-form-field style="width: 225px; margin-right: 20px;">
-          <input matInput [matDatepicker]="picker" formControlName="birthDate" />
+        <mat-form-field style="width: 225px; margin-right: 20px">
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="birthDate"
+          />
           <mat-label>Date de naissance</mat-label>
           <mat-hint>JJ/MM/AAAA</mat-hint>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
 
-          <mat-error *ngIf="
-          addForm.controls['birthDate'].errors &&
-          addForm.controls['birthDate'].touched
-        ">
+          <mat-error
+            *ngIf="
+              addForm.controls['birthDate'].errors &&
+              addForm.controls['birthDate'].touched
+            "
+          >
             <span *ngIf="addForm.controls['birthDate'].hasError('required')">
               La date de naissance est obligatoire et doit être au bon format.
             </span>
-            <span *ngIf="addForm.controls['birthDate'].hasError('dateLessThan')">
+            <span
+              *ngIf="addForm.controls['birthDate'].hasError('dateLessThan')"
+            >
               L'âge minimum accepté est 18 ans.
             </span>
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field style="width: 225px; margin-right: 20px;">
+        <mat-form-field style="width: 225px; margin-right: 20px">
           <input matInput type="text" formControlName="phoneNumber" />
           <mat-label>Téléphone</mat-label>
         </mat-form-field>
 
-        <mat-form-field style="width: 470px;">
+        <mat-form-field style="width: 470px">
           <input matInput type="text" formControlName="email" />
           <mat-label>Email</mat-label>
           <mat-error *ngIf="addForm.controls['email'].errors">
@@ -114,86 +146,102 @@
           </mat-error>
         </mat-form-field>
 
-        <br>
-        <br>
-        <div style="text-align: right;">
-        <button type="submit" [disabled]="addForm.invalid">
-          Ajouter
-        </button>
+        <br />
+        <br />
+        <div style="text-align: right">
+          <button type="submit" [disabled]="addForm.invalid">Ajouter</button>
         </div>
-
       </form>
     </ng-container>
 
     <ng-container *ngIf="class_poe_or_Stagiaire == 'poes' && addForm">
-
       <div id="headline">
         <p>Ajouter une nouvelle formation :</p>
       </div>
 
-      
       <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
         <!-- form fields go here -->
-        <br>
-        <br>
-        <br>
+        <br />
+        <br />
+        <br />
 
-        <mat-radio-group formControlName="poeType" style="margin-left: 5px;">
-          <mat-radio-button [value]="'POEI'" style="margin-right: 25px;">POEI</mat-radio-button>
+        <mat-radio-group formControlName="poeType" style="margin-left: 5px">
+          <mat-radio-button [value]="'POEI'" style="margin-right: 25px"
+            >POEI</mat-radio-button
+          >
           <mat-radio-button [value]="'POEC'">POEC</mat-radio-button>
         </mat-radio-group>
-        <br>
-        <br>
+        <br />
+        <br />
 
-        <mat-form-field style="width: 960px;">
+        <mat-form-field style="width: 960px">
           <mat-label>Intitulé de la formation</mat-label>
-          <input matInput type="text" formControlName="title"/>
+          <input matInput type="text" formControlName="title" />
           <mat-error *ngIf="addForm.controls['title'].errors">
             L'intitulé de la formation est obligatoire.
           </mat-error>
         </mat-form-field>
 
-        <br>
+        <br />
 
-        <mat-form-field style="width: 470px; margin-right: 20px;">
+        <mat-form-field style="width: 470px; margin-right: 20px">
           <mat-label>Date de début</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="beginDate" />
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="beginDate"
+          />
           <mat-hint>JJ/MM/AAAA</mat-hint>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
 
-          <mat-error *ngIf="
-          addForm.controls['beginDate'].errors &&
-          addForm.controls['beginDate'].touched
-        ">
+          <mat-error
+            *ngIf="
+              addForm.controls['beginDate'].errors &&
+              addForm.controls['beginDate'].touched
+            "
+          >
             <span *ngIf="addForm.controls['beginDate'].hasError('required')">
               La date du début est obligatoire.
             </span>
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field style="width: 470px;">
+        <mat-form-field style="width: 470px">
           <mat-label>Date de fin</mat-label>
-          <input matInput [matDatepicker]="pickerto" formControlName="endDate" />
+          <input
+            matInput
+            [matDatepicker]="pickerto"
+            formControlName="endDate"
+          />
           <mat-hint>JJ/MM/AAAA</mat-hint>
-          <mat-datepicker-toggle matSuffix [for]="pickerto"></mat-datepicker-toggle>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="pickerto"
+          ></mat-datepicker-toggle>
           <mat-datepicker #pickerto></mat-datepicker>
 
-          <mat-error *ngIf="
-          addForm.controls['endDate'].errors &&
-          addForm.controls['endDate'].touched
-        ">
+          <mat-error
+            *ngIf="
+              addForm.controls['endDate'].errors &&
+              addForm.controls['endDate'].touched
+            "
+          >
             <span *ngIf="addForm.controls['endDate'].hasError('required')">
               La date de fin est obligatoire.
             </span>
           </mat-error>
         </mat-form-field>
 
-        <br>
-        <br>
+        <br />
+        <br />
 
-        <mat-form-field style="width: 960px;">
+        <mat-form-field style="width: 960px">
           <mat-label>Description*</mat-label>
+
 
           <textarea matInput formControlName="description" #textarea placeholder="Your Message" maxlength="850"  cdkTextareaAutosize
           cdkAutosizeMinRows="10"></textarea>
@@ -203,13 +251,11 @@
           </mat-error>
         </mat-form-field>
 
-        <br>
-        <br>
-        <div style="text-align: right;">
-        <button type="submit" [disabled]="addForm.invalid">
-          Ajouter
-        </button>
-      </div>
+        <br />
+        <br />
+        <div style="text-align: right">
+          <button type="submit" [disabled]="addForm.invalid">Ajouter</button>
+        </div>
       </form>
     </ng-container>
   </div>

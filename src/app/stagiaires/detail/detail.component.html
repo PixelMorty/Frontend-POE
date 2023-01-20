@@ -1,70 +1,99 @@
 <body>
-<div id="leftpanel">
-  <div id="title">
-    <p>> MENU</p>
+  <div id="leftpanel">
+    <div id="title">
+      <p>> MENU</p>
+    </div>
+
+    <div>
+      <ul class="menu-list">
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Formations</button>
+          <ul class="menu-sub-list">
+            <div class="menu-item">
+              <button class="menu-button">Panorama</button>
+            </div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToPOESList()">
+                Liste
+              </button>
+            </div>
+          </ul>
+        </div>
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Participants</button>
+          <ul class="menu-sub-list">
+            <div class="menu-item">
+              <button class="menu-button">Panorama</button>
+            </div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToTraineesList()">
+                Liste
+              </button>
+            </div>
+          </ul>
+        </div>
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Ajouter</button>
+          <ul class="menu-sub-list">
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToPOESAdd()">
+                Formation
+              </button>
+            </div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToTraineesAdd()">
+                Participant
+              </button>
+            </div>
+          </ul>
+        </div>
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Statistiques</button>
+        </div>
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Archives</button>
+        </div>
+      </ul>
+    </div>
   </div>
 
-  <div>
-    <ul class="menu-list">
-      <div class="menu-item">
-        <button class="menu-button">• &nbsp;&nbsp;Formations</button>
-        <ul class="menu-sub-list">
-          <div class="menu-item"><button class="menu-button">Panorama</button></div>
-          <div class="menu-item"><button class="menu-button" (click)="goToPOESList()">Liste</button></div>
-        </ul>
+  <br />
+  <br />
+  <br />
+  <br />
+
+  <div id="headline">Détail Participant</div>
+
+  <br />
+
+  <div class="photobox"></div>
+
+  <div class="detailsblock">
+    <ng-container *ngIf="stagiaire">
+      <div style="font-size: 50px">
+        <p>
+          <span
+            class="gender"
+            [ngClass]="{
+              female: stagiaire.gender === 'F',
+              male: stagiaire.gender === 'M',
+              other: stagiaire.gender === 'X'
+            }"
+            >{{ stagiaire.gender | genre }}</span
+          >
+          {{ this.stagiaire.firstName }}
+          {{ this.stagiaire.lastName | uppercase }}
+        </p>
       </div>
-      <div class="menu-item">
-        <button class="menu-button">• &nbsp;&nbsp;Participants</button>
-        <ul class="menu-sub-list">
-          <div class="menu-item"><button class="menu-button">Panorama</button></div>
-          <div class="menu-item"><button class="menu-button" (click)="goToTraineesList()">Liste</button></div>
-        </ul>
+
+      <div>
+        Né.e le
+        <span style="font-weight: bold">{{
+          stagiaire.birthDate | date : "dd/LL/yyyy"
+        }}</span>
       </div>
-      <div class="menu-item">
-        <button class="menu-button">• &nbsp;&nbsp;Ajouter</button>
-        <ul class="menu-sub-list">
-          <div class="menu-item"><button class="menu-button" (click)="goToPOESAdd()">Formation</button></div>
-          <div class="menu-item"><button class="menu-button" (click)="goToTraineesAdd()">Participant</button></div>
-        </ul>
-      </div>
-      <div class="menu-item">
-        <button class="menu-button">• &nbsp;&nbsp;Statistiques</button>
-      </div>
-      <div class="menu-item">
-        <button class="menu-button">• &nbsp;&nbsp;Archives</button>
-      </div>
-    </ul>
+      <div>{{ stagiaire.email }}</div>
+      <div>{{ stagiaire.phoneNumber }}</div>
+    </ng-container>
   </div>
-</div>
-
-<br>
-<br>
-<br>
-<br>
-
-<div id="headline">
-  Détail Participant
-</div>
-
-<br>
-
-<div class="photobox"></div>
-
-<div class="detailsblock">
-  
-<ng-container *ngIf="stagiaire">
-
- <div style="font-size: 50px;">
-  <p><span class="gender" [ngClass]="{
-    female: stagiaire.gender === 'F',
-    male: stagiaire.gender === 'M',
-    other: stagiaire.gender === 'X'
-  }">{{ stagiaire.gender | genre }}</span> {{this.stagiaire.firstName}} {{this.stagiaire.lastName | uppercase }}</p> 
-</div>
-
-    <div> Né.e le <span style="font-weight: bold;">{{stagiaire.birthDate | date :  'dd/LL/yyyy'}}</span> </div>
-    <div> {{stagiaire.email}} </div>
-    <div> {{stagiaire.phoneNumber}} </div> 
-</ng-container>
-</div>
 </body>
