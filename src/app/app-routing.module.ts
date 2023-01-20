@@ -19,12 +19,21 @@ export class AppRoutingModule {
     {
       path: StagiairesPoes.STAGIAIRES,
       loadChildren: () =>
-        import('./stagiaires/stagiaires.module').then((m) => m.StagiairesModule),
+        import('./stagiaires/stagiaires.module').then(
+          (m) => m.StagiairesModule
+        ),
     },
     {
       path: StagiairesPoes.POES,
       loadChildren: () =>
         import('./poes/poes.module').then((m) => m.PoesModule),
+    },
+    {
+      path: 'surveys',
+      loadChildren: () =>
+        import('./survey-manager/survey/survey.module').then(
+          (m) => m.SurveyModule
+        ),
     },
     {
       path: '**', //route fallback
