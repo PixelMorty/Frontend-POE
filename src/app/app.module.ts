@@ -18,10 +18,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { MY_DATE_FORMATS } from './shared/formulaire-add-general/my-date-formats';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { ListComponent } from './survey-manager/survey/list/list.component';
+import { AddComponent } from './survey-manager/survey/add/add.component';
+import { UpdateComponent } from './survey-manager/survey/update/update.component';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ListComponent, AddComponent, UpdateComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
