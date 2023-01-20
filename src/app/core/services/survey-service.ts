@@ -53,7 +53,7 @@ import { map, take } from 'rxjs/operators';
 
     }
 
-    public update(survey :Survey) : Observable<Survey[]>{
+    public update(survey :Survey,id:number) : Observable<Survey[]>{
         return this.httpClient.patch<Survey[]>(`${SurveyService.CONTROLLER_PATH}/update/${survey.id}`,survey).pipe(
             take(1), //prends le 1er résultat et arrête d'observer
              // transforme un tableau en un autre tableau
