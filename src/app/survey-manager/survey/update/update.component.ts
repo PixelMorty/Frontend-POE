@@ -15,6 +15,6 @@ export class UpdateComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(): void {
-    // TODO this.surveyService.change-questions(this.listIds, this.idSurvey)
+    // TODO this.surveyService.changeQuestions(this.listIds, this.idSurvey)
   }
 }
