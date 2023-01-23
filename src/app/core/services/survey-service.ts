@@ -37,35 +37,23 @@ export class SurveyService {
 
   public findOne(id: number): Observable<Survey> {
     return this.httpClient
-      .get<Survey>(`${SurveyService.CONTROLLER_PATH}/${id}`)
-      .pipe(
-        take(1) //prends le 1er résultat et arrête d'observer
-        // transforme un tableau en un autre tableau
-      ); //transforme un Observable(ici O<any[]>) en un autre Observable (O<StagiaireModel[]>) //pipeline
+      .get<Survey>(`${SurveyService.CONTROLLER_PATH}/${id}`);
   }
 
   public getAll(): Observable<Survey[]> {
     return this.httpClient
-      .get<Survey[]>(`${SurveyService.CONTROLLER_PATH}`)
-      .pipe(
-        take(1) //prends le 1er résultat et arrête d'observer
-        // transforme un tableau en un autre tableau
-      ); //transforme un Observable(ici O<any[]>) en un autre Observable (O<StagiaireModel[]>) //pipeline
+      .get<Survey[]>(`${SurveyService.CONTROLLER_PATH}`);
   }
 
 
     
 
     public update(survey :Survey,id:number) : Observable<Survey[]>{
-        return this.httpClient.patch<Survey[]>(`${SurveyService.CONTROLLER_PATH}/update/${id}`,survey).pipe(
-            take(1), //prends le 1er résultat et arrête d'observer
-             // transforme un tableau en un autre tableau
-            ) //transforme un Observable(ici O<any[]>) en un autre Observable (O<StagiaireModel[]>)
-          ; //pipeline
+        return this.httpClient.patch<Survey[]>(`${SurveyService.CONTROLLER_PATH}${id}`,survey);
 
     }
     public changeQuestions(questionIds:number[],id:number) : Observable<Survey>{
-        return this.httpClient.patch<Survey>(`${SurveyService.CONTROLLER_PATH}/change-questions/${id}`,questionIds).pipe(
+        return this.httpClient.put<Survey>(`${SurveyService.CONTROLLER_PATH}/change-questions/${id}`,questionIds).pipe(
             take(1), 
             ) 
           ; 
