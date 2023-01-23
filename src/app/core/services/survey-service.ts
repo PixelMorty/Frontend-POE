@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Survey } from '../models/survey-models/survey.model';
@@ -36,40 +36,44 @@ export class SurveyService {
   // }
 
   public findOne(id: number): Observable<Survey> {
-    return this.httpClient
-      .get<Survey>(`${SurveyService.CONTROLLER_PATH}/${id}`)
-      .pipe(
-        take(1) //prends le 1er résultat et arrête d'observer
-        // transforme un tableau en un autre tableau
-      ); //transforme un Observable(ici O<any[]>) en un autre Observable (O<StagiaireModel[]>) //pipeline
+    return this.httpClient.get<Survey>(
+      `${SurveyService.CONTROLLER_PATH}/${id}`
+    );
   }
 
   public getAll(): Observable<Survey[]> {
-    return this.httpClient
-      .get<Survey[]>(`${SurveyService.CONTROLLER_PATH}`)
-      .pipe(
-        take(1) //prends le 1er résultat et arrête d'observer
-        // transforme un tableau en un autre tableau
-      ); //transforme un Observable(ici O<any[]>) en un autre Observable (O<StagiaireModel[]>) //pipeline
+    return this.httpClient.get<Survey[]>(`${SurveyService.CONTROLLER_PATH}`);
   }
 
+  public update(survey: Survey, id: number): Observable<Survey[]> {
+    return this.httpClient.patch<Survey[]>(
+      `${SurveyService.CONTROLLER_PATH}/update/${id}`,
+      survey
+    );
+  }
 
-    
+  public changeQuestions(
+    questionIds: number[],
+    id: number
+  ): Observable<Survey> {
+    return this.httpClient
+      .patch<Survey>(
+        `${SurveyService.CONTROLLER_PATH}/change-questions/${id}`,
+        questionIds
+      )
+      .pipe(take(1));
+  }
 
-    public update(survey :Survey,id:number) : Observable<Survey[]>{
-        return this.httpClient.patch<Survey[]>(`${SurveyService.CONTROLLER_PATH}/update/${id}`,survey).pipe(
-            take(1), //prends le 1er résultat et arrête d'observer
-             // transforme un tableau en un autre tableau
-            ) //transforme un Observable(ici O<any[]>) en un autre Observable (O<StagiaireModel[]>)
-          ; //pipeline
+  public add(survey: Survey): Observable<Survey> {
+    return this.httpClient.post<Survey>(
+      `${SurveyService.CONTROLLER_PATH}/surveys/list`,
+      survey
+    );
+  }
 
-    }
-    public changeQuestions(questionIds:number[],id:number) : Observable<Survey>{
-        return this.httpClient.patch<Survey>(`${SurveyService.CONTROLLER_PATH}/change-questions/${id}`,questionIds).pipe(
-            take(1), 
-            ) 
-          ; 
-
-    }
-
+  public delete(id: Survey): Observable<HttpResponse<any>> {
+    return this.httpClient.delete<any>(
+      `${SurveyService.CONTROLLER_PATH}/${id}`
+    );
+  }
 }

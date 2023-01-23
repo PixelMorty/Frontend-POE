@@ -1,1 +1,90 @@
-<p>Bonjour!</p>
+<body>
+  <div id="leftpanel">
+    <div id="title">
+      <p>> MENU</p>
+    </div>
+
+    <div>
+      <ul class="menu-list">
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Formations</button>
+          <ul class="menu-sub-list">
+            <div class="menu-item">
+              <button class="menu-button">Panorama</button>
+            </div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToPOESList()">
+                Liste
+              </button>
+            </div>
+          </ul>
+        </div>
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Participants</button>
+          <ul class="menu-sub-list">
+            <div class="menu-item">
+              <button class="menu-button">Panorama</button>
+            </div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToTraineesList()">
+                Liste
+              </button>
+            </div>
+          </ul>
+        </div>
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Ajouter</button>
+          <ul class="menu-sub-list">
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToPOESAdd()">
+                Formation
+              </button>
+            </div>
+            <div class="menu-item">
+              <button class="menu-button" (click)="goToTraineesAdd()">
+                Participant
+              </button>
+            </div>
+          </ul>
+        </div>
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Statistiques</button>
+        </div>
+        <div class="menu-item">
+          <button class="menu-button">• &nbsp;&nbsp;Archives</button>
+        </div>
+      </ul>
+    </div>
+  </div>
+
+  <button class="button" (click)="onSurveyAdd()">add</button>
+  <button class="button" (click)="onSurveyRemove()">remove</button>
+
+  <ng-container *ngFor="let survey of surveys">
+    <p>{{ survey.title }} {{ survey.id }}</p>
+
+    <ng-container *ngIf="surveys">
+      <td style="width: 160px">
+        <button
+          nmat-mini-flat
+          class="material-icons style"
+          (click)="openModal(template)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+        <ng-template #template>
+          <div
+            class="modal-body text-center"
+            style="background-color: white; border-radius: 0.4em"
+          >
+            <p style="font-size: 22px">Confirmer la suppression ?</p>
+            <button type="button" class="delete" (click)="confirm(survey)">
+              Supprimer
+            </button>
+            <button type="button" (click)="decline()">Annuler</button>
+          </div>
+        </ng-template>
+      </td>
+    </ng-container>
+  </ng-container>
+</body>
