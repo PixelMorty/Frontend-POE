@@ -5,10 +5,9 @@ import { Choice } from "./choice.model";
 
 export class Question{
 
-    private _id! :number  ;
-
-    private _title!:String ;
-
+    private _id! :number;
+    private  _position!: number;
+    private _title!:String;
 
     private  _questionType !:QuestionType;
     private _choices:Choice[]  = [];
