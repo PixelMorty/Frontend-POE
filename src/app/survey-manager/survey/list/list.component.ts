@@ -27,4 +27,6 @@ export class ListComponent implements OnInit {
        this.surveys = surveys;
      });
   }
+  
+  
 }

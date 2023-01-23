@@ -10,11 +10,14 @@ import { SurveyService } from 'src/app/core/services/survey-service';
   styleUrls: ['./update.component.scss'],
 })
 export class UpdateComponent implements OnInit {
+
+
   constructor(private surveyService: SurveyService) {}
+
 
   ngOnInit(): void {}
 
   onSubmit(): void {
-    // TODO this.surveyService.change-questions(this.listIds, this.idSurvey)
+    // TODO this.surveyService.changeQuestions(this.listIds, this.idSurvey)
   }
 }
