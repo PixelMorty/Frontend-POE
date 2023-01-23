@@ -47,7 +47,7 @@ export class SurveyService {
 
   public update(survey: Survey, id: number): Observable<Survey[]> {
     return this.httpClient.patch<Survey[]>(
-      `${SurveyService.CONTROLLER_PATH}/update/${id}`,
+      `${SurveyService.CONTROLLER_PATH}${id}`,
       survey
     );
   }
@@ -57,23 +57,10 @@ export class SurveyService {
     id: number
   ): Observable<Survey> {
     return this.httpClient
-      .patch<Survey>(
+      .put<Survey>(
         `${SurveyService.CONTROLLER_PATH}/change-questions/${id}`,
         questionIds
       )
       .pipe(take(1));
-  }
-
-  public add(survey: Survey): Observable<Survey> {
-    return this.httpClient.post<Survey>(
-      `${SurveyService.CONTROLLER_PATH}/surveys/list`,
-      survey
-    );
-  }
-
-  public delete(id: Survey): Observable<HttpResponse<any>> {
-    return this.httpClient.delete<any>(
-      `${SurveyService.CONTROLLER_PATH}/${id}`
-    );
   }
 }

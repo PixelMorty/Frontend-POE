@@ -79,4 +79,6 @@ export class ListComponent implements OnInit {
   public goToPOESAdd(): void {
     this.router.navigate([StagiairesPoes.POES, 'add']);
   }
+  
+  
 }

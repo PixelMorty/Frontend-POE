@@ -5,13 +5,12 @@ import { Choice } from "./choice.model";
 
 export class Question{
 
-    private _id! :number  ;
+    private _id! :number;
 
-    private _title!:String ;
-
+    private _title!:String;
 
     private  _questionType !:QuestionType;
-
+    private _choices:Choice[]  = [];
 
 
     
@@ -47,8 +46,7 @@ export class Question{
       this._choices = val
     }
 
-    private _choices:Choice[]  = [];
+  }
 
     
 
-}
