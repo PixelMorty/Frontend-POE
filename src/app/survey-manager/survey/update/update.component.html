@@ -1,1 +1,50 @@
-<p>update works!</p>
+
+
+<ng-container *ngIf="currentQuestions">
+    <ng-container *ngIf="survey">
+        <p> 
+        titre : {{survey.title}}
+    </p>
+    <p>
+        Liste des questions  :
+        <!-- afficher liste des questions détaillées-->
+    </p>
+
+ 
+        <ng-container *ngFor="let question of currentQuestions">
+            <p>{{question.title}}</p>
+
+                <ng-container *ngIf="question.questionType==QuestionType.YES_NO">
+                    <p>YES_NO  {{question.title}} </p>   
+
+                </ng-container>
+
+                <ng-container *ngIf="question.questionType==QuestionType.QCM">
+                    <p>QCM : {{question.title}}</p>  
+                </ng-container>
+                <ng-container *ngIf="question.questionType==QuestionType.FREE_RESPONSE">
+                    <p>FREE_RESPONSE :   {{question.title}} </p>  
+                </ng-container>
+                <!-- Afficher les choix:-->
+                <p>
+                    <ng-container *ngFor="let choice of question.choices">
+                        {{choice.name}}        
+                        </ng-container>         
+                </p>
+        </ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </ng-container>
+</ng-container>

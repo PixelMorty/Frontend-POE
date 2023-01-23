@@ -11,18 +11,19 @@ const routes: Routes = [];
 })
 export class SurveyRoutingModule {
   public static routes: Routes = [
-    {
-      path: '',
-      redirectTo: 'list',
-      pathMatch: 'full',
-    },
+
     {
       path: 'list',
       component: ListComponent,
     },
     {
-      path: 'update',
+      path: 'update/:id',
       component: UpdateComponent,
+    },
+    {
+      path: '',
+      redirectTo: 'list',
+      pathMatch: 'full',
     },
   ];
 }

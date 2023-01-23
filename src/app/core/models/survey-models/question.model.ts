@@ -11,7 +11,7 @@ export class Question{
 
 
     private  _questionType !:QuestionType;
-
+    private _choices:Choice[]  = [];
 
 
     
@@ -47,8 +47,7 @@ export class Question{
       this._choices = val
     }
 
-    private _choices:Choice[]  = [];
+  }
 
     
 
-}
