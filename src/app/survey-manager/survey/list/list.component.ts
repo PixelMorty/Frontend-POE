@@ -9,25 +9,22 @@ import { SurveyService } from 'src/app/core/services/survey-service';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  public surveyService!: SurveyService;
-  private idSurvey!: Number;
-  public survey!: Survey;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
+  public surveys!: Survey[];
+// attributs de tri :
+  public ascendingAlphabetic : boolean =true; 
+  public ascendingDate : boolean =false;
+  constructor(
+    private router: Router,
+    private  surveyService : SurveyService
+    ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((routeParams) => {
-      this.idSurvey = new Number(routeParams.get('id'));
-      this.surveyService
-        .findOne(this.idSurvey.valueOf())
-        .subscribe((survey: Survey) => {
-          this.survey = survey;
-        });
-    });
+
 
     // TODO A REGARDER !!
-    // this.surveyService.getAll().subscribe((survey: Survey) => {
-    //   this.survey = survey;
-    // });
+     this.surveyService.getAll().subscribe((surveys: Survey[]) => {
+       this.surveys = surveys;
+     });
   }
 }
