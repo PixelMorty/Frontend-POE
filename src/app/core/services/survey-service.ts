@@ -63,4 +63,17 @@ export class SurveyService {
       )
       .pipe(take(1));
   }
+
+  public add(survey: Survey): Observable<Survey> {
+    return this.httpClient.post<Survey>(
+      `${SurveyService.CONTROLLER_PATH}/surveys/list`,
+      survey
+    );
+  }
+
+  public delete(id: Survey): Observable<HttpResponse<any>> {
+    return this.httpClient.delete<any>(
+      `${SurveyService.CONTROLLER_PATH}/${id}`
+    );
+  }
 }
