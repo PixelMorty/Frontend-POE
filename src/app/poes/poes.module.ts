@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DetailComponent } from './component/detail/detail.component';
 import { PoeAddRemoveStagiaireComponent } from './component/poe-add-remove-stagiaire/poe-add-remove-stagiaire.component';
 import { TypePipe } from './component/pipes/type.pipe';
+import { InitialsPipe } from '../stagiaires/pipes/initials.pipe';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { TypePipe } from './component/pipes/type.pipe';
     DetailComponent,
     PoeAddRemoveStagiaireComponent,
     TypePipe,
+    
   ], // TODO VIRER ADDComponent
   imports: [CommonModule, PoesRoutingModule, SharedModule],
 })

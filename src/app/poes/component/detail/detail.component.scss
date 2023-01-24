@@ -20,44 +20,100 @@
   width: 960px;
   color: #2d3041;
   position: fixed;
+}
 
-  .type {
-    display: inline-block;
-    font-family: consolas, sans-serif, monospace;
-    width: 80px;
-    height: 55px;
-    font-size: 30px;
-    margin-bottom: 9.5px;
-    border-radius: 15%;
-    line-height: 52px;
-    vertical-align: middle;
-    text-align: center;
-    font-weight: bolder;
-    color: white;
+.listbox {
+  color: #2d3041;
+  border-radius: 0.4em;
+  width: 350px;
+  height: 450px;
+  position: fixed;
+  left: 1100px;
+  margin-top: 142px;
+  font-size: 18px;
+  font-weight: bold;
+}
 
-    &.poei {
-      background-color: #cf1b6d;
-    }
+.type {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  font-size: 18px;
+  margin-bottom: 9.5px;
+  border-radius: 15%;
+  line-height: 50px;
+  vertical-align: middle;
+  text-align: center;
+  font-weight: bolder;
+  color: white;
 
-    &.poec {
-      background-color: #ec851d;
-    }
+  &.poei {
+    background-color: #cf1b6d;
   }
 
-  button {
-    cursor: pointer;
-    font-family: arial, sans-serif;
-    font-size: 18px;
-    border: 3px solid;
-    border-color: #00000000;
-    background-color: #9698a0;
-    color: white;
-    border-radius: 0.4em;
-    height: 32px;
-    margin: 10px 5px 10px 5px;
+  &.poec {
+    background-color: #ec851d;
+  }
+}
 
-    &:hover {
-      background-color: #2d3041;
-    }
+.material-icons.style {
+  cursor: pointer;
+  color: white;
+  background-color: #2d3041;
+  border-radius: 0.4em;
+  width: 50px;
+  height: 50px;
+  margin: 10px 5px 10px 5px;
+  float: right;
+
+  &:hover {
+    background-color: red;
+    color: white;
+  }
+}
+
+.material-icons.style2 {
+  cursor: pointer;
+  color: white;
+  background-color: #9698a0;
+  border-radius: 0.4em;
+  width: 50px;
+  height: 50px;
+  margin: 10px 5px 10px 5px;
+  float: right;
+
+  &:hover {
+    background-color: #2d3041;
+    color: white;
+  }
+}
+
+button {
+  cursor: pointer;
+  font-family: arial, sans-serif;
+  font-size: 18px;
+  border: 3px solid;
+  border-color: #00000000;
+  background-color: #9698a0;
+  color: white;
+  border-radius: 0.4em;
+  width: 280px;
+  height: 32px;
+  margin: 10px 5px 10px 5px;
+
+  &.poei {
+    background-color: #cf1b6d;
+  }
+
+  &.poec {
+    background-color: #ec851d;
+  }
+
+  &.delete {
+    background-color: red;
+  }
+
+  &:hover {
+    background-color: #2d3041;
   }
 }
