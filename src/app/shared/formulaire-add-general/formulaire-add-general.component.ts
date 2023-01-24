@@ -126,20 +126,4 @@ export class FormulaireAddGeneralComponent implements OnInit {
       }
     }
   }
-
-  public goToTraineesList(): void {
-    this.router.navigate([StagiairesPoes.STAGIAIRES, 'list']);
-  }
-
-  public goToTraineesAdd(): void {
-    this.router.navigate([StagiairesPoes.STAGIAIRES, 'add']);
-  }
-
-  public goToPOESList(): void {
-    this.router.navigate([StagiairesPoes.POES, 'list']);
-  }
-
-  public goToPOESAdd(): void {
-    this.router.navigate([StagiairesPoes.POES, 'add']);
-  }
 }

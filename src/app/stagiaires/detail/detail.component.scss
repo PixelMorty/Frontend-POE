@@ -28,9 +28,9 @@
   border-radius: 0.4em;
   width: 350px;
   height: 450px;
-  position: absolute;
-  right: 500px;
-  margin-top: 155px;
+  position: fixed;
+  left: 1100px;
+  margin-top: 150px;
 }
 
 .gender {
@@ -56,5 +56,71 @@
 
   &.other {
     background-color: #ec851d;
+  }
+}
+
+.material-icons.style {
+  cursor: pointer;
+  color: white;
+  background-color: #2d3041;
+  border-radius: 0.4em;
+  width: 50px;
+  height: 50px;
+  margin: 10px 5px 10px 5px;
+  float: right;
+
+  &:hover {
+    background-color: red;
+    color: white;
+  }
+}
+
+.material-icons.style2 {
+  cursor: pointer;
+  color: white;
+  background-color: #9698a0;
+  border-radius: 0.4em;
+  width: 50px;
+  height: 50px;
+  margin: 10px 5px 10px 5px;
+  float: right;
+
+  &:hover {
+    background-color: #2d3041;
+    color: white;
+  }
+}
+
+button {
+  cursor: pointer;
+  font-family: arial, sans-serif;
+  font-size: 18px;
+  border: 3px solid;
+  border-color: #00000000;
+  background-color: #9698a0;
+  color: white;
+  border-radius: 0.4em;
+  width: 100px;
+  height: 32px;
+  margin: 10px 5px 10px 5px;
+
+  &.woman {
+    background-color: #cf1b6d;
+  }
+
+  &.man {
+    background-color: #25aae1;
+  }
+
+  &.other {
+    background-color: #ec851d;
+  }
+
+  &.delete {
+    background-color: red;
+  }
+
+  &:hover {
+    background-color: #2d3041;
   }
 }
