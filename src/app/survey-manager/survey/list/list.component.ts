@@ -31,7 +31,9 @@ export class ListComponent implements OnInit {
     });
   }
 
-  public onSurveyAdd(): void {}
+  public onSurveyAdd(): void {
+    this.router.navigate(['/surveys/update/id']);
+  }
 
   public onSurveyRemove(): void {}
 
@@ -62,23 +64,4 @@ export class ListComponent implements OnInit {
     this.message = 'Declined!';
     this?.modalRef?.hide();
   }
-
-  // Bouton MENU
-  public goToTraineesList(): void {
-    this.router.navigate([StagiairesPoes.STAGIAIRES, 'list']);
-  }
-
-  public goToTraineesAdd(): void {
-    this.router.navigate([StagiairesPoes.STAGIAIRES, 'add']);
-  }
-
-  public goToPOESList(): void {
-    this.router.navigate([StagiairesPoes.POES, 'list']);
-  }
-
-  public goToPOESAdd(): void {
-    this.router.navigate([StagiairesPoes.POES, 'add']);
-  }
-  
-  
 }
