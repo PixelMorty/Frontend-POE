@@ -1,6 +1,6 @@
 <body>
-  <button class="button" (click)="onSurveyAdd()">add</button>
-  <button class="button" (click)="onSurveyRemove()">remove</button>
+  <button class="button" (click)="onSurveyAdd()">modifier</button>
+  <button class="button" (click)="onSurveyRemove()">retirer</button>
 
   <ng-container *ngFor="let survey of surveys">
     <p>{{ survey.title }} {{ survey.id }}</p>
