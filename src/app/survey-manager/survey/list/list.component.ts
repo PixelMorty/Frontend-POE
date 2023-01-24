@@ -29,10 +29,11 @@ export class ListComponent implements OnInit {
     this.surveyService.getAll().subscribe((surveys: Survey[]) => {
       this.surveys = surveys;
     });
+    console.log('this.surveys: ', this.surveys);
   }
 
-  public onSurveyAdd(): void {
-    this.router.navigate(['/surveys/update/id']);
+  public onSurveyUpdate(id: number): void {
+    this.router.navigate(['/surveys/update/', id]);
   }
 
   public onSurveyRemove(): void {}

@@ -1,32 +1,57 @@
 <body>
-  <button class="button" (click)="onSurveyAdd()">modifier</button>
-  <button class="button" (click)="onSurveyRemove()">retirer</button>
+  <div id="headline">Listes des formulaires</div>
+  <br />
 
-  <ng-container *ngFor="let survey of surveys">
-    <p>{{ survey.title }} {{ survey.id }}</p>
+  <br />
+  <br />
 
-    <ng-container *ngIf="surveys">
-      <td style="width: 160px">
-        <button
-          nmat-mini-flat
-          class="material-icons style"
-          (click)="openModal(template)"
-        >
-          <mat-icon>delete</mat-icon>
-        </button>
-        <ng-template #template>
-          <div
-            class="modal-body text-center"
-            style="background-color: white; border-radius: 0.4em"
-          >
-            <p style="font-size: 22px">Confirmer la suppression ?</p>
-            <button type="button" class="delete" (click)="confirm(survey)">
-              Supprimer
+  <br />
+  <br />
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 80px">&nbsp;</th>
+        <th style="width: 260px">Intitulé</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <ng-container *ngFor="let survey of surveys">
+        <tr>
+          <td style="width: 500px">
+            {{ survey.title }}
+          </td>
+          <td style="width: 160px">
+            <button
+              nmat-mini-flat
+              class="material-icons style"
+              (click)="openModal(template)"
+            >
+              <mat-icon>delete</mat-icon>
             </button>
-            <button type="button" (click)="decline()">Annuler</button>
-          </div>
-        </ng-template>
-      </td>
-    </ng-container>
-  </ng-container>
+            <button
+              mat-mini-flat
+              class="material-icons style2"
+              (click)="onSurveyUpdate(survey.id)"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+            <ng-template #template>
+              <div
+                class="modal-body text-center"
+                style="background-color: white; border-radius: 0.4em"
+              >
+                <p style="font-size: 22px">Confirmer la suppression ?</p>
+                <button type="button" class="delete" (click)="confirm(survey)">
+                  Supprimer
+                </button>
+                <button type="button" (click)="decline()">Annuler</button>
+              </div>
+            </ng-template>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
 </body>
