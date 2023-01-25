@@ -98,10 +98,10 @@ table {
     border-right: 3px solid;
     border-top: 3px solid;
     border-bottom: 3px solid;
-    border-color: #f4f4f4;
+    border-color: #e2e2e2;
     border-top-right-radius: 0.4em;
     border-bottom-right-radius: 0.4em;
-    background-color: #f4f4f4;
+    background-color: #e2e2e2;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -196,12 +196,12 @@ table {
     color: #2d3041;
   }
 
-  tr:nth-child(even) {
+  tr:nth-child(odd) {
     color: #2d3041;
-    background-color: #f4f4f4;
+    background-color: #e2e2e2;
   }
 
-  tr:nth-child(odd) {
+  tr:nth-child(even) {
     color: #2d3041;
   }
 }
