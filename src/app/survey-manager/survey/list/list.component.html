@@ -15,13 +15,12 @@
         <th style="width: 260px">Intitulé</th>
       </tr>
     </thead>
-
     <button
-              mat-mini-flat
-              class="material-icons style3"
-            >
-              <mat-icon>edit</mat-icon>
-            </button>
+    mat-mini-flat
+    class="material-icons style3">
+    <mat-icon>add</mat-icon>
+</button>
+
 
     <tbody>
       <ng-container *ngFor="let survey of surveys">
@@ -54,6 +53,7 @@
                   Supprimer
                 </button>
                 <button type="button" (click)="decline()">Annuler</button>
+
 
               </div>
             </ng-template>
