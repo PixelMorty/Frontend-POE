@@ -89,6 +89,7 @@
     cursor: pointer;
     font-family: arial, sans-serif;
     font-size: 18px;
+    line-height: 18px;
     border: 3px solid;
     border-color: #00000000;
     background-color: #9698a0;
@@ -200,12 +201,12 @@
         display: inline-block;
         width: 50px;
         height: 50px;
-        margin-left: 5px;
         border-radius: 0.4em;
         vertical-align: middle;
         text-align: center;
         font-weight: bolder;
         color: #2d3041;
+        margin: 10px 5px 10px 5px;
 
         &.male {
           background-color: #25aae1;

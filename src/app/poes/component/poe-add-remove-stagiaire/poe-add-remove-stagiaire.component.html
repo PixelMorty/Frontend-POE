@@ -33,8 +33,8 @@
       <thead>
         <tr>
           <th style="width: 80px">&nbsp;</th>
-          <th style="width: 260px">Nom</th>
-          <th style="width: 220px">Prénom</th>
+          <th style="width: 250px">Nom</th>
+          <th style="width: 240px">Prénom</th>
           <th style="width: 260px">Formation</th>
           <th style="width: 110px; text-align: right">
             {{ getDisplayRowsNumber() }}/{{ stagiaires.length }}
@@ -53,20 +53,19 @@
                   female: stagiaire.gender === 'F',
                   other: stagiaire.gender === 'X'
                 }">
-                
                 </span>
               </td>
-              <td style="width: 260px">
+              <td style="width: 250px">
                 {{ stagiaire.firstName | uppercase }}
               </td>
-              <td style="width: 260px">
+              <td style="width: 240px">
                 {{ stagiaire.lastName }}
               </td>
               <td style="width: 260px">
                 {{ stagiaire.poe.title }}
               </td>
 
-              <td style="width: 110px">
+              <td style="width: 110px; vertical-align: middle;">
                 <ng-container *ngIf="stagiaire.poe.id != poe.id">
                   <button class="button" (click)="onAdd(stagiaire.id)">add</button>
                 </ng-container>
