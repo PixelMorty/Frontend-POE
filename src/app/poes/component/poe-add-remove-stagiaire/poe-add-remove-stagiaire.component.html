@@ -14,7 +14,7 @@
 
     <ng-container *ngIf="stagiaires">
       <ng-container *ngIf="poe">
-        <div style="font-size: 50px">
+        <div style="font-size: 50px; position: fixed; top: 150px;">
           <p>
             <span class="type" [ngClass]="{
             poei: poe.poeType === 'POEI',
@@ -53,6 +53,7 @@
                   female: stagiaire.gender === 'F',
                   other: stagiaire.gender === 'X'
                 }">
+                {{ stagiaire | initials : full : lastNameFirst }}
                 </span>
               </td>
               <td style="width: 250px">

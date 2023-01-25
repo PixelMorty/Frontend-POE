@@ -93,9 +93,6 @@ export class PoeAddRemoveStagiaireComponent implements OnInit {
       return this.stagiaires.length;
     }
 
-    //return this.stagiaires.filter((stagiaire: any) => stagiaire.gender === this.showLi).length;
-
-    // Avec un for of
     let displayedItem: number = 0;
     for (const stagiaire of this.stagiaires) {
       if (stagiaire.gender === this.showLi) {
