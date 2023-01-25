@@ -6,8 +6,6 @@ import { TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
 import { StagiaireService } from 'src/app/core/services/stagiaire-service';
-import { IntlService } from 'src/app/intl/services/intl.service';
-import { ModalModule } from 'ngx-bootstrap/modal';
 import { StagiairesPoes } from 'src/app/shared/enums/stagiaires-poes';
 
 @Component({
