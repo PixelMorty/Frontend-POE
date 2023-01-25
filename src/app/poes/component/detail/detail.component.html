@@ -10,14 +10,10 @@
     <ng-container *ngIf="poedetail">
       <div style="font-size: 50px">
         <p>
-          <span
-            class="type"
-            [ngClass]="{
+          <span class="type" [ngClass]="{
               poei: poedetail.poeType === 'POEI',
               poec: poedetail.poeType === 'POEC'
-            }"
-            >{{ poedetail.poeType | type }}</span
-          >
+            }">{{ poedetail.poeType | type }}</span>
           {{ poedetail.title | uppercase }}
         </p>
 
@@ -28,26 +24,26 @@
         Du
         <span style="font-weight: bold">{{
           poedetail.beginDate | date : "dd/LL/yyyy"
-        }}</span>
+          }}</span>
         au
         <span style="font-weight: bold">{{
           poedetail.endDate | date : "dd/LL/yyyy"
-        }}</span>
+          }}</span>
       </div>
-
-      <ng-container *ngFor="let trainee of poedetail.trainees">
-        <div>
-          <p>{{ trainee.firstName }} {{ trainee.lastName }}</p>
-        </div>
-      </ng-container>
-
-      <!-- AJOUTER BOUTON ENLEVER DE LA POE-->
-
-      <!-- AJOUTER BOUTON Ajouter des stagiaires --- poe-add-remove-stagiaire component -->
-
-      <button class="button" (click)="OnAddRemove()">
-        Ajouter/Retirer stagiaires
-      </button>
     </ng-container>
-  </div>
+    </div>
+      <div class="listbox">
+
+        <button class="button" (click)="OnAddRemove()">
+          Ajouter/Retirer stagiaires
+        </button>
+        <br>
+        <br>
+        <ng-container *ngFor="let trainee of poedetail.trainees">
+          <div style="text-indent: 50px;">
+            <p>• {{ trainee.firstName }} {{ trainee.lastName }}</p>
+          </div>
+        </ng-container>
+
+      </div>
 </body>
