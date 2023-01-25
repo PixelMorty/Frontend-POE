@@ -1,3 +1,14 @@
+#headline {
+  font-family: arial, sans-serif;
+  text-align: left;
+  font-size: 26px;
+  font-weight: bolder;
+  color: #2d3041;
+  position: fixed;
+  left: 500px;
+  top: 100px;
+}
+
 .material-icons.style {
   cursor: pointer;
   color: white;
@@ -10,6 +21,22 @@
 
   &:hover {
     background-color: red;
+  }
+}
+
+.material-icons.style2 {
+  cursor: pointer;
+  color: white;
+  background-color: #9698a0;
+  border-radius: 0.4em;
+  width: 50px;
+  height: 50px;
+  margin: 10px 5px 10px 5px;
+  float: right;
+
+  &:hover {
+    background-color: #2d3041;
+    color: white;
   }
 }
 
@@ -36,5 +63,147 @@ button {
 
   &:hover {
     background-color: #2d3041;
+  }
+}
+
+table {
+  font-family: arial, sans-serif;
+  font-size: 20px;
+  height: auto;
+  margin-left: 500px;
+  margin-right: auto;
+  width: 960px;
+  color: #2d3041;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-top: 120px;
+  text-align: left;
+
+  ::-webkit-scrollbar {
+    width: 20px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-right: 3px solid;
+    border-top: 3px solid;
+    border-bottom: 3px solid;
+    border-color: #f4f4f4;
+    border-top-right-radius: 0.4em;
+    border-bottom-right-radius: 0.4em;
+    background-color: #f4f4f4;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #9698a0;
+    border-top-right-radius: 0.4em;
+    border-bottom-right-radius: 0.4em;
+
+    &:hover {
+      background-color: #2d3041;
+      color: white;
+    }
+  }
+
+  thead {
+    display: block;
+    overflow: auto;
+    text-align: left;
+    width: 960px;
+    height: 50px;
+  }
+
+  th {
+    color: #2d3041;
+    background-color: white;
+    width: 960px;
+  }
+
+  tbody {
+    text-align: left;
+    color: #2d3041;
+    display: block;
+    overflow: auto;
+    height: 500px;
+    width: 960px;
+  }
+
+  td {
+    width: 960px;
+
+    &:first-child {
+      span {
+        cursor: pointer;
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        margin-left: 5px;
+        border-radius: 0.4em;
+        line-height: 50px;
+        vertical-align: middle;
+        text-align: center;
+        font-weight: bolder;
+        color: #2d3041;
+
+        &.male {
+          background-color: #25aae1;
+          color: white;
+
+          &:hover {
+            background-color: #2d3041;
+            color: white;
+          }
+
+          &:focus {
+            color: white;
+            animation: coolAppear 0.35s ease-in 0s 1 forwards;
+          }
+        }
+
+        &.female {
+          background-color: #cf1b6d;
+          color: white;
+
+          &:hover {
+            background-color: #2d3041;
+            color: white;
+          }
+
+          &:focus {
+            color: white;
+            animation: coolAppear 0.35s ease-in 0s 1 forwards;
+          }
+        }
+
+        &.other {
+          background-color: #ec851d;
+          color: white;
+
+          &:hover {
+            background-color: #2d3041;
+            color: white;
+          }
+
+          &:focus {
+            color: white;
+            animation: coolAppear 0.35s ease-in 0s 1 forwards;
+          }
+        }
+      }
+    }
+  }
+
+  tfoot {
+    font-weight: bolder;
+    color: #2d3041;
+  }
+
+  tr:nth-child(odd) {
+    color: #2d3041;
+    background-color: #f4f4f4;
+  }
+
+  tr:nth-child(even) {
+    color: #2d3041;
   }
 }

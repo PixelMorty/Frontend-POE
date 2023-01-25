@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Survey } from '../core/models/survey-models/survey.model';
 import { StagiairesPoes } from '../shared/enums/stagiaires-poes';
+import { FormulaireAddGeneralComponent } from '../shared/formulaire-add-general/formulaire-add-general.component';
 
 @Component({
   selector: 'app-menu',
@@ -26,5 +28,9 @@ export class MenuComponent implements OnInit {
 
   public goToPOESAdd(): void {
     this.router.navigate([StagiairesPoes.POES, 'add']);
+  }
+
+public goToSurveyList():void {
+  this.router.navigate(['/surveys/list'])
   }
 }
