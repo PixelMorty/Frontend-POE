@@ -36,6 +36,14 @@ export class ListComponent implements OnInit {
     this.router.navigate(['/surveys/update/', id]);
   }
 
+  public onSurveyCreate(): void {
+    this.surveyService
+      .add(new Survey())
+      .subscribe((survey: Survey) =>
+        this.router.navigate(['/surveys/update/', survey.id])
+      );
+  }
+
   public onSurveyRemove(): void {}
 
   openModal(template: TemplateRef<any>) {
