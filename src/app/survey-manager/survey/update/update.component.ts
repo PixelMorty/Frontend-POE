@@ -60,14 +60,12 @@ export class UpdateComponent implements OnInit {
   }
 
   onSubmit(): void {
-<<<<<<< HEAD
-   this.surveyService.changeQuestions(this.currentQuestions.map((q:Question)=>q.id), this.surveyId.valueOf());
-=======
+
     this.surveyService.changeQuestions(
       this.currentQuestions.map((q: Question) => q.id),
       this.surveyId.valueOf()
     );
->>>>>>> 19c8a91b7d955c4dec25b2fbdae9effe4e72e33f
+
   }
-  
+
 }
