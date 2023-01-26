@@ -45,10 +45,26 @@ export class ListComponent implements OnInit {
     return displayedItem;
   }
 
-  public goToDetail(id: number): void {
-    console.log(`Got ${id} from list`);
-    this.router.navigate([StagiairesPoes.POES, 'detail', id]);
+  public goToTraineesList(): void {
+    this.router.navigate([StagiairesPoes.STAGIAIRES, 'list']);
   }
+
+  public goToTraineesAdd(): void {
+    this.router.navigate([StagiairesPoes.STAGIAIRES, 'add']);
+  }
+
+  public goToPOESList(): void {
+    this.router.navigate([StagiairesPoes.POES, 'list']);
+  }
+
+  public goToPOESAdd(): void {
+    this.router.navigate([StagiairesPoes.POES, 'add']);
+  }
+
+   public goToDetail(id: number): void {
+     console.log(`Got ${id} from list`);
+     this.router.navigate([StagiairesPoes.POES, 'detail', id]);
+   }
 
   public goToUpdate(id: number): void {
     this.router.navigate([StagiairesPoes.POES, 'add', id]);
