@@ -108,11 +108,6 @@ export class PoeAddRemoveStagiaireComponent implements OnInit {
   }
 
 
-  public onRemove(idTrainee: Number) {
-    this.stagiaireService.removePoe(idTrainee);
-    window.location.reload();
-  }
-
   public onAdd(idTrainee: Number) {
     this.stagiaireService.setPoe(idTrainee, this.idPoe);
     window.location.reload();
@@ -122,30 +117,16 @@ export class PoeAddRemoveStagiaireComponent implements OnInit {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
 
-  confirm(stagiaire: StagiaireModel): void {
+  onRemove(idTrainee: Number) {
     this.message = 'Confirmed!';
     this?.modalRef?.hide();
-    this.stagiaireService
-      .delete(stagiaire)
-      .subscribe((response: HttpResponse<any>) => {
-        this.stagiaires.splice(
-          this.stagiaires.findIndex(
-            (obj: StagiaireModel) => obj.id === stagiaire.id
-          ),
-          1
-        );
-      });
-    this.snackBar.open(
-      `Le stagiaire ${stagiaire.id} a été supprimé`,
-      'Compris',
-      {
-        duration: 2500,
-      }
-    );
+    this.stagiaireService.removePoe(idTrainee);
+    window.location.reload();
   }
   decline(): void {
     this.message = 'Declined!';
     this?.modalRef?.hide();
+    window.location.reload();
   }
 
 }
