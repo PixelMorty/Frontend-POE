@@ -8,50 +8,31 @@ import { StagiairesPoes } from 'src/app/shared/enums/stagiaires-poes';
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.scss']
+  styleUrls: ['./detail.component.scss'],
 })
 export class DetailComponent implements OnInit {
-
   public stagiaire: StagiaireModel | null = null;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private service: StagiaireService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(
-      (routeParams) => {
-        console.log(`Detail got ${routeParams.get('id')}`);
-        try {
-          this.service.findOne(+routeParams.get('id')!)
-            .subscribe((stagiaire: StagiaireModel) => {
-              this.stagiaire = stagiaire;
-            })
-         // console.log(JSON.stringify(this.stagiaire));
-        } catch (error) {
-          this.router.navigate(['/', 'stagiaires']);
-        }
+    this.route.paramMap.subscribe((routeParams) => {
+      console.log(`Detail got ${routeParams.get('id')}`);
+      try {
+        this.service
+          .findOne(+routeParams.get('id')!)
+          .subscribe((stagiaire: StagiaireModel) => {
+            this.stagiaire = stagiaire;
+          });
+        // console.log(JSON.stringify(this.stagiaire));
+      } catch (error) {
+        this.router.navigate(['/', 'stagiaires']);
       }
-    )
-  }
-  
-
-  public goToTraineesList(): void {
-    this.router.navigate([StagiairesPoes.STAGIAIRES, 'list']);
-  }
-
-  public goToTraineesAdd(): void {
-    this.router.navigate([StagiairesPoes.STAGIAIRES, 'add']);
-  }
-
-  public goToPOESList(): void {
-    this.router.navigate([StagiairesPoes.POES, 'list']);
-  }
-
-  public goToPOESAdd(): void {
-    this.router.navigate([StagiairesPoes.POES, 'add']);
+    });
   }
 
   public goToDetail(id: number): void {
@@ -62,6 +43,4 @@ export class DetailComponent implements OnInit {
   public goToUpdate(id: number): void {
     this.router.navigate([StagiairesPoes.STAGIAIRES, 'add', id]);
   }
-
 }
-

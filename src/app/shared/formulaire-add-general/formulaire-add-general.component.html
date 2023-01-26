@@ -1,62 +1,4 @@
 <body>
-  <div id="leftpanel">
-    <div id="title">
-      <p>> MENU</p>
-    </div>
-
-    <div>
-      <ul class="menu-list">
-        <div class="menu-item">
-          <button class="menu-button">• &nbsp;&nbsp;Formations</button>
-          <ul class="menu-sub-list">
-            <div class="menu-item">
-              <button class="menu-button">Panorama</button>
-            </div>
-            <div class="menu-item">
-              <button class="menu-button" (click)="goToPOESList()">
-                Liste
-              </button>
-            </div>
-          </ul>
-        </div>
-        <div class="menu-item">
-          <button class="menu-button">• &nbsp;&nbsp;Participants</button>
-          <ul class="menu-sub-list">
-            <div class="menu-item">
-              <button class="menu-button">Panorama</button>
-            </div>
-            <div class="menu-item">
-              <button class="menu-button" (click)="goToTraineesList()">
-                Liste
-              </button>
-            </div>
-          </ul>
-        </div>
-        <div class="menu-item">
-          <button class="menu-button">• &nbsp;&nbsp;Ajouter</button>
-          <ul class="menu-sub-list">
-            <div class="menu-item">
-              <button class="menu-button" (click)="goToPOESAdd()">
-                Formation
-              </button>
-            </div>
-            <div class="menu-item">
-              <button class="menu-button" (click)="goToTraineesAdd()">
-                Participant
-              </button>
-            </div>
-          </ul>
-        </div>
-        <div class="menu-item">
-          <button class="menu-button">• &nbsp;&nbsp;Statistiques</button>
-        </div>
-        <div class="menu-item">
-          <button class="menu-button">• &nbsp;&nbsp;Archives</button>
-        </div>
-      </ul>
-    </div>
-  </div>
-
   <div class="formblock">
     <br />
     <br />
@@ -242,10 +184,16 @@
         <mat-form-field style="width: 960px">
           <mat-label>Description*</mat-label>
 
-
-          <textarea matInput formControlName="description" #textarea placeholder="Your Message" maxlength="850"  cdkTextareaAutosize
-          cdkAutosizeMinRows="10"></textarea>
-          <mat-hint align="end">{{textarea.value.length || 0}}/850</mat-hint>
+          <textarea
+            matInput
+            formControlName="description"
+            #textarea
+            placeholder="Your Message"
+            maxlength="850"
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="10"
+          ></textarea>
+          <mat-hint align="end">{{ textarea.value.length || 0 }}/850</mat-hint>
           <mat-error *ngIf="addForm.controls['title'].errors">
             Une description est obigatoire.
           </mat-error>

@@ -14,61 +14,60 @@ import { SurveyService } from 'src/app/core/services/survey-service';
   styleUrls: ['./update.component.scss'],
 })
 export class UpdateComponent implements OnInit {
-  public currentQuestions!:Question[];
-  private surveyId !: Number;
-  public survey !: Survey;
-  public QuestionType= QuestionType ;
+  public currentQuestions!: Question[];
+  private surveyId!: Number;
+  public survey!: Survey;
+  public QuestionType = QuestionType;
   constructor(
     private surveyService: SurveyService,
     private activatedRoute: ActivatedRoute,
     private questionService: QuestionService,
-    private router : Router
-    ) {}
-
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-
-    this.activatedRoute.paramMap.subscribe((routeparams)=>{
+    this.activatedRoute.paramMap.subscribe((routeparams) => {
       //récup id du survey
-      this.surveyId = new Number (routeparams.get("id"));
+      this.surveyId = new Number(routeparams.get('id'));
       // trouver le survey
-      try{
-      this.surveyService.findOne(this.surveyId.valueOf()).subscribe((survey)=>{
-         this.survey=survey
-         this.currentQuestions = this.survey.questions;
-      }
-      );
+      try {
+        this.surveyService
+          .findOne(this.surveyId.valueOf())
+          .subscribe((survey) => {
+            this.survey = survey;
+            this.currentQuestions = this.survey.questions;
+          });
       } catch (error) {
-      //this.router.navigate(['/surveys/']);
+        //this.router.navigate(['/surveys/']);
       }
 
-    // iniit la liste des question change 
-
-
-
-
+      // iniit la liste des question change
     });
 
-
-
-
-    // 
-
+    //
   }
 
-
-  deleteQuestionCurrent(questionToDelete :Question):void{
-    this.currentQuestions.splice(this.currentQuestions.findIndex((question:Question)=>questionToDelete.id==question.id));
-    
+  deleteQuestionCurrent(questionToDelete: Question): void {
+    this.currentQuestions.splice(
+      this.currentQuestions.findIndex(
+        (question: Question) => questionToDelete.id == question.id
+      )
+    );
   }
 
-  addQuestionCurrent(question:Question):void{
+  addQuestionCurrent(question: Question): void {
     this.currentQuestions.push(question);
-    
   }
 
   onSubmit(): void {
+<<<<<<< HEAD
    this.surveyService.changeQuestions(this.currentQuestions.map((q:Question)=>q.id), this.surveyId.valueOf());
+=======
+    this.surveyService.changeQuestions(
+      this.currentQuestions.map((q: Question) => q.id),
+      this.surveyId.valueOf()
+    );
+>>>>>>> 19c8a91b7d955c4dec25b2fbdae9effe4e72e33f
   }
   
 }

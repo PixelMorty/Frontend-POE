@@ -1,22 +1,82 @@
-<!--AJOUTER FONCTIONALITES DE TRI-->
-<ng-container *ngIf="stagiaires">
-  <ng-container *ngIf="poe">
-    <p>ajouter ou supprimer des stagiaires de la Poe : {{ poe.title }}</p>
-    <p></p>
-    <!-- TODO AFFICHER DETAIL POE-->
-    <ng-container *ngFor="let stagiaire of stagiaires">
-      <p>
-        {{ stagiaire.firstName }} {{ stagiaire.lastName }} -
-        {{ stagiaire.poe.title }}
-      </p>
+<body>
+  <br />
+  <br />
+  <br />
+  <br />
 
-      <ng-container *ngIf="stagiaire.poe.id != poe.id">
-        <button class="button" (click)="onAdd(stagiaire.id)">add</button>
-      </ng-container>
+  <div id="headline">Ajouter/Retirer Participants</div>
 
-      <ng-container *ngIf="!(stagiaire.poe.id != poe.id)">
-        <button class="button" (click)="onRemove(stagiaire.id)">remove</button>
+  <br />
+
+
+
+  <div class="listblock">
+
+    <ng-container *ngIf="stagiaires">
+      <ng-container *ngIf="poe">
+        <div style="font-size: 50px; position: fixed; top: 150px;">
+          <p>
+            <span class="type" [ngClass]="{
+            poei: poe.poeType === 'POEI',
+            poec: poe.poeType === 'POEC'
+          }">{{ poe.poeType | type }}</span>
+            {{ poe.title | uppercase }}
+          </p>
+        </div>
       </ng-container>
     </ng-container>
-  </ng-container>
-</ng-container>
+  </div>
+    
+
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 80px">&nbsp;</th>
+          <th style="width: 250px">Nom</th>
+          <th style="width: 240px">Prénom</th>
+          <th style="width: 260px">Formation</th>
+          <th style="width: 110px; text-align: right">
+            {{ getDisplayRowsNumber() }}/{{ stagiaires.length }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <ng-container *ngFor="let stagiaire of stagiaires">
+          <ng-container *ngIf="isShown(stagiaire)">
+            <tr>
+              <td style="width: 80px">
+                <span (click)="goToDetail(stagiaire.id)" [ngClass]="{
+                  bubble: true,
+                  male: stagiaire.gender === 'M',
+                  female: stagiaire.gender === 'F',
+                  other: stagiaire.gender === 'X'
+                }">
+                {{ stagiaire | initials : full : lastNameFirst }}
+                </span>
+              </td>
+              <td style="width: 250px">
+                {{ stagiaire.firstName | uppercase }}
+              </td>
+              <td style="width: 240px">
+                {{ stagiaire.lastName }}
+              </td>
+              <td style="width: 260px">
+                {{ stagiaire.poe.title }}
+              </td>
+
+              <td style="width: 110px; vertical-align: middle;">
+                <ng-container *ngIf="stagiaire.poe.id != poe.id">
+                  <button class="button" (click)="onAdd(stagiaire.id)">add</button>
+                </ng-container>
+
+                <ng-container *ngIf="!(stagiaire.poe.id != poe.id)">
+                  <button class="remove" (click)="onRemove(stagiaire.id)">remove</button>
+                </ng-container>
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </tbody>
+    </table>

@@ -1,68 +1,49 @@
 <body>
-  <div id="leftpanel">
-    <div id="title">
-      <p>> MENU</p>
-    </div>
-
-    <div>
-      <ul class="menu-list">
-        <div class="menu-item">
-          <button class="menu-button">• &nbsp;&nbsp;Formations</button>
-          <ul class="menu-sub-list">
-            <div class="menu-item"><button class="menu-button">Panorama</button></div>
-            <div class="menu-item"><button class="menu-button" (click)="goToPOESList()">Liste</button></div>
-          </ul>
-        </div>
-        <div class="menu-item">
-          <button class="menu-button">• &nbsp;&nbsp;Participants</button>
-          <ul class="menu-sub-list">
-            <div class="menu-item"><button class="menu-button">Panorama</button></div>
-            <div class="menu-item"><button class="menu-button" (click)="goToTraineesList()">Liste</button></div>
-          </ul>
-        </div>
-        <div class="menu-item">
-          <button class="menu-button">• &nbsp;&nbsp;Ajouter</button>
-          <ul class="menu-sub-list">
-            <div class="menu-item"><button class="menu-button" (click)="goToPOESAdd()">Formation</button></div>
-            <div class="menu-item"><button class="menu-button" (click)="goToTraineesAdd()">Participant</button></div>
-          </ul>
-        </div>
-        <div class="menu-item">
-          <button class="menu-button">• &nbsp;&nbsp;Statistiques</button>
-        </div>
-        <div class="menu-item">
-          <button class="menu-button">• &nbsp;&nbsp;Archives</button>
-        </div>
-      </ul>
-    </div>
-  </div>
-
-  <br>
-  <br>
-  <br>
-  <br>
+  <br />
+  <br />
+  <br />
+  <br />
   <div id="headline">
     <p>Liste des participants</p>
   </div>
-  <br>
+  <br />
 
   <div id="topbuttons">
     <br />
     <br />
 
-    <button type="button" (click)="showLi = 'A'" [ngClass]="{ 'is-selected': showLi === 'A' }">
+    <button
+      type="button"
+      (click)="showLi = 'A'"
+      [ngClass]="{ 'is-selected': showLi === 'A' }"
+    >
       Tous
     </button>
 
-    <button type="button" class="woman" (click)="showLi = 'F'" [ngClass]="{ 'is-selected': showLi === 'F' }">
+    <button
+      type="button"
+      class="woman"
+      (click)="showLi = 'F'"
+      [ngClass]="{ 'is-selected': showLi === 'F' }"
+    >
       Femme
     </button>
 
-    <button type="button" class="man" (click)="showLi = 'M'" [ngClass]="{ 'is-selected': showLi === 'M' }">
+    <button
+      type="button"
+      class="man"
+      (click)="showLi = 'M'"
+      [ngClass]="{ 'is-selected': showLi === 'M' }"
+    >
       Homme
     </button>
 
-    <button type="button" class="other" (click)="showLi = 'X'" [ngClass]="{ 'is-selected': showLi === 'X' }">
+    <button
+      type="button"
+      class="other"
+      (click)="showLi = 'X'"
+      [ngClass]="{ 'is-selected': showLi === 'X' }"
+    >
       Autre
     </button>
 
@@ -71,15 +52,16 @@
   </div>
 
   <table>
-
     <thead>
       <tr>
-        <th style="width: 80px;">&nbsp;</th>
-        <th style="width: 260px;">Nom</th>
-        <th style="width: 220px;">Prénom</th>
-        <th style="width: 70px; text-align: center;">Genre</th>
-        <th style="width: 150px; text-align: center;">Naissance</th>
-        <th style="width: 160px; text-align: right;">{{ getDisplayRowsNumber() }}/{{ stagiaires.length }}</th>
+        <th style="width: 80px">&nbsp;</th>
+        <th style="width: 260px">Nom</th>
+        <th style="width: 220px">Prénom</th>
+        <th style="width: 70px; text-align: center">Genre</th>
+        <th style="width: 150px; text-align: center">Naissance</th>
+        <th style="width: 160px; text-align: right">
+          {{ getDisplayRowsNumber() }}/{{ stagiaires.length }}
+        </th>
       </tr>
     </thead>
 
@@ -87,46 +69,67 @@
       <ng-container *ngFor="let stagiaire of stagiaires">
         <ng-container *ngIf="isShown(stagiaire)">
           <tr>
-            <td style="width: 80px;">
-              <span (click)="goToDetail(stagiaire.id)" [ngClass]="{
+            <td style="width: 80px">
+              <span
+                (click)="goToDetail(stagiaire.id)"
+                [ngClass]="{
                   bubble: true,
                   male: stagiaire.gender === 'M',
                   female: stagiaire.gender === 'F',
                   other: stagiaire.gender === 'X'
-                }">
+                }"
+              >
                 {{ stagiaire | initials : full : lastNameFirst }}
               </span>
             </td>
-            <td style="width: 260px;">
+            <td style="width: 260px">
               {{ stagiaire.lastName | uppercase }}
             </td>
-            <td style="width: 220px;">
+            <td style="width: 220px">
               {{ stagiaire.firstName }}
             </td>
-            <td style="width: 70px; text-align: center;" [ngClass]="{
+            <td
+              style="width: 70px; text-align: center"
+              [ngClass]="{
                 female: stagiaire.gender === 'F',
                 male: stagiaire.gender === 'M',
                 other: stagiaire.gender === 'X'
-              }">
+              }"
+            >
               {{ stagiaire.gender }}
             </td>
-            <td style="width: 150px; text-align: center;">
+            <td style="width: 150px; text-align: center">
               {{ stagiaire.birthDate | date : "L/dd/yyyy" }}
             </td>
-            <td style="width: 160px;">
-              <button mat-mini-flat class="material-icons style" (click)="openModal(template)">
+            <td style="width: 160px">
+              <button
+                mat-mini-flat
+                class="material-icons style"
+                (click)="openModal(template)"
+              >
                 <mat-icon>delete</mat-icon>
               </button>
               <ng-template #template>
-                <div class="modal-body text-center" style="background-color: white; border-radius: 0.4em">
+                <div
+                  class="modal-body text-center"
+                  style="background-color: white; border-radius: 0.4em"
+                >
                   <p style="font-size: 22px">Confirmer la suppression ?</p>
-                  <button type="button" class="delete" (click)="confirm(stagiaire)">
+                  <button
+                    type="button"
+                    class="delete"
+                    (click)="confirm(stagiaire)"
+                  >
                     Supprimer
                   </button>
                   <button type="button" (click)="decline()">Annuler</button>
                 </div>
               </ng-template>
-              <button mat-mini-flat class="material-icons style2" (click)="goToUpdate(stagiaire.id)">
+              <button
+                mat-mini-flat
+                class="material-icons style2"
+                (click)="goToUpdate(stagiaire.id)"
+              >
                 <mat-icon>edit</mat-icon>
               </button>
             </td>
@@ -134,9 +137,7 @@
         </ng-container>
       </ng-container>
     </tbody>
-
   </table>
-
 
   <div>
     <br />

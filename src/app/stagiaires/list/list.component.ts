@@ -6,8 +6,6 @@ import { TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { StagiaireModel } from 'src/app/core/models/stagiaire-model';
 import { StagiaireService } from 'src/app/core/services/stagiaire-service';
-import { IntlService } from 'src/app/intl/services/intl.service';
-import { ModalModule } from 'ngx-bootstrap/modal';
 import { StagiairesPoes } from 'src/app/shared/enums/stagiaires-poes';
 
 @Component({
@@ -82,22 +80,6 @@ export class ListComponent implements OnInit {
       }
     }
     return displayedItem;
-  }
-
-  public goToTraineesList(): void {
-    this.router.navigate([StagiairesPoes.STAGIAIRES, 'list']);
-  }
-
-  public goToTraineesAdd(): void {
-    this.router.navigate([StagiairesPoes.STAGIAIRES, 'add']);
-  }
-
-  public goToPOESList(): void {
-    this.router.navigate([StagiairesPoes.POES, 'list']);
-  }
-
-  public goToPOESAdd(): void {
-    this.router.navigate([StagiairesPoes.POES, 'add']);
   }
 
   public goToDetail(id: number): void {
