@@ -7,15 +7,25 @@
 
   <table>
     <thead>
-      <tr>
-        <th style="width: 80px">&nbsp;</th>
-        <th style="width: 260px">Intitulé</th>
-      </tr>
+      <th style="width: 260px">
+        Intitulé
+
+        <button
+          mat-mini-flat
+          class="material-icons style3"
+          (click)="onSurveyCreate()"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+      </th>
     </thead>
 
     <tbody>
       <ng-container *ngFor="let survey of surveys">
         <tr>
+          <td style="width: 80px">
+            <mat-icon class="bubble">assignment</mat-icon>
+          </td>
           <td style="width: 500px">
             {{ survey.title }}
           </td>
@@ -50,13 +60,6 @@
           </td>
         </tr>
       </ng-container>
-      <button
-        mat-mini-flat
-        class="material-icons style3"
-        (click)="onSurveyCreate()"
-      >
-        <mat-icon>add</mat-icon>
-      </button>
     </tbody>
   </table>
 </body>
