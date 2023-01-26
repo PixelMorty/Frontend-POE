@@ -9,11 +9,10 @@
   <br />
 
 
-
+  <ng-container *ngIf="stagiaires">
+    <ng-container *ngIf="poe">
   <div class="listblock">
 
-    <ng-container *ngIf="stagiaires">
-      <ng-container *ngIf="poe">
         <div style="font-size: 50px; position: fixed; top: 150px;">
           <p>
             <span class="type" [ngClass]="{
@@ -23,10 +22,11 @@
             {{ poe.title | uppercase }}
           </p>
         </div>
-      </ng-container>
-    </ng-container>
+
+
   </div>
-    
+
+
 
 
     <table>
@@ -80,3 +80,7 @@
         </ng-container>
       </tbody>
     </table>
+
+
+  </ng-container>
+  </ng-container>
