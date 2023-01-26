@@ -17,23 +17,23 @@ import { Question } from "../models/survey-models/question.model";
         //service qui permet d'envoyer de la requete http
         private httpClient: HttpClient
       ) {}
-    
+
     public getOne(id : number) : Observable<Question>{
         return this.httpClient.get<Question>(`${QuestionService.CONTROLLER_PATH}/${id}`) ;
     }
     public getAll(): Observable<Question[]>{
         return this.httpClient.get<Question[]>(`${QuestionService.CONTROLLER_PATH}`) ;
     }
-    
+
     public delete(id:number){
          this.httpClient.delete(`${QuestionService.CONTROLLER_PATH}/${id}`) ;
     }
-    
+
 
     public add(question:Question): Observable<Question>{
         return this.httpClient.post<Question>(`${QuestionService.CONTROLLER_PATH}`,question) ;
     }
-    
+
     public update(id :number,question:Question): Observable<Question>{
         return this.httpClient.patch<Question>(`${QuestionService.CONTROLLER_PATH}${id}`,question) ;
     }
