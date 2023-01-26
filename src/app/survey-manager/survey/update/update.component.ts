@@ -65,5 +65,4 @@ export class UpdateComponent implements OnInit {
       this.surveyId.valueOf()
     );
   }
-
 }
