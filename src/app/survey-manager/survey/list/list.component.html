@@ -1,8 +1,5 @@
 <body>
-  <div id="headline">Listes des formulaires</div>
-  <br />
-
-  <br />
+  <div id="headline">Listes des questionnaires</div>
   <br />
 
   <br />
@@ -15,12 +12,6 @@
         <th style="width: 260px">Intitulé</th>
       </tr>
     </thead>
-    <button
-    mat-mini-flat
-    class="material-icons style3">
-    <mat-icon>add</mat-icon>
-</button>
-
 
     <tbody>
       <ng-container *ngFor="let survey of surveys">
@@ -43,6 +34,7 @@
             >
               <mat-icon>edit</mat-icon>
             </button>
+
             <ng-template #template>
               <div
                 class="modal-body text-center"
@@ -53,13 +45,18 @@
                   Supprimer
                 </button>
                 <button type="button" (click)="decline()">Annuler</button>
-
-
               </div>
             </ng-template>
           </td>
         </tr>
       </ng-container>
+      <button
+        mat-mini-flat
+        class="material-icons style3"
+        (click)="onSurveyCreate()"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
     </tbody>
   </table>
 </body>

@@ -53,16 +53,14 @@ export class ListComponent implements OnInit {
   confirm(survey: Survey): void {
     this.message = 'Confirmed!';
     this?.modalRef?.hide();
-    this.surveyService
-      .delete(survey)
-      .subscribe((response: HttpResponse<any>) => {
-        this.surveys.splice(
-          this.surveys.findIndex((obj: Survey) => obj.id === survey.id),
-          1
-        );
-      });
+    this.surveyService.delete(survey.id).subscribe(() => {
+      this.surveys.splice(
+        this.surveys.findIndex((obj: Survey) => obj.id === survey.id),
+        1
+      );
+    });
     this.snackBar.open(
-      `Le questionnaire ${survey.id} a été supprimé`,
+      `Le questionnaire ${survey.title} a été supprimé`,
       'Compris',
       {
         duration: 2500,
