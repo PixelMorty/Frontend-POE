@@ -98,18 +98,16 @@ export class ListComponent implements OnInit {
   confirm(stagiaire: StagiaireModel): void {
     this.message = 'Confirmed!';
     this?.modalRef?.hide();
-    this.stagiaireServices
-      .delete(stagiaire)
-      .subscribe((response: HttpResponse<any>) => {
-        this.stagiaires.splice(
-          this.stagiaires.findIndex(
-            (obj: StagiaireModel) => obj.id === stagiaire.id
-          ),
-          1
-        );
-      });
+    this.stagiaireServices.delete(stagiaire).subscribe(() => {
+      this.stagiaires.splice(
+        this.stagiaires.findIndex(
+          (obj: StagiaireModel) => obj.id === stagiaire.id
+        ),
+        1
+      );
+    });
     this.snackBar.open(
-      `Le stagiaire ${stagiaire.id} a été supprimé`,
+      `Le stagiaire ${stagiaire.lastName} ${stagiaire.firstName} a été supprimé`,
       'Compris',
       {
         duration: 2500,

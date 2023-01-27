@@ -66,12 +66,12 @@ export class SurveyService {
 
   public add(survey: Survey): Observable<Survey> {
     return this.httpClient.post<Survey>(
-      `${SurveyService.CONTROLLER_PATH}/surveys/list`,
+      `${SurveyService.CONTROLLER_PATH}`,
       survey
     );
   }
 
-  public delete(id: Survey): Observable<HttpResponse<any>> {
+  public delete(id: number): Observable<HttpResponse<any>> {
     return this.httpClient.delete<any>(
       `${SurveyService.CONTROLLER_PATH}/${id}`
     );
