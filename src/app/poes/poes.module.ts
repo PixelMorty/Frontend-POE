@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { PoePanoramaComponent } from './component/poepanorama/poepanorama.component';
 import { PoesRoutingModule } from './poes-routing.module';
 import { ListComponent } from './component/list/list.component';
 import { SharedModule } from '../shared/shared.module';
@@ -10,10 +10,12 @@ import { TypePipe } from './component/pipes/type.pipe';
 import { InitialsPipe } from './component/pipes/initials.pipe';
 import { StagiairesRoutingModule } from '../stagiaires/stagiaires-routing.module';
 
+
 @NgModule({
   declarations: [
     ListComponent,
     DetailComponent,
+    PoePanoramaComponent,
     PoeAddRemoveStagiaireComponent,
     InitialsPipe,
     TypePipe,

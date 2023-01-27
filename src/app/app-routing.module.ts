@@ -13,8 +13,15 @@ export class AppRoutingModule {
   public static routes: Routes = [
     {
       path: '', // chemin vide, tjr première route
-      redirectTo: 'stagiaires',
+      redirectTo: 'home',
       pathMatch: 'full',
+    },
+    {
+      path: StagiairesPoes.STAGIAIRES,
+      loadChildren: () =>
+        import('./stagiaires/stagiaires.module').then(
+          (m) => m.StagiairesModule
+        ),
     },
     {
       path: StagiairesPoes.STAGIAIRES,
@@ -36,8 +43,13 @@ export class AppRoutingModule {
         ),
     },
     {
+      path: 'home',
+      loadChildren: () =>
+        import('./poes/poes.module').then((m) => m.PoesModule),
+    },
+    {
       path: '**', //route fallback
-      redirectTo: 'stagiaires',
+      redirectTo: 'home',
       pathMatch: 'full',
     },
   ];

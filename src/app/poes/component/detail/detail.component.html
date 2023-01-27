@@ -6,9 +6,9 @@
 
   <div id="headline">Détail de la formation</div>
 
-  <div class="detailsblock">
+  <div class="nameblock">
     <ng-container *ngIf="poedetail">
-      <div style="font-size: 50px">
+      <div style="font-size: 50px; position: fixed; top: 150px;">
         <p>
           <span class="type" [ngClass]="{
               poei: poedetail.poeType === 'POEI',
@@ -16,10 +16,12 @@
             }">{{ poedetail.poeType | type }}</span>
           {{ poedetail.title | uppercase }}
         </p>
-
-        <!-- TODO AFFICHER DETAIL POE-->
       </div>
+    </ng-container>
 
+  </div>
+  <div class="detailsblock">
+    <ng-container *ngIf="poedetail">
       <div>
         Du
         <span style="font-weight: bold">{{
@@ -31,19 +33,19 @@
           }}</span>
       </div>
     </ng-container>
-    </div>
-      <div class="listbox">
+  </div>
+  <div class="listbox">
 
-        <button class="button" (click)="OnAddRemove()">
-          Ajouter/Retirer stagiaires
-        </button>
-        <br>
-        <br>
-        <ng-container *ngFor="let trainee of poedetail.trainees">
-          <div style="text-indent: 50px;">
-            <p>• {{ trainee.firstName }} {{ trainee.lastName }}</p>
-          </div>
-        </ng-container>
-
+    <button class="button" (click)="OnAddRemove()">
+      Ajouter/Retirer stagiaires
+    </button>
+    <br>
+    <br>
+    <ng-container *ngFor="let trainee of poedetail.trainees">
+      <div style="text-indent: 50px;">
+        <p>• {{ trainee.firstName }} {{ trainee.lastName }}</p>
       </div>
+    </ng-container>
+
+  </div>
 </body>
