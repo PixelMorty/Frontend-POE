@@ -4,6 +4,30 @@ body {
   margin-left: 500px;
   margin-right: auto;
   margin-top: 32px;
-  width: 960px;
+  width: 45%;
   color: #2d3041;
+}
+.title {
+  font-size: inherit;
+  display: inline;
+  vertical-align: revert;
+}
+
+mat-card {
+  border-bottom: 1px solid #2d3041;
+}
+
+mat-card-title {
+  background-color: #9698a0;
+  margin: 0;
+  padding: 15px 15px;
+  border-radius: 5px;
+}
+
+.questions {
+  font-size: large;
+}
+
+.choices {
+  font-size: large;
 }

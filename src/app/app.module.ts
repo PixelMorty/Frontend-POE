@@ -6,10 +6,15 @@ import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 import { MatInputModule } from '@angular/material/input';
 import { MomentDateModule } from '@angular/material-moment-adapter';
 import { ModalModule } from 'ngx-bootstrap/modal';
+
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
@@ -17,17 +22,32 @@ import { ListComponent } from './survey-manager/survey/list/list.component';
 
 import { UpdateComponent } from './survey-manager/survey/update/update.component';
 import { MenuComponent } from './menu/menu.component';
+import { BooleanComponent } from './survey-manager/questions/boolean/boolean.component';
+import { MultipleChoicesComponent } from './survey-manager/questions/multiple-choices/multiple-choices.component';
+import { FreeResponseComponent } from './survey-manager/questions/free-response/free-response.component';
 
 @NgModule({
-  declarations: [AppComponent, ListComponent, UpdateComponent, MenuComponent],
+  declarations: [
+    AppComponent,
+    ListComponent,
+    UpdateComponent,
+    MenuComponent,
+    BooleanComponent,
+    MultipleChoicesComponent,
+    FreeResponseComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     SharedModule,
     MatInputModule,
     MatDatepickerModule,
     MomentDateModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatRadioModule,
     ModalModule.forRoot(),
   ],
   providers: [

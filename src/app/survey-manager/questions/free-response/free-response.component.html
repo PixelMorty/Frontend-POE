@@ -1,0 +1,10 @@
+<textarea
+  style="width: 100%"
+  matInput
+  #textarea
+  placeholder="Votre réponse"
+  maxlength="850"
+  cdkTextareaAutosize
+  cdkAutosizeMinRows="10"
+></textarea>
+<mat-hint align="end">{{ textarea.value.length || 0 }}/850</mat-hint>
