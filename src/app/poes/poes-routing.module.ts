@@ -6,6 +6,7 @@ import { FormulaireAddGeneralComponent } from '../shared/formulaire-add-general/
 
 import { DetailComponent } from './component/detail/detail.component';
 import { PoeAddRemoveStagiaireComponent } from './component/poe-add-remove-stagiaire/poe-add-remove-stagiaire.component';
+import { PoePanoramaComponent } from './component/poepanorama/poepanorama.component';
 
 const routes: Routes = [];
 
@@ -17,8 +18,12 @@ export class PoesRoutingModule {
   public static routes: Routes = [
     {
       path: '',
-      redirectTo: 'list',
+      redirectTo: 'poepanorama',
       pathMatch: 'full',
+    },
+    {
+      path: 'poepanorama',
+      component: PoePanoramaComponent,
     },
     {
       path: 'list',
@@ -45,7 +50,7 @@ export class PoesRoutingModule {
     },
     {
       path: '**',
-      redirectTo: 'list',
+      redirectTo: 'poepanorama',
       pathMatch: 'full',
     },
   ];

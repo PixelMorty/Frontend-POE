@@ -182,8 +182,10 @@
     color: #2d3041;
     display: block;
     overflow: auto;
-    height: 500px;
+    margin-top: 0px;
+    height: 50%;
     width: 960px;
+    position: fixed;
   }
 
   td {

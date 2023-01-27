@@ -14,6 +14,10 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  public goToHome(): void {
+    this.router.navigate(['/poes/poepanorama'])
+  }
+
   public goToTraineesList(): void {
     this.router.navigate([StagiairesPoes.STAGIAIRES, 'list']);
   }

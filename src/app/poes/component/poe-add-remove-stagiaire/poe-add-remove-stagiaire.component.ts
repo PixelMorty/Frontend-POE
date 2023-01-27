@@ -108,19 +108,19 @@ export class PoeAddRemoveStagiaireComponent implements OnInit {
   }
 
 
-  public onAdd(idTrainee: Number) {
-    this.stagiaireService.setPoe(idTrainee, this.idPoe);
-    window.location.reload();
-  }
-
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
 
   onRemove(idTrainee: Number) {
-    this.message = 'Confirmed!';
     this?.modalRef?.hide();
     this.stagiaireService.removePoe(idTrainee);
+    window.location.reload();
+  }
+
+  onAdd(idTrainee: Number) {
+    this?.modalRef?.hide();
+    this.stagiaireService.setPoe(idTrainee, this.idPoe);
     window.location.reload();
   }
   decline(): void {

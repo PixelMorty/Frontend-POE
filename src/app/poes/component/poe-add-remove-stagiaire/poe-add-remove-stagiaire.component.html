@@ -68,9 +68,22 @@
 
             <td style="width: 80px; vertical-align: middle;">
               <ng-container *ngIf="stagiaire.poe.id != poe.id">
-                <button class="bubble2" (click)="onAdd(stagiaire.id)">
+                <button class="bubble2" (click)="openModal(template)">
                   +
                 </button>
+
+                <ng-template #template>
+                  <div
+                    class="modal-body text-center"
+                    style="background-color: white; border-radius: 0.4em"
+                  >
+                    <p style="font-size: 22px">Confirmer le rajout ?</p>
+                    <button type="button" (click)="onAdd(stagiaire.id)">
+                      Ajouter
+                    </button>
+                    <button type="button" (click)="decline()">Annuler</button>
+                  </div>
+                </ng-template>
               </ng-container>
 
               <ng-container *ngIf="!(stagiaire.poe.id != poe.id)">

@@ -76,7 +76,7 @@ button {
   }
 }
 
-table {
+.containerbox {
   font-family: arial, sans-serif;
   font-size: 20px;
   height: auto;
@@ -84,10 +84,10 @@ table {
   margin-right: auto;
   width: 960px;
   color: #2d3041;
-  table-layout: fixed;
   border-collapse: collapse;
   margin-top: 120px;
   text-align: left;
+  position: fixed;
 
   ::-webkit-scrollbar {
     width: 20px;
@@ -114,89 +114,114 @@ table {
       color: white;
     }
   }
-
-  thead {
-    display: block;
-    overflow: auto;
-    text-align: left;
-    width: 960px;
-    height: 50px;
-  }
-
-  th {
-    color: #2d3041;
-    background-color: white;
-    width: 960px;
-  }
-
-  tbody {
+  
+  .listbox {
     text-align: left;
     color: #2d3041;
-    display: block;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
     overflow: auto;
-    margin-top: 0px;
-    height: 50%;
+    gap: 10px;
+    height: 55%;
     width: 960px;
+    grid-auto-rows: auto;
     position: fixed;
   }
 
-  td {
-    width: 960px;
-
-    &:first-child {
-      span {
-        cursor: pointer;
-        font-family: consolas, sans-serif, monospace;
-        font-size: 20px;
-        display: inline-block;
-        width: 50px;
-        height: 50px;
-        margin-left: 5px;
-        margin-right: 10px;
-        border-radius: 0.4em;
-        line-height: 50px;
-        vertical-align: middle;
-        text-align: center;
-        font-weight: bolder;
-        color: #2d3041;
-
-        &.poei {
-          background-color: #cf1b6d;
-          color: white;
-
-          &:hover {
-            background-color: #2d3041;
-            color: white;
-          }
-
-        }
-
-        &.poec {
-          background-color: #ec851d;
-          color: white;
-
-          &:hover {
-            background-color: #2d3041;
-            color: white;
-          }
-
-        }
-      }
-    }
-  }
-
-  tfoot {
-    font-weight: bolder;
-    color: #2d3041;
-  }
-
-  tr:nth-child(odd) {
+  .listbox > .poebox {
+    text-align: left;
     color: #2d3041;
     background-color: #e2e2e2;
+    height: auto;
+    width: 295px;
+    border-radius: 0.4em;
+    padding: 16px;
+    font-size: 18px;
+    line-height: 18px;
   }
 
-  tr:nth-child(even) {
-    color: #2d3041;
+  .type {
+    cursor: pointer;
+    font-family: consolas, sans-serif, monospace;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    margin-bottom: 9.5px;
+    border-radius: 15%;
+    line-height: 50px;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bolder;
+    color: white;
+
+      &.poei {
+        background-color: #cf1b6d;
+        color: white;
+
+        &:hover {
+          background-color: #2d3041;
+          color: white;
+        }
+      }
+
+      &.poec {
+        background-color: #ec851d;
+        color: white;
+
+        &:hover {
+          background-color: #2d3041;
+          color: white;
+        }
+      }
+    
   }
+
+  .formbutton {
+    cursor: pointer;
+    font-family: consolas, sans-serif, monospace;
+    float: left;
+    width: 77px;
+    height: 60px;
+    font-size: 20px;
+    border-radius: 0.4em;
+    line-height: 20px;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bolder;
+    color: white;
+    
+
+      &.completed {
+        background-color: #5cc16f;
+        color: white;
+
+        &:hover {
+          background-color: #2d3041;
+          color: white;
+        }
+      }
+
+      &.inprogress {
+        background-color: #25aae1;
+        color: white;
+
+        &:hover {
+          background-color: #2d3041;
+          color: white;
+        }
+      }
+
+      &.standby {
+        background-color: #9698a0;
+        color: white;
+
+        &:hover {
+          background-color: #2d3041;
+          color: white;
+        }
+      }
+    
+  }
+
 }
-
