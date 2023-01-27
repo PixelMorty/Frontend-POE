@@ -42,7 +42,7 @@
 .material-icons.style3 {
   cursor: pointer;
   color: white;
-  background-color: #ffc107;
+  background-color: #9698a0;
   border-radius: 0.4em;
   width: 50px;
   height: 50px;
@@ -50,7 +50,7 @@
   float: right;
 
   &:hover {
-    background-color: #2d3041;
+    background-color: #22a769;
   }
 }
 
@@ -124,13 +124,20 @@ table {
     overflow: auto;
     text-align: left;
     width: 960px;
-    height: 50px;
-  }
+    height: 55px;
 
-  th {
-    color: #2d3041;
-    background-color: white;
-    width: 960px;
+    th {
+      color: #2d3041;
+      background-color: white;
+      width: 960px;
+      padding-left: 80px;
+      display: inline;
+    }
+
+    button {
+      margin-top: 0;
+      margin-right: 227px;
+    }
   }
 
   tbody {
@@ -139,77 +146,25 @@ table {
     display: block;
     overflow: auto;
     height: 500px;
-    width: 960px;
+    width: max-content;
   }
 
   td {
     width: 960px;
 
-    &:first-child {
-      span {
-        cursor: pointer;
-        display: inline-block;
-        width: 50px;
-        height: 50px;
-        margin-left: 5px;
-        border-radius: 0.4em;
-        line-height: 50px;
-        vertical-align: middle;
-        text-align: center;
-        font-weight: bolder;
-        color: #2d3041;
-
-        &.male {
-          background-color: #25aae1;
-          color: white;
-
-          &:hover {
-            background-color: #2d3041;
-            color: white;
-          }
-
-          &:focus {
-            color: white;
-            animation: coolAppear 0.35s ease-in 0s 1 forwards;
-          }
-        }
-
-        &.female {
-          background-color: #cf1b6d;
-          color: white;
-
-          &:hover {
-            background-color: #2d3041;
-            color: white;
-          }
-
-          &:focus {
-            color: white;
-            animation: coolAppear 0.35s ease-in 0s 1 forwards;
-          }
-        }
-
-        &.other {
-          background-color: #ec851d;
-          color: white;
-
-          &:hover {
-            background-color: #2d3041;
-            color: white;
-          }
-
-          &:focus {
-            color: white;
-            animation: coolAppear 0.35s ease-in 0s 1 forwards;
-          }
-        }
-      }
+    .bubble {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      margin-left: 5px;
+      border-radius: 0.4em;
+      line-height: 50px;
+      vertical-align: middle;
+      text-align: center;
+      font-weight: bolder;
+      color: #ffffff;
+      background-color: #25aae1;
     }
-  }
-
-  tfoot {
-    font-weight: bolder;
-    color: #2d3041;
   }
 
   tr:nth-child(odd) {
