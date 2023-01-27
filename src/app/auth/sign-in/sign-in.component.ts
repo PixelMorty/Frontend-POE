@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserModel } from 'src/app/core/models/user-model';
 import { UserService } from 'src/app/core/services/user.service';
+import { StagiairesPoes } from 'src/app/shared/enums/stagiaires-poes';
 import { FormUser } from '../form-user';
 
 @Component({
@@ -12,20 +13,29 @@ import { FormUser } from '../form-user';
 })
 export class SignInComponent implements OnInit {
   public form !: FormGroup;
-  private usermodel !: UserModel;
+  private usermodel: UserModel = new UserModel();
 
   constructor(
     private router : Router,
+    private activatedRoute: ActivatedRoute,
     private userService : UserService,
   ) { }
 
   ngOnInit(): void {
+
     this.form = new FormUser (this.usermodel).form
 
   }
 
   onSubmit(){
-    
+    // récuperer qu'il y  a dans le form (info username password)
+        // mettre dans Userservice
+    this.userService.user=  this.form.value;
+
+    // Si ça spasse bien rediriger vers ????
+    this.router.navigate([]);//TODO CHANGER : chercher dans ActivatedRoute le parent et en fait revenir sur la page précédente qui a invoqué ce composant
+    // si ça spasse mal recharger page + message erreur ~~~~~ 
+
   }
 
 }
