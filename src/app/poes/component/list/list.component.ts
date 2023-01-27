@@ -61,10 +61,10 @@ export class ListComponent implements OnInit {
     this.router.navigate([StagiairesPoes.POES, 'add']);
   }
 
-   public goToDetail(id: number): void {
-     console.log(`Got ${id} from list`);
-     this.router.navigate([StagiairesPoes.POES, 'detail', id]);
-   }
+  public goToDetail(id: number): void {
+    console.log(`Got ${id} from list`);
+    this.router.navigate([StagiairesPoes.POES, 'detail', id]);
+  }
 
   public goToUpdate(id: number): void {
     this.router.navigate([StagiairesPoes.POES, 'add', id]);
@@ -77,13 +77,13 @@ export class ListComponent implements OnInit {
   confirm(poe: Poe): void {
     this.message = 'Confirmed!';
     this?.modalRef?.hide();
-    this._poeService.delete(poe).subscribe((response: HttpResponse<any>) => {
+    this._poeService.delete(poe).subscribe(() => {
       this.poes.splice(
         this.poes.findIndex((obj: Poe) => obj.id === poe.id),
         1
       );
     });
-    this.snackBar.open(`Le stagiaire ${poe.id} a été supprimé`, 'Compris', {
+    this.snackBar.open(`La POE ${poe.title} a été supprimé`, 'Compris', {
       duration: 2500,
     });
   }
