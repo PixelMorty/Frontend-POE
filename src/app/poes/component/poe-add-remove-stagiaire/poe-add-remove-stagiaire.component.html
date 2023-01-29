@@ -15,10 +15,9 @@
 
         <div style="font-size: 50px; position: fixed; top: 150px;">
           <p>
-            <span class="type" [ngClass]="{
-            poei: poe.poeType === 'POEI',
-            poec: poe.poeType === 'POEC'
-          }">{{ poe.poeType | type }}</span>
+            <span [ngClass]="poe.poeType == 'POEC' ? 'type1' : 'type2'"
+
+          >{{ poe.poeType | type }}</span>
             {{ poe.title | uppercase }}
           </p>
         </div>

@@ -1,10 +1,15 @@
 <body>
   <ng-container *ngIf="survey">
-    <p class="title">titre : {{ survey.title }}</p>
     <p class="list">
       Liste des questions :
       <!-- afficher liste des questions détaillées-->
-    </p>
+
+
+
+    </p><li class="tempHeadContBdr"><span id="logo-formheader" class="formLogo" style="display: none"><img id="logo-formheader-img" src=""></span>
+      <h2 class="title"><em>{{ survey.title }}</em></h2>
+      <p class="frmDesc">Questionnaire de suivi des POE un mois après leur intégration en entreprise.</p>
+      <div class="clearBoth"></div></li>
 
     <ng-container *ngFor="let question of currentQuestions">
       <p>{{ question.title }}</p>

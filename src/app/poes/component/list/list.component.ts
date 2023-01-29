@@ -92,3 +92,5 @@ export class ListComponent implements OnInit {
     this?.modalRef?.hide();
   }
 }
+
+
