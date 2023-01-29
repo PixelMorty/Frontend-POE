@@ -4,48 +4,48 @@
   </div>
 
   <div>
+
+
     <ul class="menu-list">
+      
       <div class="menu-item">
-        <button class="menu-button">• &nbsp;&nbsp;Formations</button>
+        <button class="menu-button" (click)="goToHome()">
+          • &nbsp;&nbsp;Accueil
+        </button>
+      </div>
+
+      <div class="menu-item">
+        <button class="menu-button">• &nbsp;&nbsp;Listes</button>
         <ul class="menu-sub-list">
           <div class="menu-item">
-            <button class="menu-button">Panorama</button>
+            <button class="menu-button" (click)="goToTraineesList()">• &nbsp;&nbsp;Formations</button>
           </div>
           <div class="menu-item">
-            <button class="menu-button" (click)="goToPOESList()">Liste</button>
+            <button class="menu-button" (click)="goToPOESList()">• &nbsp;&nbsp;Participants</button>
           </div>
         </ul>
       </div>
-      <div class="menu-item">
-        <button class="menu-button" (click)="goToTraineesList()">
-          • &nbsp;&nbsp;Participants
-        </button>
-      </div>
-      <div class="menu-item">
-        <button class="menu-button" (click)="goToSurveyList()">
-          • &nbsp;&nbsp;Questionnaires
-        </button>
-      </div>
+
       <div class="menu-item">
         <button class="menu-button">• &nbsp;&nbsp;Ajouter</button>
         <ul class="menu-sub-list">
           <div class="menu-item">
             <button class="menu-button" (click)="goToPOESAdd()">
-              Formation
+              • &nbsp;&nbsp;Formation
             </button>
           </div>
           <div class="menu-item">
             <button class="menu-button" (click)="goToTraineesAdd()">
-              Participant
+              • &nbsp;&nbsp;Participant
             </button>
           </div>
         </ul>
       </div>
+
       <div class="menu-item">
-        <button class="menu-button">• &nbsp;&nbsp;Statistiques</button>
-      </div>
-      <div class="menu-item">
-        <button class="menu-button">• &nbsp;&nbsp;Archives</button>
+        <button class="menu-button" (click)="goToSurveyList()">
+          • &nbsp;&nbsp;Questionnaires
+        </button>
       </div>
     </ul>
   </div>
