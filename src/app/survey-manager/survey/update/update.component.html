@@ -5,34 +5,35 @@
       <!-- afficher liste des questions détaillées-->
 
 
-
     </p><li class="tempHeadContBdr"><span id="logo-formheader" class="formLogo" style="display: none"><img id="logo-formheader-img" src=""></span>
       <h2 class="title"><em>{{ survey.title }}</em></h2>
       <p class="frmDesc">Questionnaire de suivi des POE un mois après leur intégration en entreprise.</p>
       <div class="clearBoth"></div></li>
 
-    <ng-container *ngFor="let question of currentQuestions">
-      <p>{{ question.title }}</p>
-      <div>
-        <ng-container *ngIf="question.questionType == QuestionType.YES_NO">
-          <p>YES_NO {{ question.title }}</p>
-        </ng-container>
+        <ng-container *ngFor="let question of currentQuestions">
+          <p class="questions">
+            {{ currentQuestions.indexOf(question) + 1 }}&nbsp;-&nbsp;{{
+              question.title
+            }}
+          </p>
 
-        <ng-container *ngIf="question.questionType == QuestionType.QCM">
-          <p>QCM : {{ question.title }}</p>
+          <div>
+            <ng-container *ngIf="question.questionType == QuestionType.YES_NO">
+              <app-boolean [choices]="question.choices"></app-boolean>
+            </ng-container>
+
+            <ng-container *ngIf="question.questionType == QuestionType.QCM">
+              <app-multiple-choices
+                [choices]="question.choices"
+              ></app-multiple-choices>
+            </ng-container>
+
+            <ng-container
+              *ngIf="question.questionType == QuestionType.FREE_RESPONSE"
+            >
+              <app-free-response></app-free-response>
+            </ng-container>
+          </div>
         </ng-container>
-        <ng-container
-          *ngIf="question.questionType == QuestionType.FREE_RESPONSE"
-        >
-          <p>FREE_RESPONSE : {{ question.title }}</p>
-        </ng-container>
-      </div>
-      <!-- Afficher les choix:-->
-      <p>
-        <ng-container *ngFor="let choice of question.choices">
-          {{ choice.name }}
-        </ng-container>
-      </p>
-    </ng-container>
   </ng-container>
 </body>

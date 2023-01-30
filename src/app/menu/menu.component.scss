@@ -53,10 +53,8 @@
       }
 
       &:focus {
-        color: #2d3041;
-        border: 4px solid;
-        border-color: #2d3041;
-        animation: coolAppear 0.35s ease-in 0s 1 forwards;
+        background-color: #2d3041;
+        color: white;
 
         & + .menu-sub-list {
           display: flex;
@@ -104,19 +102,3 @@
   }
 }
 
-@keyframes coolAppear {
-  0% {
-    background-color: #2d3041, 80%;
-  }
-
-  50% {
-    background-color: #2d3041, 40%;
-  }
-
-  100% {
-    background-color: white;
-    color: #2d3041;
-    border: 3px solid;
-    border-color: #2d3041;
-  }
-}

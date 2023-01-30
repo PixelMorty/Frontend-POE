@@ -9,10 +9,11 @@
   <br />
 
 
-  <ng-container *ngIf="stagiaires">
-    <ng-container *ngIf="poe">
+
   <div class="listblock">
 
+    <ng-container *ngIf="stagiaires">
+      <ng-container *ngIf="poe">
         <div style="font-size: 50px; position: fixed; top: 150px;">
           <p>
             <span [ngClass]="poe.poeType == 'POEC' ? 'type1' : 'type2'"
@@ -21,65 +22,93 @@
             {{ poe.title | uppercase }}
           </p>
         </div>
-
-
+      </ng-container>
+    </ng-container>
   </div>
 
 
 
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 80px">&nbsp;</th>
+        <th style="width: 250px">Nom</th>
+        <th style="width: 240px">Prénom</th>
+        <th style="width: 290px">Formation</th>
+        <th style="width: 80px; text-align: right">
+          {{ getDisplayRowsNumber() }}/{{ stagiaires.length }}
+        </th>
+      </tr>
+    </thead>
 
-    <table>
-      <thead>
-        <tr>
-          <th style="width: 80px">&nbsp;</th>
-          <th style="width: 250px">Nom</th>
-          <th style="width: 240px">Prénom</th>
-          <th style="width: 260px">Formation</th>
-          <th style="width: 110px; text-align: right">
-            {{ getDisplayRowsNumber() }}/{{ stagiaires.length }}
-          </th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <ng-container *ngFor="let stagiaire of stagiaires">
-          <ng-container *ngIf="isShown(stagiaire)">
-            <tr>
-              <td style="width: 80px">
-                <span (click)="goToDetail(stagiaire.id)" [ngClass]="{
+    <tbody>
+      <ng-container *ngFor="let stagiaire of stagiaires">
+        <ng-container *ngIf="isShown(stagiaire)">
+          <tr>
+            <td style="width: 80px">
+              <span (click)="goToDetail(stagiaire.id)" [ngClass]="{
                   bubble: true,
                   male: stagiaire.gender === 'M',
                   female: stagiaire.gender === 'F',
                   other: stagiaire.gender === 'X'
                 }">
                 {{ stagiaire | initials : full : lastNameFirst }}
-                </span>
-              </td>
-              <td style="width: 250px">
-                {{ stagiaire.firstName | uppercase }}
-              </td>
-              <td style="width: 240px">
-                {{ stagiaire.lastName }}
-              </td>
-              <td style="width: 260px">
-                {{ stagiaire.poe.title }}
-              </td>
+              </span>
+            </td>
+            <td style="width: 250px">
+              {{ stagiaire.firstName | uppercase }}
+            </td>
+            <td style="width: 240px">
+              {{ stagiaire.lastName }}
+            </td>
+            <td style="width: 290px">
+              {{ stagiaire.poe.title }}
+            </td>
 
-              <td style="width: 110px; vertical-align: middle;">
-                <ng-container *ngIf="stagiaire.poe.id != poe.id">
-                  <button class="button" (click)="onAdd(stagiaire.id)">add</button>
-                </ng-container>
+            <td style="width: 80px; vertical-align: middle;">
+              <ng-container *ngIf="stagiaire.poe.id != poe.id">
+                <button class="bubble2" (click)="openModal(template)">
+                  +
+                </button>
 
-                <ng-container *ngIf="!(stagiaire.poe.id != poe.id)">
-                  <button class="remove" (click)="onRemove(stagiaire.id)">remove</button>
-                </ng-container>
-              </td>
-            </tr>
-          </ng-container>
+                <ng-template #template>
+                  <div
+                    class="modal-body text-center"
+                    style="background-color: white; border-radius: 0.4em"
+                  >
+                    <p style="font-size: 22px">Confirmer le rajout ?</p>
+                    <button type="button" (click)="onAdd(stagiaire.id)">
+                      Ajouter
+                    </button>
+                    <button type="button" (click)="decline()">Annuler</button>
+                  </div>
+                </ng-template>
+              </ng-container>
+
+              <ng-container *ngIf="!(stagiaire.poe.id != poe.id)">
+                <button class="bubble1" (click)="openModal(template)">
+                  -
+                </button>
+
+                <ng-template #template>
+                  <div
+                    class="modal-body text-center"
+                    style="background-color: white; border-radius: 0.4em"
+                  >
+                    <p style="font-size: 22px">Confirmer le retrait ?</p>
+                    <button type="button" class="delete" (click)="onRemove(stagiaire.id)">
+                      Retirer
+                    </button>
+                    <button type="button" (click)="decline()">Annuler</button>
+                  </div>
+                </ng-template>
+
+              </ng-container>
+
+            </td>
+          </tr>
         </ng-container>
-      </tbody>
-    </table>
+      </ng-container>
+    </tbody>
+  </table>
 
-
-  </ng-container>
-  </ng-container>

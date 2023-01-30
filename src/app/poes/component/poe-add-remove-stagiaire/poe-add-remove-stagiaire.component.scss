@@ -11,7 +11,7 @@
 
   .listblock {
     font-family: arial, sans-serif;
-    font-size: 20px;
+    font-size: 26px;
     height: auto;
     border-collapse: collapse;
     margin-left: 550px;
@@ -31,22 +31,20 @@
 
 
 
-  .type1 {
+  .type {
+    font-family: consolas, sans-serif, monospace;
     display: inline-block;
-    width: 60px;
+    width: 50px;
     height: 50px;
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 9.5px;
     border-radius: 15%;
-    border: 3px solid;
-    background: #ec851d;
-    border-color: #ffffff;
-    line-height: 45px;
+    line-height: 50px;
     vertical-align: middle;
     text-align: center;
     font-weight: bolder;
-    color: #ffffff;
-
+    color: white;
+    background-color: #9698a0;
   }
 
 
@@ -202,8 +200,10 @@
     color: #2d3041;
     display: block;
     overflow: auto;
-    height: 500px;
+    margin-top: 0px;
+    height: 50%;
     width: 960px;
+    position: fixed;
   }
 
   td {
@@ -283,6 +283,39 @@
 
   tr:nth-child(even) {
     color: #2d3041;
+  }
+}
+
+
+.bubble1 {
+  cursor: pointer;
+  color: white;
+  background-color: #2d3041;
+  border-radius: 0.4em;
+  width: 50px;
+  height: 50px;
+  margin: 10px 5px 10px 5px;
+  float: right;
+
+  &:hover {
+    background-color: red;
+    color: white;
+  }
+}
+
+.bubble2{
+  cursor: pointer;
+  color: white;
+  background-color: #9698a0;
+  border-radius: 0.4em;
+  width: 50px;
+  height: 50px;
+  margin: 10px 5px 10px 5px;
+  float: right;
+
+  &:hover {
+    background-color: #2d3041;
+    color: white;
   }
 }
 
