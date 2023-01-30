@@ -53,9 +53,12 @@ export class ListComponent implements OnInit {
     this.stagiaires = this.stagiaires.sort((b, a) => a.firstName.localeCompare(b.firstName));
   }
 
-  // public sortBirthdate(){
-  //   this.stagiaires = this.stagiaires.sort((a, b) => { return a.birthDate.localeCompare(b.birthDate)});
-  // }
+   public sortBirthdate(){
+     this.stagiaires = this.stagiaires.sort((a, b) => a.birthDate?.valueOf()- b.birthDate?.valueOf());
+   }
+   public sortBirthdateReversed(){
+    this.stagiaires = this.stagiaires.sort((b, a) => a.birthDate?.valueOf() - b.birthDate?.valueOf());
+  }
 
   public changeGender(): boolean {
     if (this.showLi === 'F') {

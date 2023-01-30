@@ -6,7 +6,7 @@ export class StagiaireModel {
     protected _lastName: string = '';
     protected _firstName: string = '';
     protected _gender: string = '';
-    protected _birthDate?: Date | undefined;
+    protected _birthDate!: Date ;
     protected _phoneNumber: string = '';
     protected _email: string = ''; 
 
@@ -53,11 +53,11 @@ export class StagiaireModel {
       this._gender = val
     }
     
-    get birthDate(): Date | undefined {
+    get birthDate(): Date  {
       return this._birthDate
     }
     
-    set birthDate(val: Date | undefined) {
+    set birthDate(val: Date ) {
       this._birthDate = val
     }
     

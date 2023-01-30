@@ -65,6 +65,8 @@
         </th>
         <th style="width: 70px; text-align: center">Genre</th>
         <th style="width: 150px; text-align: center">Naissance</th>
+        <span style="cursor: pointer;" (click)="sortBirthdate()"><mat-icon>arrow_downward</mat-icon></span>
+        <span style="cursor: pointer;" (click)="sortBirthdateReversed()"><mat-icon>arrow_upward</mat-icon></span>
         <th style="width: 160px; text-align: right">
           {{ getDisplayRowsNumber() }}/{{ stagiaires.length }}
         </th>
