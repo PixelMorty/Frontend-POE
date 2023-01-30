@@ -57,7 +57,7 @@ export class SurveyService {
     id: number
   ): Observable<Survey> {
     return this.httpClient
-      .put<Survey>(
+      .patch<Survey>(
         `${SurveyService.CONTROLLER_PATH}/change-questions/${id}`,
         questionIds
       )

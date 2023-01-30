@@ -12,6 +12,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MomentDateModule } from '@angular/material-moment-adapter';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
@@ -48,6 +50,7 @@ import { FreeResponseComponent } from './survey-manager/questions/free-response/
     MatCardModule,
     MatCheckboxModule,
     MatRadioModule,
+    DragDropModule,
     ModalModule.forRoot(),
   ],
   providers: [
