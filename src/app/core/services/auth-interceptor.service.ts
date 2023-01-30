@@ -1,7 +1,7 @@
-import { HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { UserModel } from '../models/user-model';
 import { UserService } from './user.service';
 import { map, take } from 'rxjs';
@@ -39,20 +39,27 @@ export class AuthInterceptorService implements HttpInterceptor {
 
       }else{
         const newReq = req.clone({
-          headers: new HttpHeaders(`Authorization:Basic ${this.userservice.user.password}`)
+          headers: new HttpHeaders(`Authorization:Basic ${this.userservice.user?.password}`)
         });
-      this.router.navigate(['login']);
         console.log("Request with the authorization:", newReq)
-        return next.handle(newReq);
+        return next.handle(newReq)     
+         .pipe(
+          catchError((response:HttpErrorResponse, caught$) => {
+            if (response.status == 401) {
+              console.log("Interceptor: wrong authentication => signout")
+              //this.userservice.signout()
+            } 
+            return throwError(() => caught$);
+          })
+        );;
       }
 
+
 }
 
-
-      
-private _isNotSecuredURI(uri: string): boolean {
-  return this._noSecuredURIs.filter(u => u==uri).length > 0
-}
+  private _isNotSecuredURI(uri: string): boolean {
+    return this._noSecuredURIs.filter(u => u==uri).length > 0
+  }
 }
 export const authInterceptor = {
   provide: HTTP_INTERCEPTORS,

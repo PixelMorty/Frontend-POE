@@ -37,6 +37,7 @@ export class ListComponent implements OnInit {
       });
   }
 
+
   public changeGender(): boolean {
     if (this.showLi === 'F') {
       return this.showLi === 'F';
@@ -86,6 +87,8 @@ export class ListComponent implements OnInit {
     console.log(`Got ${id} from list`);
     this.router.navigate([StagiairesPoes.STAGIAIRES, 'detail', id]);
   }
+
+
 
   public goToUpdate(id: number): void {
     this.router.navigate([StagiairesPoes.STAGIAIRES, 'add', id]);

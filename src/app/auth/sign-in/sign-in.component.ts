@@ -22,7 +22,8 @@ export class SignInComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.usermodel.username="username"
+    this.usermodel.password="password"
     this.form = new FormUser (this.usermodel).form
 
   }
@@ -30,7 +31,7 @@ export class SignInComponent implements OnInit {
   onSubmit(){
     // récuperer qu'il y  a dans le form (info username password)
         // mettre dans Userservice
-    this.userService.user=  this.form.value;
+    this.userService.signin(this.form.value);
 
     // Si ça spasse bien rediriger vers ????
     this.router.navigate([]);//TODO CHANGER : chercher dans ActivatedRoute le parent et en fait revenir sur la page précédente qui a invoqué ce composant
