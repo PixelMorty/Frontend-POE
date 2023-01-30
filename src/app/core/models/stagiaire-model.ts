@@ -1,4 +1,7 @@
 export class StagiaireModel {
+    split(arg0: string) {
+      throw new Error('Method not implemented.');
+    }
     protected  _id : number =0 ;
     protected _lastName: string = '';
     protected _firstName: string = '';
