@@ -37,6 +37,29 @@ export class ListComponent implements OnInit {
       });
   }
 
+  public sortLastName(){
+    this.stagiaires = this.stagiaires.sort((a, b) => a.lastName.localeCompare(b.lastName));
+  }
+
+  public sortLastNameReversed(){
+    this.stagiaires = this.stagiaires.sort((b, a) => a.lastName.localeCompare(b.lastName));
+  }
+
+  public sortFirstName(){
+    this.stagiaires = this.stagiaires.sort((a, b) => a.firstName.localeCompare(b.firstName));
+  }
+
+  public sortFirstNameReversed(){
+    this.stagiaires = this.stagiaires.sort((b, a) => a.firstName.localeCompare(b.firstName));
+  }
+
+   public sortBirthdate(){
+     this.stagiaires = this.stagiaires.sort((a, b) => a.birthDate?.valueOf()- b.birthDate?.valueOf());
+   }
+   public sortBirthdateReversed(){
+    this.stagiaires = this.stagiaires.sort((b, a) => a.birthDate?.valueOf() - b.birthDate?.valueOf());
+  }
+
   public changeGender(): boolean {
     if (this.showLi === 'F') {
       return this.showLi === 'F';
