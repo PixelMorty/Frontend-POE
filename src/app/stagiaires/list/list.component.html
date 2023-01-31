@@ -55,10 +55,18 @@
     <thead>
       <tr>
         <th style="width: 80px">&nbsp;</th>
-        <th style="width: 260px">Nom</th>
-        <th style="width: 220px">Prénom</th>
+        <th style="width: 260px">Nom
+          <span style="cursor: pointer;" (click)="sortLastName()"><mat-icon>arrow_downward</mat-icon></span>
+          <span style="cursor: pointer;" (click)="sortLastNameReversed()"><mat-icon>arrow_upward</mat-icon></span>
+        </th>
+        <th style="width: 220px">Prénom
+          <span style="cursor: pointer;" (click)="sortFirstName()"><mat-icon>arrow_downward</mat-icon></span>
+          <span style="cursor: pointer;" (click)="sortFirstNameReversed()"><mat-icon>arrow_upward</mat-icon></span>
+        </th>
         <th style="width: 70px; text-align: center">Genre</th>
         <th style="width: 150px; text-align: center">Naissance</th>
+        <span style="cursor: pointer;" (click)="sortBirthdate()"><mat-icon>arrow_downward</mat-icon></span>
+        <span style="cursor: pointer;" (click)="sortBirthdateReversed()"><mat-icon>arrow_upward</mat-icon></span>
         <th style="width: 160px; text-align: right">
           {{ getDisplayRowsNumber() }}/{{ stagiaires.length }}
         </th>

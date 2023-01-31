@@ -1,39 +1,76 @@
-<body>
+<body class="boundary">
   <ng-container *ngIf="survey">
-    <mat-card>
+    <mat-card class="survey-card">
       <mat-card-title>
         <h2 class="title">{{ survey.title }}</h2>
       </mat-card-title>
       <mat-card-content>
         <br />
         <br />
+        <div
+          cdkDropList
+          #todoList="cdkDropList"
+          [cdkDropListData]="questionsSurvey"
+          [cdkDropListConnectedTo]="[doneList]"
+          class="questions-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div
+            class="question"
+            cdkDragBoundary=".boundary"
+            *ngFor="let question of questionsSurvey"
+            cdkDrag
+          >
+            <p class="question-title">
+              {{ questionsSurvey.indexOf(question) + 1 }}&nbsp;-&nbsp;{{
+                question.title
+              }}
+            </p>
 
-        <ng-container *ngFor="let question of currentQuestions">
-          <p class="questions">
-            {{ currentQuestions.indexOf(question) + 1 }}&nbsp;-&nbsp;{{
-              question.title
-            }}
-          </p>
+            <div>
+              <ng-container
+                *ngIf="question.questionType == QuestionType.YES_NO"
+              >
+                <app-boolean [choices]="question.choices"></app-boolean>
+              </ng-container>
 
-          <div>
-            <ng-container *ngIf="question.questionType == QuestionType.YES_NO">
-              <app-boolean [choices]="question.choices"></app-boolean>
-            </ng-container>
+              <ng-container *ngIf="question.questionType == QuestionType.QCM">
+                <app-multiple-choices
+                  [choices]="question.choices"
+                ></app-multiple-choices>
+              </ng-container>
 
-            <ng-container *ngIf="question.questionType == QuestionType.QCM">
-              <app-multiple-choices
-                [choices]="question.choices"
-              ></app-multiple-choices>
-            </ng-container>
-
-            <ng-container
-              *ngIf="question.questionType == QuestionType.FREE_RESPONSE"
-            >
-              <app-free-response></app-free-response>
-            </ng-container>
+              <ng-container
+                *ngIf="question.questionType == QuestionType.FREE_RESPONSE"
+              >
+                <app-free-response></app-free-response>
+              </ng-container>
+            </div>
           </div>
-        </ng-container>
+        </div>
       </mat-card-content>
     </mat-card>
+    <mat-card class="questions-list-card">
+      <div
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="questionsList"
+        [cdkDropListConnectedTo]="[todoList]"
+        class="questions-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+          class="question"
+          cdkDragBoundary=".boundary"
+          *ngFor="let question of questionsList"
+          cdkDrag
+          [cdkDragDisabled]="dragDisabled(question)"
+        >
+          {{ question.title }}&nbsp;({{ question.questionType }})
+        </div>
+      </div>
+    </mat-card>
+
+    <button type="submit" (click)="onSubmit()">Enregistrer</button>
   </ng-container>
 </body>
