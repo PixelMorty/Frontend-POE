@@ -27,7 +27,7 @@ export class ListComponent implements OnInit {
     private stagiaireServices: StagiaireService,
     private snackBar: MatSnackBar,
     private modalService: BsModalService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.stagiaireServices
@@ -37,26 +37,27 @@ export class ListComponent implements OnInit {
       });
   }
 
-  public sortLastName(){
+  public sortLastName() {
     this.stagiaires = this.stagiaires.sort((a, b) => a.lastName.localeCompare(b.lastName));
   }
 
-  public sortLastNameReversed(){
+  public sortLastNameReversed() {
     this.stagiaires = this.stagiaires.sort((b, a) => a.lastName.localeCompare(b.lastName));
   }
 
-  public sortFirstName(){
+  public sortFirstName() {
     this.stagiaires = this.stagiaires.sort((a, b) => a.firstName.localeCompare(b.firstName));
   }
 
-  public sortFirstNameReversed(){
+  public sortFirstNameReversed() {
     this.stagiaires = this.stagiaires.sort((b, a) => a.firstName.localeCompare(b.firstName));
   }
 
-   public sortBirthdate(){
-     this.stagiaires = this.stagiaires.sort((a, b) => a.birthDate?.valueOf()- b.birthDate?.valueOf());
-   }
-   public sortBirthdateReversed(){
+  public sortBirthdate() {
+    this.stagiaires = this.stagiaires.sort((a, b) => a.birthDate?.valueOf() - b.birthDate?.valueOf());
+  }
+
+  public sortBirthdateReversed() {
     this.stagiaires = this.stagiaires.sort((b, a) => a.birthDate?.valueOf() - b.birthDate?.valueOf());
   }
 

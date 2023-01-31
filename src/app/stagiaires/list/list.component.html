@@ -55,19 +55,19 @@
     <thead>
       <tr>
         <th style="width: 80px">&nbsp;</th>
-        <th style="width: 260px">Nom
+        <th style="width: 275px">Nom
           <span style="cursor: pointer;" (click)="sortLastName()"><mat-icon>arrow_downward</mat-icon></span>
           <span style="cursor: pointer;" (click)="sortLastNameReversed()"><mat-icon>arrow_upward</mat-icon></span>
         </th>
-        <th style="width: 220px">Prénom
+        <th style="width: 275px">Prénom
           <span style="cursor: pointer;" (click)="sortFirstName()"><mat-icon>arrow_downward</mat-icon></span>
           <span style="cursor: pointer;" (click)="sortFirstNameReversed()"><mat-icon>arrow_upward</mat-icon></span>
         </th>
-        <th style="width: 70px; text-align: center">Genre</th>
-        <th style="width: 150px; text-align: center">Naissance</th>
-        <span style="cursor: pointer;" (click)="sortBirthdate()"><mat-icon>arrow_downward</mat-icon></span>
-        <span style="cursor: pointer;" (click)="sortBirthdateReversed()"><mat-icon>arrow_upward</mat-icon></span>
-        <th style="width: 160px; text-align: right">
+        <th style="width: 160px; text-align: left">Naissance
+          <span style="cursor: pointer;" (click)="sortBirthdate()"><mat-icon>arrow_downward</mat-icon></span>
+          <span style="cursor: pointer;" (click)="sortBirthdateReversed()"><mat-icon>arrow_upward</mat-icon></span>
+        </th>
+        <th style="width: 150px; text-align: right">
           {{ getDisplayRowsNumber() }}/{{ stagiaires.length }}
         </th>
       </tr>
@@ -90,26 +90,16 @@
                 {{ stagiaire | initials : full : lastNameFirst }}
               </span>
             </td>
-            <td style="width: 260px">
+            <td style="width: 275px">
               {{ stagiaire.lastName | uppercase }}
             </td>
-            <td style="width: 220px">
+            <td style="width: 275px">
               {{ stagiaire.firstName }}
             </td>
-            <td
-              style="width: 70px; text-align: center"
-              [ngClass]="{
-                female: stagiaire.gender === 'F',
-                male: stagiaire.gender === 'M',
-                other: stagiaire.gender === 'X'
-              }"
-            >
-              {{ stagiaire.gender }}
-            </td>
-            <td style="width: 150px; text-align: center">
+            <td style="width: 160px; text-align: left">
               {{ stagiaire.birthDate | date : "L/dd/yyyy" }}
             </td>
-            <td style="width: 160px">
+            <td style="width: 150px">
               <button
                 mat-mini-flat
                 class="material-icons style"

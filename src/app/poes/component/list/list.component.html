@@ -44,10 +44,19 @@
     <thead>
       <tr>
         <th style="width: 80px">&nbsp;</th>
-        <th style="width: 460px">Intitulé</th>
-        <th style="width: 120px">Début</th>
-        <th style="width: 120px">Fin</th>
-        <th style="text-align: right; width: 160px">
+        <th style="width: 460px">Intitulé
+          <span style="cursor: pointer;" (click)="sortPOE()"><mat-icon>arrow_downward</mat-icon></span>
+          <span style="cursor: pointer;" (click)="sortPOEReversed()"><mat-icon>arrow_upward</mat-icon></span>
+        </th>
+        <th style="width: 130px">Début
+          <span style="cursor: pointer;" (click)="sortBeginDate()"><mat-icon>arrow_downward</mat-icon></span>
+          <span style="cursor: pointer;" (click)="sortBeginDateReversed()"><mat-icon>arrow_upward</mat-icon></span>
+        </th>
+        <th style="width: 130px">Fin
+          <span style="cursor: pointer;" (click)="sortEndDate()"><mat-icon>arrow_downward</mat-icon></span>
+          <span style="cursor: pointer;" (click)="sortEndDateReversed()"><mat-icon>arrow_upward</mat-icon></span>
+        </th>
+        <th style="text-align: right; width: 140px">
           {{ getDisplayRowsNumber() }}/{{ poes.length }}
         </th>
       </tr>
@@ -71,14 +80,14 @@
           <td style="width: 460px">
             {{ poe.title | uppercase }}
           </td>
-          <td style="width: 120px">
+          <td style="width: 130px">
             {{ poe.beginDate | date : "dd/MM/YYYY" }}
           </td>
-          <td style="width: 120px">
+          <td style="width: 130px">
             {{ poe.endDate | date : "dd/MM/YYYY" }}
           </td>
 
-          <td style="width: 160px">
+          <td style="width: 140px">
             <button
               nmat-mini-flat
               class="material-icons style"
