@@ -22,7 +22,7 @@
           cdkDropList
           #todoList="cdkDropList"
           [cdkDropListData]="questionsSurvey"
-          [cdkDropListConnectedTo]="[doneList]"
+          cdkDropListConnectedTo="doneList"
           class="questions-list"
           (cdkDropListDropped)="drop($event)"
         >

@@ -7,6 +7,7 @@ import { QuestionService } from 'src/app/core/services/question-service';
 import { SurveyService } from 'src/app/core/services/survey-service';
 import {
   CdkDragDrop,
+  CdkDropList,
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
@@ -23,6 +24,7 @@ export class UpdateComponent implements OnInit {
   private surveyId!: Number;
   public survey!: Survey;
   public QuestionType = QuestionType;
+doneList: string | CdkDropList<any> | undefined;
 
   constructor(
     private surveyService: SurveyService,
