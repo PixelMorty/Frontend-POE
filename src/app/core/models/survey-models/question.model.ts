@@ -11,8 +11,26 @@ export class Question{
 
     private  _questionType !:QuestionType;
     private _choices:Choice[]  = [];
+    private _favorite:boolean =false;
 
+    public clone() : Question{
+      const cloneQuestion = new Question()
+      cloneQuestion.questionType=this.questionType;
+      cloneQuestion.id=this.id;
+      cloneQuestion.title=this.title;
+      cloneQuestion.choices=this.choices;
+      cloneQuestion.favorite = this.favorite
+      return cloneQuestion;
+    }
 
+        
+    get favorite() {
+      return this._favorite
+    }
+    
+    set favorite(val : boolean) {
+      this.favorite = val
+    }
     
     get id() {
       return this._id

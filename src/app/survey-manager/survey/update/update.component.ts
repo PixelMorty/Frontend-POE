@@ -37,7 +37,7 @@ export class UpdateComponent implements OnInit {
   //TODO recupérer les choices du back (findByTitle)
 
   initQuestionsTypes(): void {
-    this.questionsList = this.questionsListFromBack;
+    this.questionsList = this.questionsListFromBack.map((q)=>q.clone());
     // const questionYesNo: Question = new Question();
     // questionYesNo.title = 'Entrez-votre question ici';
     // questionYesNo.choices = [];

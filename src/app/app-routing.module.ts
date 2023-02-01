@@ -29,13 +29,6 @@ export class AppRoutingModule {
         ),
     },
     {
-      path: StagiairesPoes.STAGIAIRES,
-      loadChildren: () =>
-        import('./stagiaires/stagiaires.module').then(
-          (m) => m.StagiairesModule
-        ),
-    },
-    {
       path: StagiairesPoes.POES,
       loadChildren: () =>
         import('./poes/poes.module').then((m) => m.PoesModule),
