@@ -1,12 +1,19 @@
-<body class="boundary">
+<body>
+  <div class="formblock">
+  <br />
+  <br />
   <ng-container *ngIf="survey">
+    <div id="headline">
+      Édition d'un questionnaire
+    </div>
+    <br />
+    <br />
+    <br />
     <mat-card class="survey-card">
       <mat-card-title>
         <input class="title" value="Nouveau" />
       </mat-card-title>
       <mat-card-content>
-        <br />
-        <br />
         <div
           cdkDropList
           #todoList="cdkDropList"
@@ -50,4 +57,5 @@
 
     <button type="submit" (click)="onSubmit()">Enregistrer</button>
   </ng-container>
+  </div>
 </body>
