@@ -11,14 +11,14 @@
     <br />
     <mat-card class="survey-card">
       <mat-card-title>
-        <input class="title" value="Nouveau" />
+        <input class="title" value="Titre" />
       </mat-card-title>
       <mat-card-content>
         <div
           cdkDropList
           #todoList="cdkDropList"
           [cdkDropListData]="questionsSurvey"
-          [cdkDropListConnectedTo]="[doneList]"
+          cdkDropListConnectedTo="doneList"
           class="questions-list"
           (cdkDropListDropped)="drop($event)"
         >
@@ -28,7 +28,7 @@
             *ngFor="let questionite of questionsSurvey; index as i"
             cdkDrag
           >
-            <app-edit-question
+            <app-edit-question style="line-height: 24px;"
               [(inputQuestion)]="questionsSurvey[i]"
             ></app-edit-question>
           </div>

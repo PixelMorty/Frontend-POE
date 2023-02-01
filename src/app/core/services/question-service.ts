@@ -11,10 +11,10 @@ import { Question } from '../models/survey-models/question.model';
 export class QuestionService {
   private static readonly CONTROLLER_PATH: String = `${environment.api}questions`;
 
-  public constructor(
-    //service qui permet d'envoyer de la requete http
-    private httpClient: HttpClient
-  ) {}
+    public constructor(
+        //service qui permet d'envoyer de la requete http
+        private httpClient: HttpClient
+      ) {}
 
   public getOne(id: number): Observable<Question> {
     return this.httpClient.get<Question>(
@@ -34,21 +34,16 @@ export class QuestionService {
     );
   }
 
-  public delete(id: number) {
-    this.httpClient.delete(`${QuestionService.CONTROLLER_PATH}/${id}`);
-  }
+    public delete(id:number){
+         this.httpClient.delete(`${QuestionService.CONTROLLER_PATH}/${id}`) ;
+    }
 
-  public add(question: Question): Observable<Question> {
-    return this.httpClient.post<Question>(
-      `${QuestionService.CONTROLLER_PATH}`,
-      question
-    );
-  }
 
-  public update(id: number, question: Question): Observable<Question> {
-    return this.httpClient.patch<Question>(
-      `${QuestionService.CONTROLLER_PATH}${id}`,
-      question
-    );
+    public add(question:Question): Observable<Question>{
+        return this.httpClient.post<Question>(`${QuestionService.CONTROLLER_PATH}`,question) ;
+    }
+
+    public update(id :number,question:Question): Observable<Question>{
+        return this.httpClient.patch<Question>(`${QuestionService.CONTROLLER_PATH}${id}`,question) ;
+    }
   }
-}
