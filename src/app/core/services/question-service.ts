@@ -22,11 +22,12 @@ export class QuestionService {
     );
   }
 
-  public getOneByTitle(title :String): Observable<Question> {
-    return this.httpClient.get<Question>(
-      `${QuestionService.CONTROLLER_PATH}/${title}`
+  public getFavorites(): Observable<Question[]> {
+    return this.httpClient.get<Question[]>(
+      `${QuestionService.CONTROLLER_PATH}/favorites`
     );
   }
+
   public getAll(): Observable<Question[]> {
     return this.httpClient.get<Question[]>(
       `${QuestionService.CONTROLLER_PATH}`

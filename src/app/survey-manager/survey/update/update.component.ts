@@ -23,7 +23,7 @@ import {
 export class UpdateComponent implements OnInit {
   // questionList ---> questionsTypes : String[]
   public questionsList: Question[] = [];
-
+  private questionsListFromBack!: Question[];
   public questionsSurvey!: Question[];
   private surveyId!: Number;
   public survey!: Survey;
@@ -37,22 +37,23 @@ export class UpdateComponent implements OnInit {
   //TODO recupérer les choices du back (findByTitle)
 
   initQuestionsTypes(): void {
-    const questionYesNo: Question = new Question();
-    questionYesNo.title = 'Entrez-votre question ici';
-    questionYesNo.choices = [];
-    questionYesNo.questionType = QuestionType.YES_NO;
+    this.questionsList = this.questionsListFromBack;
+    // const questionYesNo: Question = new Question();
+    // questionYesNo.title = 'Entrez-votre question ici';
+    // questionYesNo.choices = [];
+    // questionYesNo.questionType = QuestionType.YES_NO;
 
-    const questionQcm: Question = new Question();
-    questionQcm.title = 'Entrez-votre question ici';
-    questionQcm.choices = [];
-    questionQcm.questionType = QuestionType.QCM;
+    // const questionQcm: Question = new Question();
+    // questionQcm.title = 'Entrez-votre question ici';
+    // questionQcm.choices = [];
+    // questionQcm.questionType = QuestionType.QCM;
 
-    const questionFreeResponse: Question = new Question();
-    questionFreeResponse.title = 'Entrez-votre question ici';
-    questionFreeResponse.choices = [];
-    questionFreeResponse.questionType = QuestionType.FREE_RESPONSE;
+    // const questionFreeResponse: Question = new Question();
+    // questionFreeResponse.title = 'Entrez-votre question ici';
+    // questionFreeResponse.choices = [];
+    // questionFreeResponse.questionType = QuestionType.FREE_RESPONSE;
 
-    this.questionsList = [questionYesNo, questionQcm, questionFreeResponse];
+    // this.questionsList = [questionYesNo, questionQcm, questionFreeResponse];
   }
 
   ngOnInit(): void {
@@ -61,8 +62,15 @@ export class UpdateComponent implements OnInit {
       this.surveyId = new Number(routeparams.get('id'));
       // trouver le survey
       try {
-        this.initQuestionsTypes();
-
+        this.questionService
+          .getFavorites()
+          .subscribe((questions: Question[]) => {
+            this.questionsListFromBack = questions;
+            this.initQuestionsTypes();
+          });
+        // this.questionService.getAll().subscribe((questions) => {
+        //   this.questionsList = questions;
+        // });
         this.surveyService
           .findOne(this.surveyId.valueOf())
           .subscribe((survey) => {
