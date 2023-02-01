@@ -1,10 +1,8 @@
 <body>
   <div id="headline">Liste des questionnaires</div>
   <br />
-
   <br />
   <br />
-
   <table>
     <thead>
       <tr>
@@ -20,9 +18,9 @@
       <ng-container *ngFor="let survey of surveys">
         <tr>
           <td style="width: 80px">
-            <button mat-mini-flat class="material-icons style3" (click)="openModal(template)">
+            <span mat-mini-flat class="material-icons style3" style="color: white;">
               <mat-icon>assignment</mat-icon>
-            </button>
+            </span>
 
           </td>
           <td style="width: 710px">

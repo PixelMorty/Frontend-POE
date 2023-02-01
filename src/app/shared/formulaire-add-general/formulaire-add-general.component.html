@@ -4,7 +4,7 @@
     <br />
     <ng-container *ngIf="class_poe_or_Stagiaire == 'stagiaires' && addForm">
       <div id="headline">
-        <p>Ajouter un nouveau participant :</p>
+        <p>Édition d'un.e participant.e</p>
       </div>
       <br />
       <br />
@@ -98,7 +98,7 @@
 
     <ng-container *ngIf="class_poe_or_Stagiaire == 'poes' && addForm">
       <div id="headline">
-        <p>Ajouter une nouvelle formation :</p>
+        <p>Édition d'une formation</p>
       </div>
 
       <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
@@ -182,7 +182,7 @@
         <br />
 
         <mat-form-field style="width: 960px">
-          <mat-label>Description*</mat-label>
+          <mat-label>Description</mat-label>
 
           <textarea
             matInput
@@ -194,9 +194,6 @@
             cdkAutosizeMinRows="10"
           ></textarea>
           <mat-hint align="end">{{ textarea.value.length || 0 }}/850</mat-hint>
-          <mat-error *ngIf="addForm.controls['title'].errors">
-            Une description est obligatoire.
-          </mat-error>
         </mat-form-field>
 
         <br />
