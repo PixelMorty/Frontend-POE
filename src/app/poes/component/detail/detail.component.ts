@@ -34,6 +34,7 @@ export class DetailComponent implements OnInit {
       } catch (error) {
         this.router.navigate(['/', StagiairesPoes.POES]);
       }
+      
     });
   }
 

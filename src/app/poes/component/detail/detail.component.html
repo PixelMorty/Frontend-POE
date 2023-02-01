@@ -43,7 +43,7 @@
     <br>
     <ng-container *ngFor="let trainee of poedetail.trainees">
       <div style="text-indent: 50px;">
-        <p>• {{ trainee.firstName }} {{ trainee.lastName }}</p>
+        <p>• {{ trainee.lastName | uppercase }} {{ trainee.firstName }}</p>
       </div>
     </ng-container>
 

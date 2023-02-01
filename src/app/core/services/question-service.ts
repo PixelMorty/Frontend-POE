@@ -16,12 +16,23 @@ export class QuestionService {
         private httpClient: HttpClient
       ) {}
 
-    public getOne(id : number) : Observable<Question>{
-        return this.httpClient.get<Question>(`${QuestionService.CONTROLLER_PATH}/${id}`) ;
-    }
-    public getAll(): Observable<Question[]>{
-        return this.httpClient.get<Question[]>(`${QuestionService.CONTROLLER_PATH}`) ;
-    }
+  public getOne(id: number): Observable<Question> {
+    return this.httpClient.get<Question>(
+      `${QuestionService.CONTROLLER_PATH}/${id}`
+    );
+  }
+
+  public getFavorites(): Observable<Question[]> {
+    return this.httpClient.get<Question[]>(
+      `${QuestionService.CONTROLLER_PATH}/favorites`
+    );
+  }
+
+  public getAll(): Observable<Question[]> {
+    return this.httpClient.get<Question[]>(
+      `${QuestionService.CONTROLLER_PATH}`
+    );
+  }
 
     public delete(id:number){
          this.httpClient.delete(`${QuestionService.CONTROLLER_PATH}/${id}`) ;

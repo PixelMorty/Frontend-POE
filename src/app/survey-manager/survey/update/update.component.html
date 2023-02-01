@@ -1,23 +1,19 @@
-<body class="boundary">
+<body>
+  <div class="formblock">
+  <br />
+  <br />
   <ng-container *ngIf="survey">
-
-    <p class="list">
-      Liste des questions :
-      <!-- afficher liste des questions détaillées-->
-
-
-    </p><li class="tempHeadContBdr"><span id="logo-formheader" class="formLogo" style="display: none"><img id="logo-formheader-img" src=""></span>
-      <h2 class="title"><em>{{ survey.title }}</em></h2>
-      <p class="frmDesc">Questionnaire de suivi des POE un mois après leur intégration en entreprise.</p>
-      <div class="clearBoth"></div></li>
-
+    <div id="headline">
+      Édition d'un questionnaire
+    </div>
+    <br />
+    <br />
+    <br />
     <mat-card class="survey-card">
       <mat-card-title>
-        <h2 class="title">{{ survey.title }}</h2>
+        <input class="title" value="Titre" />
       </mat-card-title>
       <mat-card-content>
-        <br />
-        <br />
         <div
           cdkDropList
           #todoList="cdkDropList"
@@ -26,44 +22,40 @@
           class="questions-list"
           (cdkDropListDropped)="drop($event)"
         >
-
           <div
             class="question"
             cdkDragBoundary=".boundary"
-            *ngFor="let question of questionsSurvey"
+            *ngFor="let questionite of questionsSurvey; index as i"
             cdkDrag
           >
-            <p class="question-title">
-              {{ questionsSurvey.indexOf(question) + 1 }}&nbsp;-&nbsp;{{
-                question.title
-              }}
-            </p>
-
-
-            <div>
-              <ng-container
-                *ngIf="question.questionType == QuestionType.YES_NO"
-              >
-                <app-boolean [choices]="question.choices"></app-boolean>
-              </ng-container>
-
-              <ng-container *ngIf="question.questionType == QuestionType.QCM">
-                <app-multiple-choices
-                  [choices]="question.choices"
-                ></app-multiple-choices>
-              </ng-container>
-
-            <ng-container *ngIf="question.questionType == QuestionType.QCM">
-              <app-multiple-choices
-                [choices]="question.choices"
-              ></app-multiple-choices>
-            </ng-container>
-
-            <ng-container
-              *ngIf="question.questionType == QuestionType.FREE_RESPONSE"
-
-            >
-              <app-free-response></app-free-response>
-            </ng-container>
+            <app-edit-question style="line-height: 24px;"
+              [(inputQuestion)]="questionsSurvey[i]"
+            ></app-edit-question>
           </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="questions-list-card">
+      <div
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="questionsList"
+        [cdkDropListConnectedTo]="[todoList]"
+        class="questions-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+          class="question"
+          cdkDragBoundary=".boundary"
+          *ngFor="let question of questionsList"
+          cdkDrag
+        >
+          {{ question.title }}&nbsp;({{ question.questionType }})
+        </div>
+      </div>
+    </mat-card>
 
+    <button type="submit" (click)="onSubmit()">Enregistrer</button>
+  </ng-container>
+  </div>
+</body>

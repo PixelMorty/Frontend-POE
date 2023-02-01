@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HasUserGuard } from '../auth/guards/has-user.guard';
 import { StagiairesPoes } from '../shared/enums/stagiaires-poes';
 import { FormulaireAddGeneralComponent } from '../shared/formulaire-add-general/formulaire-add-general.component';
 import { DetailComponent } from './detail/detail.component';
@@ -9,18 +10,16 @@ const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forChild(StagiairesRoutingModule.routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class StagiairesRoutingModule { 
-
+export class StagiairesRoutingModule {
   public static routes: Routes = [
     {
       path: '', // chemin vide, tjr première route
       redirectTo: 'list',
       pathMatch: 'full',
     },
-    { path: 'list',
-     component: ListComponent },// StagiairesPoes.STAGIAIRES
+    { path: 'list', component: ListComponent }, // StagiairesPoes.STAGIAIRES
     {
       path: 'detail/:id',
       component: DetailComponent,
@@ -28,6 +27,7 @@ export class StagiairesRoutingModule {
     {
       path: 'add',
       component: FormulaireAddGeneralComponent,
+      canActivate: [HasUserGuard],
     },
     {
       path: 'add/:id',

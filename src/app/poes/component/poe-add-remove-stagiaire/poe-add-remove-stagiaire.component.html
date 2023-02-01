@@ -32,9 +32,18 @@
     <thead>
       <tr>
         <th style="width: 80px">&nbsp;</th>
-        <th style="width: 250px">Nom</th>
-        <th style="width: 240px">Prénom</th>
-        <th style="width: 290px">Formation</th>
+        <th style="width: 250px">Nom
+          <span style="cursor: pointer;" (click)="sortLastName()"><mat-icon>arrow_downward</mat-icon></span>
+          <span style="cursor: pointer;" (click)="sortLastNameReversed()"><mat-icon>arrow_upward</mat-icon></span>
+        </th>
+        <th style="width: 240px">Prénom
+          <span style="cursor: pointer;" (click)="sortFirstName()"><mat-icon>arrow_downward</mat-icon></span>
+          <span style="cursor: pointer;" (click)="sortFirstNameReversed()"><mat-icon>arrow_upward</mat-icon></span>
+        </th>
+        <th style="width: 290px">Formation
+          <span style="cursor: pointer;" (click)="sortPOE()"><mat-icon>arrow_downward</mat-icon></span>
+          <span style="cursor: pointer;" (click)="sortPOEReversed()"><mat-icon>arrow_upward</mat-icon></span>
+        </th>
         <th style="width: 80px; text-align: right">
           {{ getDisplayRowsNumber() }}/{{ stagiaires.length }}
         </th>
@@ -56,10 +65,10 @@
               </span>
             </td>
             <td style="width: 250px">
-              {{ stagiaire.firstName | uppercase }}
+              {{ stagiaire.lastName | uppercase }}
             </td>
             <td style="width: 240px">
-              {{ stagiaire.lastName }}
+              {{ stagiaire.firstName }}
             </td>
             <td style="width: 290px">
               {{ stagiaire.poe.title }}

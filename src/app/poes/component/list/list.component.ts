@@ -45,6 +45,30 @@ export class ListComponent implements OnInit {
     return displayedItem;
   }
 
+  public sortPOE() {
+    this.poes = this.poes.sort((a, b) => a.title.localeCompare(b.title));
+  }
+
+  public sortPOEReversed() {
+    this.poes = this.poes.sort((b, a) => a.title.localeCompare(b.title));
+  }
+
+  public sortBeginDate() {
+    this.poes = this.poes.sort((a, b) => a.beginDate?.valueOf() - b.beginDate?.valueOf());
+  }
+
+  public sortBeginDateReversed() {
+    this.poes = this.poes.sort((b, a) => a.beginDate?.valueOf() - b.beginDate?.valueOf());
+  }
+
+  public sortEndDate() {
+    this.poes = this.poes.sort((a, b) => a.endDate?.valueOf() - b.endDate?.valueOf());
+  }
+
+  public sortEndDateReversed() {
+    this.poes = this.poes.sort((b, a) => a.endDate?.valueOf() - b.endDate?.valueOf());
+  }
+
   public goToTraineesList(): void {
     this.router.navigate([StagiairesPoes.STAGIAIRES, 'list']);
   }

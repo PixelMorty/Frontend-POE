@@ -7,6 +7,7 @@
   position: fixed;
   left: 500px;
   top: 100px;
+  white-space: nowrap;
 }
 
 .material-icons.style {
@@ -40,18 +41,12 @@
 }
 
 .material-icons.style3 {
-  cursor: pointer;
   color: white;
-  background-color: #9698a0;
+  background-color:#ec851d;
   border-radius: 0.4em;
   width: 50px;
   height: 50px;
-  margin: 10px 325px 10px 5px;
-  float: right;
-
-  &:hover {
-    background-color: #22a769;
-  }
+  margin: 10px 5px 10px 5px;
 }
 
 button {
@@ -63,7 +58,7 @@ button {
   background-color: #9698a0;
   color: white;
   border-radius: 0.4em;
-  width: 100px;
+  width: 110px;
   height: 32px;
   margin: 10px 5px 10px 5px;
 
@@ -126,18 +121,16 @@ table {
     width: 960px;
     height: 55px;
 
-    th {
-      color: #2d3041;
-      background-color: white;
-      width: 960px;
-      padding-left: 80px;
-      display: inline;
-    }
-
     button {
-      margin-top: 0;
-      margin-right: 227px;
+      margin: 10px 5px 10px 5px;
     }
+  }
+
+  th {
+    color: #2d3041;
+    background-color: white;
+    width: 960px;
+    padding-left: 80px;
   }
 
   tbody {
@@ -145,36 +138,41 @@ table {
     color: #2d3041;
     display: block;
     overflow: auto;
-    height: 500px;
-    width: max-content;
+    margin-top: 0px;
+    height: 50%;
+    width: 960px;
+    position: fixed;
+
   }
 
   td {
     width: 960px;
 
-    .bubble {
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      margin-left: 5px;
-      border-radius: 0.4em;
-      line-height: 50px;
-      vertical-align: middle;
-      text-align: center;
-      font-weight: bolder;
-      color: #ffffff;
-      background-color: #25aae1;
+    &:first-child {
+      span {
+        cursor: pointer;
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        margin: 10px 5px 10px 5px;
+        border-radius: 0.4em;
+        line-height: 50px;
+        vertical-align: middle;
+        text-align: center;
+        font-weight: bolder;
+        color: #2d3041;
+      }
+
     }
   }
 
-  tr:nth-child(odd) {
-    color: #2d3041;
-    background-color: #f4f4f4;
-  }
+    tr:nth-child(odd) {
+      color: #2d3041;
+      background-color: #e2e2e2;
+    }
 
-  tr:nth-child(even) {
-    color: #2d3041;
-  }
-
+    tr:nth-child(even) {
+      color: #2d3041;
+    }
 
 }

@@ -102,11 +102,35 @@ export class PoeAddRemoveStagiaireComponent implements OnInit {
     return displayedItem;
   }
 
+  public sortLastName() {
+    this.stagiaires = this.stagiaires.sort((a, b) => a.lastName.localeCompare(b.lastName));
+  }
+
+  public sortLastNameReversed() {
+    this.stagiaires = this.stagiaires.sort((b, a) => a.lastName.localeCompare(b.lastName));
+  }
+
+  public sortFirstName() {
+    this.stagiaires = this.stagiaires.sort((a, b) => a.firstName.localeCompare(b.firstName));
+  }
+
+  public sortFirstNameReversed() {
+    this.stagiaires = this.stagiaires.sort((b, a) => a.firstName.localeCompare(b.firstName));
+  }
+
+  public sortPOE() {
+    this.stagiaires = this.stagiaires.sort((a, b) => a.poe.title.localeCompare(b.poe.title));
+  }
+
+  public sortPOEReversed() {
+    this.stagiaires = this.stagiaires.sort((b, a) => a.poe.title.localeCompare(b.poe.title));
+  }
+
+
   public goToDetail(id: number): void {
     console.log(`Got ${id} from list`);
     this.router.navigate([StagiairesPoes.STAGIAIRES, 'detail', id]);
   }
-
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
