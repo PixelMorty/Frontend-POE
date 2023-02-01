@@ -10,9 +10,12 @@ import { Question } from 'src/app/core/models/survey-models/question.model';
 })
 export class EditQuestionComponent implements OnInit {
   public QuestionType = QuestionType;
+  public question!: Question;
 
-  @Input() question: Question = new Question();
-  @Output() questionChange = new EventEmitter<Question>();
+  @Input() set inputQuestion(question: Question) {
+    this.question = question;
+  }
+  @Output() inputQuestionChange = new EventEmitter<Question>();
 
   questionForm = new FormGroup({
     title: new FormControl(null, [Validators.required]),

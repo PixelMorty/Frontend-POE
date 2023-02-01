@@ -104,5 +104,6 @@ export class UpdateComponent implements OnInit {
         event.currentIndex
       );
     }
+    console.log('this.questionsSurvey: ', this.questionsSurvey);
   }
 }

@@ -18,10 +18,12 @@
           <div
             class="question"
             cdkDragBoundary=".boundary"
-            *ngFor="let question of questionsSurvey"
+            *ngFor="let questionite of questionsSurvey; index as i"
             cdkDrag
           >
-            <app-edit-question [question]="question"></app-edit-question>
+            <app-edit-question
+              [(inputQuestion)]="questionsSurvey[i]"
+            ></app-edit-question>
           </div>
         </div>
       </mat-card-content>
