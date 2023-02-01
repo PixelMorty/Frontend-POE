@@ -13,7 +13,7 @@ export class Question{
     private _choices:Choice[]  = [];
     private _favorite:boolean =false;
 
-    public clone() : Question{
+    public cloneur() : Question{
       const cloneQuestion = new Question()
       cloneQuestion.questionType=this.questionType;
       cloneQuestion.id=this.id;

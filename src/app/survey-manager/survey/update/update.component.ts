@@ -8,6 +8,7 @@ import { SurveyService } from 'src/app/core/services/survey-service';
 import {
   CdkDragDrop,
   CdkDropList,
+  copyArrayItem,
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
@@ -38,7 +39,7 @@ export class UpdateComponent implements OnInit {
   //TODO recupérer les choices du back (findByTitle)
 
   initQuestionsTypes(): void {
-    this.questionsList = this.questionsListFromBack.map((q)=>q.clone());
+    this.questionsList = this.questionsListFromBack;
     // const questionYesNo: Question = new Question();
     // questionYesNo.title = 'Entrez-votre question ici';
     // questionYesNo.choices = [];
@@ -120,13 +121,16 @@ export class UpdateComponent implements OnInit {
         event.currentIndex
       );
     } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
+      // transferArrayItem(
+      //   event.previousContainer.data,
+      //   event.container.data,
+      //   event.previousIndex,
+      //   event.currentIndex
+      // );
+      copyArrayItem<Question>(event.previousContainer.data,event.container.data, event.previousIndex,event.currentIndex);
     }
+
+    //copyArrayItem<T = any>(currentArray: T[], targetArray: T[], currentIndex: number, targetIndex: number): void;
     console.log('this.questionsSurvey: ', this.questionsSurvey);
   }
 }
