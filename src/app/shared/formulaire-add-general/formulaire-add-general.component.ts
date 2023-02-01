@@ -44,8 +44,7 @@ export class FormulaireAddGeneralComponent implements OnInit {
           //console.log(urlType)
 
           JSON.stringify(urlType);
-          console.log(urlType);
-          console.log(StagiairesPoes.STAGIAIRES);
+
 
           //console.log(this.route.snapshot.url[this.route.snapshot.url.length-2].toString())
           if (urlType == StagiairesPoes.STAGIAIRES) {

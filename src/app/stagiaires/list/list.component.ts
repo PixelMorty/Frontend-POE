@@ -37,6 +37,7 @@ export class ListComponent implements OnInit {
       });
   }
 
+
   public sortLastName() {
     this.stagiaires = this.stagiaires.sort((a, b) => a.lastName.localeCompare(b.lastName));
   }
@@ -60,6 +61,7 @@ export class ListComponent implements OnInit {
   public sortBirthdateReversed() {
     this.stagiaires = this.stagiaires.sort((b, a) => a.birthDate?.valueOf() - b.birthDate?.valueOf());
   }
+
 
   public changeGender(): boolean {
     if (this.showLi === 'F') {
@@ -110,6 +112,8 @@ export class ListComponent implements OnInit {
     console.log(`Got ${id} from list`);
     this.router.navigate([StagiairesPoes.STAGIAIRES, 'detail', id]);
   }
+
+
 
   public goToUpdate(id: number): void {
     this.router.navigate([StagiairesPoes.STAGIAIRES, 'add', id]);

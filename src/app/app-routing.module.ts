@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { StagiairesPoes } from './shared/enums/stagiaires-poes';
 import { FormulaireAddGeneralComponent } from './shared/formulaire-add-general/formulaire-add-general.component';
 import { DetailComponent } from './stagiaires/detail/detail.component';
@@ -15,6 +16,10 @@ export class AppRoutingModule {
       path: '', // chemin vide, tjr première route
       redirectTo: 'home',
       pathMatch: 'full',
+    },
+    {
+      path: 'login',
+      component: SignInComponent,
     },
     {
       path: StagiairesPoes.STAGIAIRES,
