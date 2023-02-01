@@ -21,6 +21,12 @@ export class QuestionService {
       `${QuestionService.CONTROLLER_PATH}/${id}`
     );
   }
+
+  public getOneByTitle(title :String): Observable<Question> {
+    return this.httpClient.get<Question>(
+      `${QuestionService.CONTROLLER_PATH}/${title}`
+    );
+  }
   public getAll(): Observable<Question[]> {
     return this.httpClient.get<Question[]>(
       `${QuestionService.CONTROLLER_PATH}`

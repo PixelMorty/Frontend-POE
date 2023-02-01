@@ -47,7 +47,7 @@ export class AuthInterceptorService implements HttpInterceptor {
           catchError((response:HttpErrorResponse, caught$) => {
             if (response.status == 401) {
               console.log("Interceptor: wrong authentication => signout")
-              //this.userservice.signout()
+              this.userservice.signout()
             } 
             return throwError(() => caught$);
           })

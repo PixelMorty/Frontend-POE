@@ -22,7 +22,7 @@ export class SignInComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.usermodel.username="username"
+    this.usermodel.username="user"
     this.usermodel.password="password"
     this.form = new FormUser (this.usermodel).form
 
@@ -34,7 +34,7 @@ export class SignInComponent implements OnInit {
     this.userService.signin(this.form.value);
 
     // Si ça spasse bien rediriger vers ????
-    this.router.navigate([]);//TODO CHANGER : chercher dans ActivatedRoute le parent et en fait revenir sur la page précédente qui a invoqué ce composant
+    this.router.navigate(['/']);//TODO CHANGER : chercher dans ActivatedRoute le parent et en fait revenir sur la page précédente qui a invoqué ce composant
     // si ça spasse mal recharger page + message erreur ~~~~~ 
 
   }
