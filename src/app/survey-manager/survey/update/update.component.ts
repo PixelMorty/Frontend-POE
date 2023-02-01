@@ -18,28 +18,42 @@ import {
   styleUrls: ['./update.component.scss'],
 })
 
-
 // TODO transformer les Questions en QuestionLabel~~~ pour pouvoir remplir les infos
-// formGroup basé sur une Question 
+// formGroup basé sur une Question
 export class UpdateComponent implements OnInit {
-  // questionList ---> questionsTypes : String[] 
+  // questionList ---> questionsTypes : String[]
   public questionsList: Question[] = [];
 
   public questionsSurvey!: Question[];
   private surveyId!: Number;
   public survey!: Survey;
-  public QuestionType = QuestionType;
 
   constructor(
     private surveyService: SurveyService,
     private questionService: QuestionService,
     private activatedRoute: ActivatedRoute
   ) {}
-  
-  // TODO
-  // InitquestionsTypes() :void{
-  //   this.questionsTypes =[QuestionType.FREE_RESPONSE, QuestionType.QCM,QuestionType.YES_NO]
-  // }
+
+  //TODO recupérer les choices du back (findByTitle)
+
+  initQuestionsTypes(): void {
+    const questionYesNo: Question = new Question();
+    questionYesNo.title = 'Entrez-votre question ici';
+    questionYesNo.choices = [];
+    questionYesNo.questionType = QuestionType.YES_NO;
+
+    const questionQcm: Question = new Question();
+    questionQcm.title = 'Entrez-votre question ici';
+    questionQcm.choices = [];
+    questionQcm.questionType = QuestionType.QCM;
+
+    const questionFreeResponse: Question = new Question();
+    questionFreeResponse.title = 'Entrez-votre question ici';
+    questionFreeResponse.choices = [];
+    questionFreeResponse.questionType = QuestionType.FREE_RESPONSE;
+
+    this.questionsList = [questionYesNo, questionQcm, questionFreeResponse];
+  }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((routeparams) => {
@@ -47,9 +61,8 @@ export class UpdateComponent implements OnInit {
       this.surveyId = new Number(routeparams.get('id'));
       // trouver le survey
       try {
-        this.questionService.getAll().subscribe((questions) => {
-          this.questionsList = questions;
-        });
+        this.initQuestionsTypes();
+
         this.surveyService
           .findOne(this.surveyId.valueOf())
           .subscribe((survey) => {
@@ -60,8 +73,6 @@ export class UpdateComponent implements OnInit {
         //this.router.navigate(['/surveys/']);
       }
     });
-      // TODO
-  // initQuestionList()
   }
 
   addQuestionCurrent(question: Question): void {
@@ -87,11 +98,12 @@ export class UpdateComponent implements OnInit {
       });
   }
 
-    // TODO
+  // TODO
   // InitquestionsTypes() quand drop du containerQuestionsTypes vers containerQuestionnaire
   // supprimer la question du containerQuestionnaire quand drop de containerQuestionnaire vers n'importe où à l'exterieur de containerQuestionnaire
   // réarranger l'ordre des questions dans le modèle (les tableaux ds le ts)  quand  drop au sein du containerQuestionnaire
   drop(event: CdkDragDrop<Question[]>) {
+    this.initQuestionsTypes();
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -106,11 +118,6 @@ export class UpdateComponent implements OnInit {
         event.currentIndex
       );
     }
-  }
-
-  dragDisabled(questionOfList: Question): boolean {
-    return this.questionsSurvey.some((element) => {
-      element.id === questionOfList.id;
-    });
+    console.log('this.questionsSurvey: ', this.questionsSurvey);
   }
 }

@@ -1,0 +1,53 @@
+#headline {
+    font-family: arial, sans-serif;
+    text-align: left;
+    font-size: 26px;
+    font-weight: bolder;
+    color: #2d3041;
+    position: fixed;
+    left: 500px;
+    top: 100px;
+  }
+  
+  ::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+  
+  ::ng-deep .mat-focused .mat-form-field-label {
+    color: #2d3041 !important;
+  }
+  
+  ::ng-deep .mat-focused .mat-form-field-outline {
+    color: #2d3041 !important;
+  }
+  
+  button {
+    cursor: pointer;
+    font-family: arial, sans-serif;
+    font-size: 18px;
+    border: 3px solid;
+    border-color: #00000000;
+    background-color: #9698a0;
+    color: white;
+    border-radius: 0.4em;
+    width: 100px;
+    height: 32px;
+  
+    &:hover {
+      background-color: #2d3041;
+    }
+  }
+  
+  .formblock {
+    font-family: arial, sans-serif;
+    font-size: 20px;
+    height: auto;
+    border-collapse: collapse;
+    margin-left: 500px;
+    margin-right: auto;
+    margin-top: 32px;
+    width: 960px;
+    color: #2d3041;
+    position: fixed;
+  }
+  

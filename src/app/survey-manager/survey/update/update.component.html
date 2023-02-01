@@ -11,7 +11,7 @@
     <br />
     <mat-card class="survey-card">
       <mat-card-title>
-        <h2>{{ survey.title }}</h2>
+        <input class="title" value="Nouveau" />
       </mat-card-title>
       <mat-card-content>
         <div
@@ -25,34 +25,12 @@
           <div
             class="question"
             cdkDragBoundary=".boundary"
-            *ngFor="let question of questionsSurvey"
+            *ngFor="let questionite of questionsSurvey; index as i"
             cdkDrag
           >
-            <p class="question-title">
-              {{ questionsSurvey.indexOf(question) + 1 }}&nbsp;-&nbsp;{{
-                question.title
-              }}
-            </p>
-
-            <div>
-              <ng-container
-                *ngIf="question.questionType == QuestionType.YES_NO"
-              >
-                <app-boolean [choices]="question.choices"></app-boolean>
-              </ng-container>
-
-              <ng-container *ngIf="question.questionType == QuestionType.QCM">
-                <app-multiple-choices
-                  [choices]="question.choices"
-                ></app-multiple-choices>
-              </ng-container>
-
-              <ng-container
-                *ngIf="question.questionType == QuestionType.FREE_RESPONSE"
-              >
-                <app-free-response></app-free-response>
-              </ng-container>
-            </div>
+            <app-edit-question
+              [(inputQuestion)]="questionsSurvey[i]"
+            ></app-edit-question>
           </div>
         </div>
       </mat-card-content>
@@ -71,7 +49,6 @@
           cdkDragBoundary=".boundary"
           *ngFor="let question of questionsList"
           cdkDrag
-          [cdkDragDisabled]="dragDisabled(question)"
         >
           {{ question.title }}&nbsp;({{ question.questionType }})
         </div>
