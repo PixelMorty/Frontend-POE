@@ -1,0 +1,19 @@
+<form [formGroup]="questionForm">
+  <input type="text" formControlName="title" [ngModel]="question.title" />
+  <div *ngIf="shouldShowTitleRequiredError()">Question is required.</div>
+  <div>
+    <ng-container *ngIf="question.questionType == QuestionType.YES_NO">
+      <app-boolean [choices]="question.choices"></app-boolean>
+    </ng-container>
+
+    <ng-container *ngIf="question.questionType == QuestionType.QCM">
+      <app-multiple-choices
+        [(choices)]="question.choices"
+      ></app-multiple-choices>
+    </ng-container>
+
+    <ng-container *ngIf="question.questionType == QuestionType.FREE_RESPONSE">
+      <app-free-response></app-free-response>
+    </ng-container>
+  </div>
+</form>
