@@ -27,6 +27,7 @@ import { MenuComponent } from './menu/menu.component';
 import { BooleanComponent } from './survey-manager/questions/boolean/boolean.component';
 import { MultipleChoicesComponent } from './survey-manager/questions/multiple-choices/multiple-choices.component';
 import { FreeResponseComponent } from './survey-manager/questions/free-response/free-response.component';
+import { EditQuestionComponent } from './survey-manager/questions/edit-question/edit-question.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { FreeResponseComponent } from './survey-manager/questions/free-response/
     BooleanComponent,
     MultipleChoicesComponent,
     FreeResponseComponent,
+    EditQuestionComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,8 @@
-<mat-radio-group>
-  <mat-radio-button *ngFor="let choice of choices" [value]="choice">
-    {{ choice.name }}
-  </mat-radio-button>
-</mat-radio-group>
+<form [formGroup]="multipleChoicesForm">
+  <mat-radio-group>
+    <mat-radio-button *ngFor="let choice of choices" [value]="choice">
+      <input type="text" formControlName="choiceName" [ngModel]="choice.name" />
+      <div *ngIf="shouldShowChoiceNameRequiredError()">Choice is required.</div>
+    </mat-radio-button>
+  </mat-radio-group>
+</form>
