@@ -26,7 +26,6 @@ mat-card {
 
   &.survey-card {
     width: 600px;
-    margin-bottom: 32px;
     box-shadow: none;
     border-radius: .4em;
   }
@@ -35,6 +34,7 @@ mat-card {
     margin-left: 40px;
     box-shadow: none;
     position: fixed;
+    
   }
 
   mat-card-title {
@@ -48,6 +48,8 @@ mat-card {
     font-size: 28px;
     line-height: 28px;
     color: #2d3041;
+    
+    
   }
 
   mat-card-content {
@@ -58,6 +60,7 @@ mat-card {
     font-size: 28px;
     line-height: 28px;
     color: #2d3041;
+    
   }
 
   .question-title {
@@ -66,6 +69,7 @@ mat-card {
 
   .choices {
     font-size: large;
+    
   }
 }
 
@@ -95,9 +99,11 @@ button {
   background: white;
   border-radius: .4em;
   overflow: hidden;
+  
 
   &:hover {
     border-color: #2d3041;
+    color: white;
   }
 }
 
@@ -114,7 +120,7 @@ button {
   line-height: 24px;
 
   &:hover {
-    background-color: #2d3041;
+    background-color: #9698a0;
     color: white;
   }
 }
@@ -123,19 +129,20 @@ button {
   box-sizing: border-box;
   border-radius: .4em;
   border-color: #2d3041;
-  color: white;
-  background-color: #2d3041;
+  background-color: #9698a0;
+  color:white;
   font-size: 18px;
   box-shadow: none;
   line-height: 24px;
 }
 
 .cdk-drag-placeholder {
-  opacity: 0;
+  opacity: 255;
 }
 
 .cdk-drag-animating {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  
 }
 
 .question.cdk-drag-disabled {
@@ -151,7 +158,6 @@ button {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-
 input {
   border-radius: .4em;
   border: none;
@@ -163,3 +169,5 @@ input {
   }
 
 }
+
+

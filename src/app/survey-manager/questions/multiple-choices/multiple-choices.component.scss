@@ -8,3 +8,16 @@ mat-radio-group {
 mat-radio-button {
   margin: 5px;
 }
+
+
+input {
+  width: 514px;
+  border: none;
+  border-radius: .4em;
+  font-size: 18px;
+
+  &:focus {
+      outline: none; 
+  }
+
+}

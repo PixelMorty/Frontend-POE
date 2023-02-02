@@ -13,6 +13,9 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 
+
+
+
 // Page de detail du Survey
 @Component({
   selector: 'app-update',
@@ -136,5 +139,11 @@ export class UpdateComponent implements OnInit {
 
     //copyArrayItem<T = any>(currentArray: T[], targetArray: T[], currentIndex: number, targetIndex: number): void;
     console.log('this.questionsSurvey: ', this.questionsSurvey);
+
+    
   }
+
+  
 }
+
+
