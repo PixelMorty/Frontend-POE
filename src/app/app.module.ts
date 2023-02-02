@@ -31,6 +31,9 @@ import { FreeResponseComponent } from './survey-manager/questions/free-response/
 import { EditQuestionComponent } from './survey-manager/questions/edit-question/edit-question.component';
 import { authInterceptor } from './core/services/auth-interceptor.service';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,13 +64,19 @@ import { SignInComponent } from './auth/sign-in/sign-in.component';
     DragDropModule,
     ModalModule.forRoot(),
   ],
+
   providers: [
-    authInterceptor,
+    //authInterceptor,
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'outline' },
     },
   ],
+  
   bootstrap: [AppComponent],
+
+  
 })
 export class AppModule {}
+
+

@@ -13,32 +13,27 @@
           <br />
           <br />
   
-          <mat-form-field style="width: 960px">
+          <mat-form-field style="width: 940px">
             <mat-label>Nom utilisateur</mat-label>
             <input matInput type="text" formControlName="username" />
             <mat-error *ngIf="form.controls['username'].errors">
-              nom d'utilisateur obligatoire
+              Nom d'utilisateur obligatoire.
             </mat-error>
           </mat-form-field>
   
           <br />
 
             
-          <mat-form-field style="width: 960px">
+          <mat-form-field style="width: 940px">
             <mat-label>Mot de passe</mat-label>
             <input matInput type="text" formControlName="password" />
             <mat-error *ngIf="form.controls['password'].errors">
-              Je vois pas pourquoi je te dirais quelle est l'erreur..
+              Mot de passe incorrect.
             </mat-error>
           </mat-form-field>
-  
-          <br />
-          <br />     
-            <br />
-          
         
           <div style="text-align: right">
-            <button type="submit" [disabled]="form.invalid">Rentrer dans le darkweb</button>
+            <button type="submit" [disabled]="form.invalid">Valider</button>
           </div>
         </form>
       </ng-container>
