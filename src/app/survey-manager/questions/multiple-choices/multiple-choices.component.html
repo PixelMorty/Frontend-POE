@@ -1,14 +1,14 @@
 <form [formGroup]="multipleChoicesForm">
   <mat-radio-group>
     <mat-radio-button *ngFor="let choice of choices" [value]="choice">
-      <input type="text" formControlName="choiceName" [ngModel]="choice.name" />
+      <input type="text" formControlName="choiceName" [value]="choice.name" />
       <div *ngIf="shouldShowChoiceNameRequiredError()">Choice is required.</div>
     </mat-radio-button>
   </mat-radio-group>
-  <button (click)="addChoice()">
-    <mat-icon>add_box</mat-icon>
+  <button mat-mini-flat class="material-icons" (click)="addChoice()">
+    <mat-icon>add</mat-icon>
   </button>
-  <button>
-    <mat-icon (click)="removeChoice(choice)">remove</mat-icon>
+  <button mat-mini-flat class="material-icons" (click)="removeChoice()">
+    <mat-icon>remove</mat-icon>
   </button>
 </form>

@@ -1,36 +1,39 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Choice } from 'src/app/core/models/survey-models/choice.model';
-import { ChoiceService } from 'src/app/core/services/choice-service';
 
 @Component({
   selector: 'app-multiple-choices',
   templateUrl: './multiple-choices.component.html',
   styleUrls: ['./multiple-choices.component.scss'],
 })
-export class MultipleChoicesComponent implements OnInit {
+export class MultipleChoicesComponent implements OnInit, OnChanges {
   @Input() choices: Choice[] = [];
-  @Output() choicesChange = new EventEmitter<Choice[]>();
+  // @Output() choicesChange = new EventEmitter<Choice[]>();
 
   multipleChoicesForm = new FormGroup({
     choiceName: new FormControl(null, [Validators.required]),
   });
 
-  public choice!: Choice;
-
-  modalRef: BsModalRef | undefined;
-  message: string | undefined;
-
-  constructor(private choiceService: ChoiceService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
-  addChoice(): void {}
+  ngOnChanges(): void {}
 
-  removeChoice(choice: Choice): void {
-    this.choiceService.delete(choice);
+  addChoice(): void {
+    this.choices.push(new Choice());
+  }
+
+  removeChoice(): void {
+    this.choices.pop();
   }
 
   shouldShowChoiceNameRequiredError() {

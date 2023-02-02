@@ -13,9 +13,6 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 
-
-
-
 // Page de detail du Survey
 @Component({
   selector: 'app-update',
@@ -97,7 +94,6 @@ export class UpdateComponent implements OnInit {
       this.questionsSurvey.findIndex(
         (question: Question) => questionToDelete.id == question.id
       )
-      
     );
   }
 
@@ -131,19 +127,18 @@ export class UpdateComponent implements OnInit {
       //   event.previousIndex,
       //   event.currentIndex
       // );
-      console.log("question list",this.questionsSurvey)
-      copyArrayItem<Question>(event.previousContainer.data,event.container.data, event.previousIndex,event.currentIndex);
-      console.log("question list after :",this.questionsSurvey)
+      console.log('question list', this.questionsSurvey);
+      copyArrayItem<Question>(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+      console.log('question list after :', this.questionsSurvey);
       //JSON.parse(JSON.stringify(question))
     }
 
     //copyArrayItem<T = any>(currentArray: T[], targetArray: T[], currentIndex: number, targetIndex: number): void;
     console.log('this.questionsSurvey: ', this.questionsSurvey);
-
-    
   }
-
-  
 }
-
-

@@ -9,15 +9,27 @@ mat-radio-button {
   margin: 5px;
 }
 
-
 input {
   width: 521px;
   border: none;
-  border-radius: .4em;
+  border-radius: 0.4em;
   font-size: 18px;
 
   &:focus {
-      outline: none; 
+    outline: none;
   }
+}
 
+.material-icons {
+  cursor: pointer;
+  color: black;
+  border: transparent;
+  border-radius: 0.4em;
+
+  margin: 0px 5px 0px 5px;
+
+  &:hover {
+    background-color: #2d3041;
+    color: white;
+  }
 }
