@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Choice } from '../models/survey-models/choice.model';
 import { Question } from '../models/survey-models/question.model';
 
 @Injectable({
@@ -34,6 +35,25 @@ export class QuestionService {
     );
   }
 
+  
+  public cloneur(question : Question) : Question{
+    const cloneQuestion = new Question();
+    cloneQuestion.questionType=question.questionType;
+    cloneQuestion.id=question.id;
+    cloneQuestion.title=question.title;
+    cloneQuestion.choices=question.choices.map((c)=>{
+      const choi = new Choice();
+      choi.id=0;
+      choi.name=c.name;
+      return choi;
+    });
+    cloneQuestion.favorite = question.favorite
+
+      
+    return  cloneQuestion;
+  }
+
+
     public delete(id:number){
          this.httpClient.delete(`${QuestionService.CONTROLLER_PATH}/${id}`) ;
     }
@@ -44,6 +64,6 @@ export class QuestionService {
     }
 
     public update(id :number,question:Question): Observable<Question>{
-        return this.httpClient.patch<Question>(`${QuestionService.CONTROLLER_PATH}${id}`,question) ;
+        return this.httpClient.patch<Question>(`${QuestionService.CONTROLLER_PATH}/${id}`,question) ;
     }
   }

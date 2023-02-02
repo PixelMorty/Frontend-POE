@@ -12,6 +12,8 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
+import { watchFile } from 'fs';
+import { combineLatest, forkJoin, Observable } from 'rxjs';
 
 // Page de detail du Survey
 @Component({
@@ -40,22 +42,8 @@ export class UpdateComponent implements OnInit {
 
   initQuestionsTypes(): void {
     this.questionsList = this.questionsListFromBack;
-    // const questionYesNo: Question = new Question();
-    // questionYesNo.title = 'Entrez-votre question ici';
-    // questionYesNo.choices = [];
-    // questionYesNo.questionType = QuestionType.YES_NO;
 
-    // const questionQcm: Question = new Question();
-    // questionQcm.title = 'Entrez-votre question ici';
-    // questionQcm.choices = [];
-    // questionQcm.questionType = QuestionType.QCM;
-
-    // const questionFreeResponse: Question = new Question();
-    // questionFreeResponse.title = 'Entrez-votre question ici';
-    // questionFreeResponse.choices = [];
-    // questionFreeResponse.questionType = QuestionType.FREE_RESPONSE;
-
-    // this.questionsList = [questionYesNo, questionQcm, questionFreeResponse];
+   // console.log("qlfb",this.questionsListFromBack)
   }
 
   ngOnInit(): void {
@@ -85,28 +73,92 @@ export class UpdateComponent implements OnInit {
     });
   }
 
-  addQuestionCurrent(question: Question): void {
-    this.questionsSurvey.push(question);
-  }
+  // addQuestionCurrent(question: Question): void {
+  //   this.questionsSurvey.push(question);
+  // }
 
-  deleteQuestionCurrent(questionToDelete: Question): void {
-    this.questionsSurvey.splice(
-      this.questionsSurvey.findIndex(
-        (question: Question) => questionToDelete.id == question.id
-      )
+  // deleteQuestionCurrent(questionToDelete: Question): void {
+  //   this.questionsSurvey.splice(
+  //     this.questionsSurvey.findIndex(
+  //       (question: Question) => questionToDelete.id == question.id
+  //     )
       
-    );
-  }
-
+  //   );
+  // }
+  // onSubmit(): void {
+  //   const bob = this.questionsList[0];
+  //   console.log(bob.choices.length)
+  //    console.log("questioninit",bob);
+  //    const bibi = this.questionService.cloneur(bob);
+  //    bibi.choices[0].name="jajajaj"
+  //    console.log("Question init",bob) 
+  //    console.log("Question PAS init",bibi) 
+  // }
   onSubmit(): void {
-    this.surveyService
-      .changeQuestions(
-        this.questionsSurvey.map((q: Question) => q.id),
-        this.surveyId.valueOf()
-      )
-      .subscribe((survey) => {
-        this.survey = survey;
-      });
+    // pour les questions qui ont un id null creer question et recup id dans une liste
+      // dupliquer les choices
+      // const idToSave : Number[]= []; 
+      // this.questionsSurvey.forEach((q)=> {
+      //   if(q.id.valueOf() ==-1){
+      //     this.questionService.add(q).subscribe((questionBack)=>{
+      //       idToSave.push(questionBack.id);
+      //     });
+      //   }else{
+      //     idToSave.push(q.id);
+      //   }
+
+      // });
+
+
+      // dupliquer les choices
+      const questionsToSave = this.questionsSurvey.filter((q)=> q.id.valueOf()==0);
+      const questionsToNotSave = this.questionsSurvey.filter((q)=> q.id.valueOf()!=0);
+      console.log("questopntosave",questionsToSave)
+      console.log("questNOTOSAVE",questionsToNotSave)
+      forkJoin(questionsToSave.map((q)=> {
+            console.log("question a sauver",q)
+            return this.questionService.add(q);
+            // .subscribe((questionBack)=>{
+            //   idToSave.push(questionBack.id);
+            })
+        )
+          .subscribe((questionsSaved)=>{
+
+
+            forkJoin(questionsToNotSave.map((q)=> {
+              console.log("question a update",q)
+              return this.questionService.update(q.id.valueOf(),q);
+              // .subscribe((questionBack)=>{
+              //   idToSave.push(questionBack.id);
+              })
+          ).subscribe((resp2)=>{
+              console.log("resp",questionsSaved)
+              this.surveyService
+                .changeQuestions(
+                  questionsToNotSave.map((q)=>q.id)
+                    .concat(questionsSaved.map((q)=>q.id))
+                    .map((n)=> n.valueOf()),
+                  this.surveyId.valueOf()
+                )
+                .subscribe((survey) => {
+                  this.survey = survey;
+                  
+                window.location.reload();
+                });
+            });
+          });
+
+    // // change question sur les id + ceux deja bindés
+    // console.log("idtosave",idToSave);
+    // console.log("surveyId",this.surveyId.valueOf());
+    // this.surveyService
+    //   .changeQuestions(
+    //     idToSave.map((n)=> n.valueOf()),
+    //     this.surveyId.valueOf()
+    //   )
+    //   .subscribe((survey) => {
+    //     this.survey = survey;
+    //   });
   }
 
   // TODO
@@ -122,16 +174,22 @@ export class UpdateComponent implements OnInit {
         event.currentIndex
       );
     } else {
-      // transferArrayItem(
-      //   event.previousContainer.data,
-      //   event.container.data,
-      //   event.previousIndex,
-      //   event.currentIndex
-      // );
-      console.log("question list",this.questionsSurvey)
-      copyArrayItem<Question>(event.previousContainer.data,event.container.data, event.previousIndex,event.currentIndex);
-      console.log("question list after :",this.questionsSurvey)
-      //JSON.parse(JSON.stringify(question))
+      //  transferArrayItem(
+      //    event.previousContainer.data,
+      //    event.container.data,
+      //    event.previousIndex,
+      //    event.currentIndex
+      //  );
+
+
+
+     copyArrayItem<Question>(event.previousContainer.data,event.container.data, event.previousIndex,event.currentIndex);
+     console.log("choices",event.container.data[event.currentIndex].choices);
+     event.container.data[event.currentIndex]= this.questionService.cloneur(event.container.data[event.currentIndex]);
+     event.container.data[event.currentIndex].favorite=false;
+     event.container.data[event.currentIndex].id=0;
+
+
     }
 
     //copyArrayItem<T = any>(currentArray: T[], targetArray: T[], currentIndex: number, targetIndex: number): void;
