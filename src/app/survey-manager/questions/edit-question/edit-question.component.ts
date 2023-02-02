@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { QuestionType } from 'src/app/core/models/enums-model/question-type';
+import { Choice } from 'src/app/core/models/survey-models/choice.model';
 import { Question } from 'src/app/core/models/survey-models/question.model';
 
 @Component({
@@ -11,6 +12,7 @@ import { Question } from 'src/app/core/models/survey-models/question.model';
 export class EditQuestionComponent implements OnInit {
   public QuestionType = QuestionType;
   public question!: Question;
+  public choices!: Choice[];
 
   @Input() set inputQuestion(question: Question) {
     this.question = question;
@@ -24,6 +26,10 @@ export class EditQuestionComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  addChoice(): void {}
+
+  removeChoice(): void {}
 
   shouldShowTitleRequiredError() {
     const title = this.questionForm.controls['title'];

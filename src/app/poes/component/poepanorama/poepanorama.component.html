@@ -41,12 +41,12 @@
   </div>
 
   <div class="containerbox">
-
     <div class="listbox">
       <ng-container *ngFor="let poe of poes">
         <div class="poebox" *ngIf="showLi === 'All' || poe.poeType === showLi">
-          <p style="font-weight: bold;">
-            <span class="type"  
+          <p style="font-weight: bold">
+            <span
+              class="type"
               (click)="goToDetail(poe.id)"
               [ngClass]="{
                 bubble: true,
@@ -58,23 +58,23 @@
             </span>
             &nbsp; {{ poe.title | uppercase }}
           </p>
-            {{ poe.beginDate | date : "dd/MM/YYYY" }} ►
-            {{ poe.endDate | date : "dd/MM/YYYY" }}
-            <br>
-            <br>
-            <div>
-              <button class="formbutton completed">
-                1 mois
-              </button>
-              <button class="formbutton inprogress">
-                6 mois
-              </button>
-              <button class="formbutton">
-                12 mois
-              </button>
-            </div>
+          {{ poe.beginDate | date : "dd/MM/YYYY" }} ►
+          {{ poe.endDate | date : "dd/MM/YYYY" }}
+          <br />
+          <br />
+          <div>
+            <button class="formbutton completed" (click)="goToSurveyList()">
+              1 mois
+            </button>
+            <button class="formbutton inprogress" (click)="goToSurveyList()">
+              6 mois
+            </button>
+            <button class="formbutton" (click)="goToSurveyList()">
+              12 mois
+            </button>
           </div>
-          <br>
+        </div>
+        <br />
       </ng-container>
     </div>
   </div>

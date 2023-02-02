@@ -5,4 +5,10 @@
       <div *ngIf="shouldShowChoiceNameRequiredError()">Choice is required.</div>
     </mat-radio-button>
   </mat-radio-group>
+  <button (click)="addChoice()">
+    <mat-icon>add_box</mat-icon>
+  </button>
+  <button>
+    <mat-icon (click)="removeChoice(choice)">remove</mat-icon>
+  </button>
 </form>
