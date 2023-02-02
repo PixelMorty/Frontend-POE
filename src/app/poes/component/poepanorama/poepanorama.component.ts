@@ -66,6 +66,10 @@ export class PoePanoramaComponent implements OnInit {
     this.router.navigate([StagiairesPoes.POES, 'detail', id]);
   }
 
+  public goToSurveyList(): void {
+    this.router.navigate(['/surveys/list']);
+  }
+
   public goToUpdate(id: number): void {
     this.router.navigate([StagiairesPoes.POES, 'add', id]);
   }

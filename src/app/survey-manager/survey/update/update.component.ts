@@ -77,23 +77,15 @@ export class UpdateComponent implements OnInit {
   //   this.questionsSurvey.push(question);
   // }
 
-  // deleteQuestionCurrent(questionToDelete: Question): void {
-  //   this.questionsSurvey.splice(
-  //     this.questionsSurvey.findIndex(
-  //       (question: Question) => questionToDelete.id == question.id
-  //     )
-      
-  //   );
-  // }
-  // onSubmit(): void {
-  //   const bob = this.questionsList[0];
-  //   console.log(bob.choices.length)
-  //    console.log("questioninit",bob);
-  //    const bibi = this.questionService.cloneur(bob);
-  //    bibi.choices[0].name="jajajaj"
-  //    console.log("Question init",bob) 
-  //    console.log("Question PAS init",bibi) 
-  // }
+
+  deleteQuestionCurrent(questionToDelete: Question): void {
+    this.questionsSurvey.splice(
+      this.questionsSurvey.findIndex(
+        (question: Question) => questionToDelete.id == question.id
+      )
+    );
+  }
+
   onSubmit(): void {
     // pour les questions qui ont un id null creer question et recup id dans une liste
       // dupliquer les choices
@@ -174,6 +166,7 @@ export class UpdateComponent implements OnInit {
         event.currentIndex
       );
     } else {
+
       //  transferArrayItem(
       //    event.previousContainer.data,
       //    event.container.data,
@@ -190,6 +183,23 @@ export class UpdateComponent implements OnInit {
      event.container.data[event.currentIndex].id=0;
 
 
+// =======
+//       // transferArrayItem(
+//       //   event.previousContainer.data,
+//       //   event.container.data,
+//       //   event.previousIndex,
+//       //   event.currentIndex
+//       // );
+//       console.log('question list', this.questionsSurvey);
+//       copyArrayItem<Question>(
+//         event.previousContainer.data,
+//         event.container.data,
+//         event.previousIndex,
+//         event.currentIndex
+//       );
+//       console.log('question list after :', this.questionsSurvey);
+//       //JSON.parse(JSON.stringify(question))
+// >>>>>>> 00e768d9ccf7e2be400e8a500d736f88300f4ed5
     }
 
     //copyArrayItem<T = any>(currentArray: T[], targetArray: T[], currentIndex: number, targetIndex: number): void;
