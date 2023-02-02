@@ -38,9 +38,7 @@ mat-card {
   }
 
   mat-card-title {
-    padding: 10px;
-    padding-top: 15px;
-    padding-bottom: 5px;
+    padding: 5px;
     border: solid 1px;
     border-color: #9698a0;
     border-radius: .4em;
@@ -48,6 +46,11 @@ mat-card {
     font-size: 28px;
     line-height: 28px;
     color: #2d3041;
+    &:hover {
+      background-color: #9698a0;
+      border-width: 2px;
+      color: white;
+    }
     
     
   }
@@ -60,6 +63,7 @@ mat-card {
     font-size: 28px;
     line-height: 28px;
     color: #2d3041;
+    
     
   }
 
@@ -100,15 +104,16 @@ button {
   border-radius: .4em;
   overflow: hidden;
   
-
   &:hover {
-    border-color: #2d3041;
+    background-color: #9698a0;
+    border-width: 2px;
     color: white;
   }
 }
 
 .question {
-  padding: 10px;
+  padding: 5px;
+  padding-top: 7px;
   color: #2d3041;
   box-sizing: border-box;
   border-bottom: solid 1px;
@@ -134,6 +139,7 @@ button {
   font-size: 18px;
   box-shadow: none;
   line-height: 24px;
+  
 }
 
 .cdk-drag-placeholder {
@@ -148,6 +154,7 @@ button {
 .question.cdk-drag-disabled {
   background: #ccc;
   cursor: default;
+  
 }
 
 .question:last-child {
