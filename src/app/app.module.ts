@@ -62,7 +62,7 @@ import { SignInComponent } from './auth/sign-in/sign-in.component';
     ModalModule.forRoot(),
   ],
   providers: [
-    authInterceptor,
+    //authInterceptor,
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'outline' },

@@ -94,6 +94,7 @@ export class UpdateComponent implements OnInit {
       this.questionsSurvey.findIndex(
         (question: Question) => questionToDelete.id == question.id
       )
+      
     );
   }
 
@@ -127,7 +128,10 @@ export class UpdateComponent implements OnInit {
       //   event.previousIndex,
       //   event.currentIndex
       // );
+      console.log("question list",this.questionsSurvey)
       copyArrayItem<Question>(event.previousContainer.data,event.container.data, event.previousIndex,event.currentIndex);
+      console.log("question list after :",this.questionsSurvey)
+      //JSON.parse(JSON.stringify(question))
     }
 
     //copyArrayItem<T = any>(currentArray: T[], targetArray: T[], currentIndex: number, targetIndex: number): void;
