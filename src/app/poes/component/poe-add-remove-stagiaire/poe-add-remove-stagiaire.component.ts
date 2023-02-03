@@ -139,18 +139,18 @@ export class PoeAddRemoveStagiaireComponent implements OnInit {
   onRemove(idTrainee: Number) {
     this?.modalRef?.hide();
     this.stagiaireService.removePoe(idTrainee);
-    window.location.reload();
+    this.ngOnInit()
   }
 
   onAdd(idTrainee: Number) {
     this?.modalRef?.hide();
     this.stagiaireService.setPoe(idTrainee, this.idPoe);
-    window.location.reload();
+    this.ngOnInit()
   }
   decline(): void {
     this.message = 'Declined!';
     this?.modalRef?.hide();
-    window.location.reload();
+    this.ngOnInit()
   }
 
 }
