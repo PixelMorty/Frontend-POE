@@ -73,7 +73,7 @@ export class FormulaireAddGeneralComponent implements OnInit {
           });
       } else if (this.class_poe_or_Stagiaire == StagiairesPoes.POES) {
         this.poeService.create(this.addForm.value).subscribe((poe: Poe) => {
-          this.router.navigate(['/', StagiairesPoes.STAGIAIRES]);
+          this.router.navigate(['/', StagiairesPoes.POES]);
         });
       }
     } else {
@@ -87,7 +87,7 @@ export class FormulaireAddGeneralComponent implements OnInit {
         this.poeService
           .update(this.addForm.value, this.id)
           .subscribe((poe: Poe) => {
-            this.router.navigate(['/', StagiairesPoes.STAGIAIRES]);
+            this.router.navigate(['/', StagiairesPoes.POES]);
           });
       }
     }
